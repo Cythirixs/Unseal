@@ -82,7 +82,7 @@ func lineFit(points : [CGPoint]) -> LineResult{
         error += distance
     }
     error /= dataCount
-//    print("error: \(error)")
+    print("error: \(error)")
     
     var line = LineResult()
     line.center = CGPoint(x: mean.x, y: mean.y)
