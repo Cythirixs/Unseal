@@ -26,7 +26,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         handler.delegate = self
         
         drawView = DrawView(frame: CGRectMake(0, 0, 320, 568))
-        drawView.backgroundColor = UIColor.whiteColor()
+        drawView.backgroundColor = UIColor.clearColor()
         view.addSubview(drawView)
         
         
