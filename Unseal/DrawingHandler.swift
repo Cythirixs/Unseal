@@ -15,7 +15,7 @@ import UIKit.UIGestureRecognizerSubclass
 class DrawingHandler: UIGestureRecognizer {
     
     enum shapes{
-        case circle, horizontal, vertical, leaf, vUp, vDown
+        case circle, horizontal, vertical, leaf, vUp, vDown, hourglass
     }
     
     private var touchedPoints = [CGPoint]() // point history
@@ -23,6 +23,7 @@ class DrawingHandler: UIGestureRecognizer {
     var isShape = false
     var path = CGPathCreateMutable() // running CGPath - helps with drawing
     
+    //current shape
     var currentShape:shapes = .vUp
     
     //recognizers
@@ -32,6 +33,7 @@ class DrawingHandler: UIGestureRecognizer {
     var LeafGesture = LeafGestureRecognizer()
     var vUpGesture = VUpGestureRecognizer()
     var vDownGesture = VDownGestureRecognizer()
+    var HourglassGesture = HourglassGestureRecognizer()
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent) {
         super.touchesBegan(touches, withEvent: event)
@@ -62,6 +64,8 @@ class DrawingHandler: UIGestureRecognizer {
             result = vUpGesture.isV(touchedPoints, path: path)
         case .vDown:
             result = vDownGesture.isV(touchedPoints, path: path)
+        case .hourglass:
+            result = HourglassGesture.isHourglass(touchedPoints, path: path)
         }
         isShape = result
 

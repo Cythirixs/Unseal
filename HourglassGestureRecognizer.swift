@@ -10,5 +10,12 @@ import Foundation
 import UIKit
 
 class HourglassGestureRecognizer{
+ 
+    var path = CGPathCreateMutable()
+    var fitResult = HourglassResult()
+    
+    func isHourglass(points: [CGPoint], path: CGMutablePath) -> Bool{
+        return false
+    }
     
 }
