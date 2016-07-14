@@ -9,10 +9,14 @@
 import UIKit
 import SpriteKit
 
+let afterGuessTimeout: NSTimeInterval = 2 // seconds
+
 class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var handler : DrawingHandler!
     var drawView : DrawView!
+    
+    var goToNextTimer: NSTimer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +26,9 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         handler.delegate = self
         
         drawView = DrawView(frame: CGRectMake(0, 0, 320, 568))
+        drawView.backgroundColor = UIColor.whiteColor()
         view.addSubview(drawView)
+        
         
         if let scene = GameScene(fileNamed:"GameScene") {
             // Configure the view.
@@ -38,6 +44,10 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             
             skView.presentScene(scene)
         }
+        
+        goToNextTimer?.invalidate()
+        
+        drawView.clear()
     }
 
     override func shouldAutorotate() -> Bool {
@@ -61,21 +71,27 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         return true
     }
     
+    
+    
     func shape(c: DrawingHandler) {
         
         if c.state == .Ended {
-            
+            print(c.isShape)
         }
         if c.state == .Began {
             drawView.clear()
+            goToNextTimer?.invalidate()
         }
         if c.state == .Changed {
             drawView.updatePath(c.path)
         }
         if c.state == .Ended || c.state == .Failed || c.state == .Cancelled {
-           // drawView.updateFit(c.fitResult, madeCircle: c.isCircle)
-            
+            drawView.updateFit(c.fitResult, madeShape: c.isShape)
+            goToNextTimer = NSTimer.scheduledTimerWithTimeInterval(afterGuessTimeout, target: self, selector: "timerFired:", userInfo: nil, repeats: false)
         }
+    }
+    func timerFired(timer: NSTimer) {
+        drawView.clear()
     }
 
 }

@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		F34B378A1D355AE400E50116 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F34B37891D355AE400E50116 /* GameScene.sks */; };
 		F34B378C1D358E8C00E50116 /* CircleFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B378B1D358E8C00E50116 /* CircleFit.swift */; };
+		F34B378E1D35901100E50116 /* CircleGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B378D1D35901100E50116 /* CircleGestureRecognizer.swift */; };
+		F34B37931D36A7CB00E50116 /* HourglassGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B37921D36A7CB00E50116 /* HourglassGestureRecognizer.swift */; };
+		F34B37951D36A7D400E50116 /* HourglassFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B37941D36A7D400E50116 /* HourglassFit.swift */; };
+		F34B379A1D36B0CE00E50116 /* HorizontalGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B37991D36B0CE00E50116 /* HorizontalGestureRecognizer.swift */; };
+		F34B379C1D36B17D00E50116 /* HorizontalFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B379B1D36B17D00E50116 /* HorizontalFit.swift */; };
 		F37A96541D35580F00367524 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A96531D35580F00367524 /* AppDelegate.swift */; };
 		F37A96581D35580F00367524 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A96571D35580F00367524 /* GameScene.swift */; };
 		F37A965A1D35580F00367524 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A96591D35580F00367524 /* GameViewController.swift */; };
@@ -19,7 +24,6 @@
 		F37A96781D35580F00367524 /* UnsealUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A96771D35580F00367524 /* UnsealUITests.swift */; };
 		F37A96861D35582800367524 /* DrawingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A96851D35582800367524 /* DrawingHandler.swift */; };
 		F37A96881D3558D100367524 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A96871D3558D100367524 /* DrawView.swift */; };
-		F37A968A1D3558F500367524 /* Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A96891D3558F500367524 /* Structures.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +46,11 @@
 /* Begin PBXFileReference section */
 		F34B37891D355AE400E50116 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameScene.sks; path = ../GameScene.sks; sourceTree = "<group>"; };
 		F34B378B1D358E8C00E50116 /* CircleFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleFit.swift; sourceTree = "<group>"; };
+		F34B378D1D35901100E50116 /* CircleGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleGestureRecognizer.swift; sourceTree = "<group>"; };
+		F34B37921D36A7CB00E50116 /* HourglassGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HourglassGestureRecognizer.swift; path = ../HourglassGestureRecognizer.swift; sourceTree = "<group>"; };
+		F34B37941D36A7D400E50116 /* HourglassFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourglassFit.swift; sourceTree = "<group>"; };
+		F34B37991D36B0CE00E50116 /* HorizontalGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalGestureRecognizer.swift; sourceTree = "<group>"; };
+		F34B379B1D36B17D00E50116 /* HorizontalFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalFit.swift; sourceTree = "<group>"; };
 		F37A96501D35580F00367524 /* Unseal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unseal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F37A96531D35580F00367524 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F37A96571D35580F00367524 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -58,7 +67,6 @@
 		F37A96791D35580F00367524 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F37A96851D35582800367524 /* DrawingHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingHandler.swift; sourceTree = "<group>"; };
 		F37A96871D3558D100367524 /* DrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
-		F37A96891D3558F500367524 /* Structures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structures.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +94,83 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F34B378F1D35A28F00E50116 /* Circle */ = {
+			isa = PBXGroup;
+			children = (
+				F34B378B1D358E8C00E50116 /* CircleFit.swift */,
+				F34B378D1D35901100E50116 /* CircleGestureRecognizer.swift */,
+			);
+			name = Circle;
+			sourceTree = "<group>";
+		};
+		F34B37961D36A7DC00E50116 /* Hourglass */ = {
+			isa = PBXGroup;
+			children = (
+				F34B37941D36A7D400E50116 /* HourglassFit.swift */,
+				F34B37921D36A7CB00E50116 /* HourglassGestureRecognizer.swift */,
+			);
+			name = Hourglass;
+			sourceTree = "<group>";
+		};
+		F34B37971D36A7F500E50116 /* Gesture */ = {
+			isa = PBXGroup;
+			children = (
+				F34B37A21D36BCF100E50116 /* x */,
+				F34B37A11D36BCD100E50116 /* BoxDown */,
+				F34B379F1D36BCA500E50116 /* Leaf */,
+				F34B379E1D36BC9F00E50116 /* Infinity */,
+				F34B379D1D36BC9900E50116 /* Vertical */,
+				F34B37981D36B0B600E50116 /* Horizontal */,
+				F34B378F1D35A28F00E50116 /* Circle */,
+				F34B37961D36A7DC00E50116 /* Hourglass */,
+			);
+			name = Gesture;
+			sourceTree = "<group>";
+		};
+		F34B37981D36B0B600E50116 /* Horizontal */ = {
+			isa = PBXGroup;
+			children = (
+				F34B379B1D36B17D00E50116 /* HorizontalFit.swift */,
+				F34B37991D36B0CE00E50116 /* HorizontalGestureRecognizer.swift */,
+			);
+			name = Horizontal;
+			sourceTree = "<group>";
+		};
+		F34B379D1D36BC9900E50116 /* Vertical */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Vertical;
+			sourceTree = "<group>";
+		};
+		F34B379E1D36BC9F00E50116 /* Infinity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Infinity;
+			sourceTree = "<group>";
+		};
+		F34B379F1D36BCA500E50116 /* Leaf */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Leaf;
+			sourceTree = "<group>";
+		};
+		F34B37A11D36BCD100E50116 /* BoxDown */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = BoxDown;
+			sourceTree = "<group>";
+		};
+		F34B37A21D36BCF100E50116 /* x */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = x;
+			sourceTree = "<group>";
+		};
 		F37A96471D35580F00367524 = {
 			isa = PBXGroup;
 			children = (
@@ -114,9 +199,8 @@
 				F37A96571D35580F00367524 /* GameScene.swift */,
 				F37A96851D35582800367524 /* DrawingHandler.swift */,
 				F37A96871D3558D100367524 /* DrawView.swift */,
-				F37A96891D3558F500367524 /* Structures.swift */,
 				F37A96591D35580F00367524 /* GameViewController.swift */,
-				F34B378B1D358E8C00E50116 /* CircleFit.swift */,
+				F34B37971D36A7F500E50116 /* Gesture */,
 				F37A965B1D35580F00367524 /* Main.storyboard */,
 				F37A965E1D35580F00367524 /* Assets.xcassets */,
 				F37A96601D35580F00367524 /* LaunchScreen.storyboard */,
@@ -211,6 +295,7 @@
 				TargetAttributes = {
 					F37A964F1D35580F00367524 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 92U55748MF;
 					};
 					F37A96671D35580F00367524 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -276,12 +361,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F37A96581D35580F00367524 /* GameScene.swift in Sources */,
-				F37A968A1D3558F500367524 /* Structures.swift in Sources */,
+				F34B378E1D35901100E50116 /* CircleGestureRecognizer.swift in Sources */,
 				F37A96881D3558D100367524 /* DrawView.swift in Sources */,
+				F34B379A1D36B0CE00E50116 /* HorizontalGestureRecognizer.swift in Sources */,
 				F34B378C1D358E8C00E50116 /* CircleFit.swift in Sources */,
+				F34B379C1D36B17D00E50116 /* HorizontalFit.swift in Sources */,
+				F34B37931D36A7CB00E50116 /* HourglassGestureRecognizer.swift in Sources */,
 				F37A96861D35582800367524 /* DrawingHandler.swift in Sources */,
 				F37A965A1D35580F00367524 /* GameViewController.swift in Sources */,
 				F37A96541D35580F00367524 /* AppDelegate.swift in Sources */,
+				F34B37951D36A7D400E50116 /* HourglassFit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,10 +514,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Unseal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.Unseal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -436,10 +528,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Unseal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.Unseal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

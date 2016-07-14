@@ -15,19 +15,21 @@ import UIKit.UIGestureRecognizerSubclass
 class DrawingHandler: UIGestureRecognizer {
     
     enum shapes{
-        case circle
+        case circle, horizontal
     }
     
     private var touchedPoints = [CGPoint]() // point history
-    var tolerance: CGFloat = 0.4 // circle wiggle room
+    var fitResult = HorizResult()
     var isShape = false
     var path = CGPathCreateMutable() // running CGPath - helps with drawing
     
-    var currentShape:shapes = .circle
+    var currentShape:shapes = .horizontal
+    
+    var CircleGesture = CircleGestureRecognizer()
+    var HoizontalGesture = HorizontalGestureRecognizer()
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent) {
         super.touchesBegan(touches, withEvent: event)
-        print("touch begain")
         if touches.count != 1 {
             state = .Failed
         }
@@ -41,14 +43,26 @@ class DrawingHandler: UIGestureRecognizer {
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent) {
         super.touchesEnded(touches, withEvent: event)
-        print("touch ended")
-        
+        var result = false
+        switch currentShape{
+        case .circle:
+        result = CircleGesture.isCircle(touchedPoints, path: path)
+        case .horizontal:
+        result = HoizontalGesture.isHorizontal(touchedPoints, path: path)
+            
+        }
+        isShape = result
+
+        print(isShape)
         state = isShape ? .Ended : .Failed
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent) {
         super.touchesMoved(touches, withEvent: event)
-        print("moved")
+        
+        if touches.count != 1{
+            state = .Failed
+        }
         
         if state == .Failed {
             return
@@ -56,6 +70,7 @@ class DrawingHandler: UIGestureRecognizer {
         
         let window = view?.window
         if let touches = touches as? Set<UITouch>, loc = touches.first?.locationInView(window) {
+           // print("new point at: \(loc)")
             touchedPoints.append(loc)
             CGPathAddLineToPoint(path, nil, loc.x, loc.y)
             state = .Changed
