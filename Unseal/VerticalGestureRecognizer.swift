@@ -1,28 +1,28 @@
 //
-//  HorizontalGestureRecognizer.swift
+//  VerticalGestureRecognizer.swift
 //  Unseal
 //
-//  Created by synaptics on 7/13/16.
+//  Created by synaptics on 7/14/16.
 //  Copyright © 2016 Amino. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class HorizontalGestureRecognizer{
+class VerticalGestureRecognizer{
     
     var path = CGPathCreateMutable()
-    var heightTolerance:CGFloat = 8
+    var widthTolerance:CGFloat = 8
     var fitResult = LineResult()
     
-    func isHorizontal(points : [CGPoint], path : CGMutablePath) -> Bool{
+    func isVertical(points : [CGPoint], path : CGMutablePath) -> Bool{
         self.path = path
         fitResult = lineFit(points)
-        let isHorizontal = calculateHorizontal(points)
-        return fitResult.error <= heightTolerance && isHorizontal
+        let isVertical = calculateVertical(points)
+        return fitResult.error <= widthTolerance && isVertical
     }
     
-    func calculateHorizontal(points: [CGPoint]) -> Bool{
+    func calculateVertical(points: [CGPoint]) -> Bool{
         var xL : CGFloat = 0
         var yL : CGFloat = 0
         var xS : CGFloat = 1000
@@ -34,6 +34,6 @@ class HorizontalGestureRecognizer{
             if p.x < xS {xS = p.x}
             if p.y < yS { yS = p.y}
         }
-        return (xL - xS) > (yL - yS)
+        return (xL - xS) < (yL - yS)
     }
 }

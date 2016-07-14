@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct HorizResult {
+struct LineResult {
     var center : CGPoint
     var width: CGFloat
     var height: CGFloat
@@ -22,7 +22,7 @@ struct HorizResult {
     }
 }
 
-func horizontalFit(points : [CGPoint]) -> HorizResult{
+func lineFit(points : [CGPoint]) -> LineResult{
     
     var dataCount = CGFloat(points.count)
     var mean = CGPointZero
@@ -55,8 +55,8 @@ func horizontalFit(points : [CGPoint]) -> HorizResult{
     let width = xL - xS
     let height = yL - yS
     
-    print("pivot point: \(pivotPoint)")
-    print("center: \(mean)")
+//    print("pivot point: \(pivotPoint)")
+//    print("center: \(mean)")
     
     let A:CGFloat = (mean.x - pivotPoint.x)
     let B:CGFloat = (mean.y - pivotPoint.y)
@@ -65,13 +65,11 @@ func horizontalFit(points : [CGPoint]) -> HorizResult{
     let bfB = mean.y - (bfSlope * mean.x)
     
     let C = bfB * A
-    
-    print("C: \(C)")
-    
+        
     var error:CGFloat = 0
     
-    print("line eqn : y = \(bfSlope) x + \(bfB)")
-    print("standar form: \(B)x + \(A)y + \(C) = 0")
+//    print("line eqn : y = \(bfSlope) x + \(bfB)")
+//    print("standar form: \(B)x + \(A)y + \(C) = 0")
     
     for p in points{
         
@@ -79,20 +77,20 @@ func horizontalFit(points : [CGPoint]) -> HorizResult{
         let square =  sqrt( (A * A) + (B * B) )
         let distance = absolute / square
         
-        print("\(p) is \(distance) from line")
+//        print("\(p) is \(distance) from line")
         
         error += distance
     }
     error /= dataCount
-    print("error: \(error)")
+//    print("error: \(error)")
     
-    var horizontal = HorizResult()
-    horizontal.center = CGPoint(x: mean.x, y: mean.y)
-    horizontal.width = width
-    horizontal.height = height
-    horizontal.error = error
+    var line = LineResult()
+    line.center = CGPoint(x: mean.x, y: mean.y)
+    line.width = width
+    line.height = height
+    line.error = error
     
-    return horizontal
+    return line
 }
 
 

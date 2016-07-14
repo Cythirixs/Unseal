@@ -15,18 +15,20 @@ import UIKit.UIGestureRecognizerSubclass
 class DrawingHandler: UIGestureRecognizer {
     
     enum shapes{
-        case circle, horizontal
+        case circle, horizontal, vertical
     }
     
     private var touchedPoints = [CGPoint]() // point history
-    var fitResult = HorizResult()
+    var fitResult = LineResult()
     var isShape = false
     var path = CGPathCreateMutable() // running CGPath - helps with drawing
     
-    var currentShape:shapes = .horizontal
+    var currentShape:shapes = .vertical
     
+    //recognizers
     var CircleGesture = CircleGestureRecognizer()
     var HoizontalGesture = HorizontalGestureRecognizer()
+    var VerticalGesture = VerticalGestureRecognizer()
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent) {
         super.touchesBegan(touches, withEvent: event)
@@ -49,7 +51,8 @@ class DrawingHandler: UIGestureRecognizer {
         result = CircleGesture.isCircle(touchedPoints, path: path)
         case .horizontal:
         result = HoizontalGesture.isHorizontal(touchedPoints, path: path)
-            
+        case.vertical:
+            result = VerticalGesture.isVertical(touchedPoints, path: path)
         }
         isShape = result
 

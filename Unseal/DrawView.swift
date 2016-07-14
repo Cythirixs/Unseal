@@ -18,12 +18,12 @@ class DrawView: UIView {
     }
     
     private var path: CGPath?
-    private var fitResult: HorizResult?
+    private var fitResult: LineResult?
     private var isShape = false
     
     var drawDebug = true // set to true show additional information about the fit
     
-    func updateFit(fit: HorizResult?, madeShape: Bool) {
+    func updateFit(fit: LineResult?, madeShape: Bool) {
         fitResult = fit
         isShape = madeShape
         setNeedsDisplay()
