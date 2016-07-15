@@ -24,7 +24,8 @@ class DrawingHandler: UIGestureRecognizer {
     var path = CGPathCreateMutable() // running CGPath - helps with drawing
     
     //current shape
-    var currentShape:shapes = .vUp
+    var currentShape:shapes = .vDown
+    
     
     //recognizers
     var CircleGesture = CircleGestureRecognizer()

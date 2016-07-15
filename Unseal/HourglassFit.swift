@@ -55,6 +55,17 @@ func HourglassFit(points: [CGPoint]) -> HourglassResult{
         }
     }
     
+    var lineA = [CGPoint]()
+    
+    var pivot = ""
+    for p in points{
+        if p == N{ pivot = "N"}
+        else if p == E { pivot = "E"}
+        else if p == S { pivot == "S"}
+        else { pivot == "W"}
+        
+        //if pivot ==
+    }
     
 
     

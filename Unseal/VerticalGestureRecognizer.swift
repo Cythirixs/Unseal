@@ -12,7 +12,7 @@ import UIKit
 class VerticalGestureRecognizer{
     
     var path = CGPathCreateMutable()
-    var tolerance:CGFloat = 8
+    var tolerance:CGFloat = 15
     var fitResult = LineResult()
     
     func isVertical(points : [CGPoint], path : CGMutablePath) -> Bool{

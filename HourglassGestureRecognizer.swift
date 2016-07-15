@@ -15,6 +15,9 @@ class HourglassGestureRecognizer{
     var fitResult = HourglassResult()
     
     func isHourglass(points: [CGPoint], path: CGMutablePath) -> Bool{
+        
+        print(points)
+        
         return false
     }
     

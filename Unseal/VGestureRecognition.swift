@@ -12,7 +12,7 @@ import UIKit
 class VDownGestureRecognizer{
     
     var path = CGPathCreateMutable()
-    var tolerance:CGFloat = 10
+    var tolerance:CGFloat = 15
     var fitResult = VResult()
     
     func isV(points : [CGPoint], path : CGMutablePath) -> Bool{

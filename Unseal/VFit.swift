@@ -57,11 +57,8 @@ func vDownFit(points: [CGPoint]) -> VResult{
         }
         if p.y < yS { yS = p.y}
     }
-    print("pivot point: \(pivotPoint)")
-    print("x large point: \(xLPoint)")
-    print("y small point: \(xSPoint)")
+
     let lowPoint = xLPoint.y > xSPoint.y ? xSPoint.y : xLPoint.y
-    print("low point: \(lowPoint)")
     let yDif = lowPoint - pivotPoint.y
     if abs(yDif) > restriction{
         vresult.qualify = true
@@ -69,12 +66,16 @@ func vDownFit(points: [CGPoint]) -> VResult{
         var line2 = [CGPoint]()
         line2.append(pivotPoint)
         
+        var change = false
         for p in points{
-            if p.x >= xSPoint.x && p.x <= pivotPoint.x{
-                line1.append(p)
+
+            if p == pivotPoint { change = true}
+            
+            if change {
+                line2.append(p)
             }
             else{
-                line2.append(p)
+                line1.append(p)
             }
         }
         
@@ -88,7 +89,6 @@ func vDownFit(points: [CGPoint]) -> VResult{
         else{
             vresult.direction = 1
         }
-        print("direction: \(vresult.direction)")
     }
     
     return vresult
@@ -126,11 +126,8 @@ func vUpFit(points: [CGPoint]) -> VResult{
             pivotPoint = p
         }
     }
-    print("pivot point: \(pivotPoint)")
-    print("x large point: \(xLPoint)")
-    print("y small point: \(xSPoint)")
+
     let lowPoint = xLPoint.y > xSPoint.y ? xSPoint.y : xLPoint.y
-    print("low point: \(lowPoint)")
     let yDif = lowPoint - pivotPoint.y
     if abs(yDif) > restriction {
         vresult.qualify = true
@@ -138,12 +135,16 @@ func vUpFit(points: [CGPoint]) -> VResult{
         var line2 = [CGPoint]()
         line2.append(pivotPoint)
         
+        var change = false
+        
         for p in points{
-            if p.x >= xSPoint.x && p.x <= pivotPoint.x{
-                line1.append(p)
+            if p == pivotPoint { change = true}
+            
+            if change {
+                line2.append(p)
             }
             else{
-                line2.append(p)
+                line1.append(p)
             }
         }
         
@@ -157,7 +158,6 @@ func vUpFit(points: [CGPoint]) -> VResult{
         else{
             vresult.direction = 1
         }
-        print("direction: \(vresult.direction)")
     }
     
     return vresult
