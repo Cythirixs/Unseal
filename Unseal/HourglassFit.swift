@@ -56,18 +56,41 @@ func HourglassFit(points: [CGPoint]) -> HourglassResult{
     }
     
     var lineA = [CGPoint]()
+    var lineB = [CGPoint]()
     
-    var pivot = ""
+    var change = false
+    var swap = false
+    
     for p in points{
-        if p == N{ pivot = "N"}
-        else if p == E { pivot = "E"}
-        else if p == S { pivot == "S"}
-        else { pivot == "W"}
         
-        //if pivot ==
+        if p == W{
+            if !lineA.contains(N) {
+                swap = true
+            }
+            
+            change = true
+        }
+        
+        if change{
+            lineB.append(p)
+        }
+        else{
+            lineA.append(p)
+        }
     }
     
-
+    if swap {
+        let temp = lineA
+        lineA = lineB
+        lineB = temp
+    }
+    
+    let v = vDownFit(lineA)
+    let line = lineFit(lineB)
+    
+    hourglass.vertError = v.error1
+    hourglass.diagError = v.error2
+    hourglass.horizError = line.error
     
     return hourglass
 }

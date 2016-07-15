@@ -14,11 +14,13 @@ class HourglassGestureRecognizer{
     var path = CGPathCreateMutable()
     var fitResult = HourglassResult()
     
+    var tolerance:CGFloat = 15
+    
     func isHourglass(points: [CGPoint], path: CGMutablePath) -> Bool{
         
-        print(points)
+        fitResult = HourglassFit(points)
         
-        return false
+        return fitResult.vertError < tolerance && fitResult.diagError < tolerance && fitResult.horizError < tolerance
     }
     
 }

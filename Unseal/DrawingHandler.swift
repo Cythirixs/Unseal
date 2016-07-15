@@ -24,7 +24,7 @@ class DrawingHandler: UIGestureRecognizer {
     var path = CGPathCreateMutable() // running CGPath - helps with drawing
     
     //current shape
-    var currentShape:shapes = .vDown
+    var currentShape:shapes = .hourglass
     
     
     //recognizers
