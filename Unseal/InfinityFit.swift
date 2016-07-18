@@ -78,14 +78,10 @@ func fitInfinity(points: [CGPoint]) -> InfinityResult{
     let yIntersect = slope1 * xIntersect + b1
     
     var dis:CGFloat = 1000
-    var pt = CGPointZero
     
     for p in points{
         let temp = sqrt( (xIntersect - p.x) + (yIntersect - p.y) )
-        if temp < dis{
-            dis = temp
-            pt = p
-        }
+        if temp < dis{ dis = temp}
     }
     
     var vFit = [CGPoint]()

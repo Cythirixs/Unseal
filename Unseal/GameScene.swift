@@ -7,36 +7,53 @@
 //
 
 import SpriteKit
+import SceneKit
 
 class GameScene: SKScene {
     
     var score : SKLabelNode!
-    
-    var circle : SKSpriteNode!
-    var horizontal : SKSpriteNode!
-    var vertical : SKSpriteNode!
-    var vUp : SKSpriteNode!
-    var vDown : SKSpriteNode!
-    var leaf : SKSpriteNode!
-    var hourglass : SKSpriteNode!
-
+    var gesture : SKLabelNode!
     
     var currentScore = 0
     
+    //spell buttons w:60 h:24
+    var spell1 : MSButtonNode!
+    var spell2 : MSButtonNode!
+    var spell3 : MSButtonNode!
+    
+    var gestureNum = 1
+    var remainingGestures = 1
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        
         score = childNodeWithName("score") as! SKLabelNode
+        gesture = childNodeWithName("gesture") as! SKLabelNode
         
-        circle = childNodeWithName("circle") as! SKSpriteNode
-        horizontal = childNodeWithName("horizontal") as! SKSpriteNode
-        vertical = childNodeWithName("vertical") as! SKSpriteNode
-        vUp = childNodeWithName("vUp") as! SKSpriteNode
-        vDown = childNodeWithName("vDown") as! SKSpriteNode
-        leaf = childNodeWithName("leaf") as! SKSpriteNode
-        hourglass = childNodeWithName("hourglass") as! SKSpriteNode
-
+        //spells
+        spell1 = childNodeWithName("spell1") as! MSButtonNode
+        spell1.selectedHandler = {
+            if self.gestureNum == 1 {return}
+            print("1")
+            self.gestureNum = 1
+            self.remainingGestures = 1
+            self.gesture.text = "\(self.remainingGestures)"
+        }
+        spell2 = childNodeWithName("spell2") as! MSButtonNode
+        spell2.selectedHandler = {
+            if self.gestureNum == 2 {return}
+            print("2")
+            self.gestureNum = 2
+            self.remainingGestures = 2
+            self.gesture.text = "\(self.remainingGestures)"
+        }
+        spell3 = childNodeWithName("spell3") as! MSButtonNode
+        spell3.selectedHandler = {
+            if self.gestureNum == 3 {return}
+            print("3")
+            self.gestureNum = 3
+            self.remainingGestures = 3
+            self.gesture.text = "\(self.remainingGestures)"
+        }
         
     }
     
@@ -45,10 +62,21 @@ class GameScene: SKScene {
         
     }
     
+    func decrementGesture(){
+        remainingGestures -= 1
+        if remainingGestures == 0{
+            //show spell here
+            print("cast spell")
+            remainingGestures = gestureNum
+        }
+        gesture.text = "\(remainingGestures)"
+    }
+    
     func incramentScore(){
         currentScore += 1
         score.text = "\(currentScore)"
     }
+    
     
     func hideImage(shape : String){
         childNodeWithName(shape)?.zPosition = -2

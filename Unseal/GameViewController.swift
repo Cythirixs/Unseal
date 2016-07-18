@@ -51,6 +51,11 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         
         drawView.clear()
     }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        let pos = touch.locationInView(drawView)
+        return !(pos.y >= 542)
+    }
 
     override func shouldAutorotate() -> Bool {
         return true
@@ -90,10 +95,11 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             goToNextTimer = NSTimer.scheduledTimerWithTimeInterval(afterGuessTimeout, target: self, selector: "timerFired:", userInfo: nil, repeats: false)
             drawView.ended = true
             if c.isShape{
-                scene?.incramentScore()
-                scene?.hideImage("\(c.currentShape)")
+                //scene?.incramentScore()
+                scene.decrementGesture()
+                scene.hideImage("\(c.currentShape)")
                 handler.randomize()
-                scene?.showImage("\(c.currentShape)")
+                scene.showImage("\(c.currentShape)")
             }
         }
     }

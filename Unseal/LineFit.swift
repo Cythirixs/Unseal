@@ -24,7 +24,7 @@ struct LineResult {
 
 func lineFit(points : [CGPoint]) -> LineResult{
     
-    var dataCount = CGFloat(points.count)
+    let dataCount = CGFloat(points.count)
     var mean = CGPointZero
     
     for p in points{
@@ -82,7 +82,7 @@ func lineFit(points : [CGPoint]) -> LineResult{
         error += distance
     }
     error /= dataCount
-    print("error: \(error)")
+  //  print("error: \(error)")
     
     var line = LineResult()
     line.center = CGPoint(x: mean.x, y: mean.y)

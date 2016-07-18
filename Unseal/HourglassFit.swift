@@ -32,19 +32,11 @@ func HourglassFit(points: [CGPoint]) -> HourglassResult{
     var yS : CGFloat = 1000
     
     var N:CGPoint = CGPointZero
-    var E:CGPoint = CGPointZero
-    var S:CGPoint = CGPointZero
     var W:CGPoint = CGPointZero
     
     for p in points{
-        if p.x > xL{
-            xL = p.x
-            E = p
-        }
-        if p.y > yL {
-            yL = p.y
-            S = p
-        }
+        if p.x > xL{xL = p.x}
+        if p.y > yL {yL = p.y}
         if p.x < xS {
             xS = p.x
             W = p
