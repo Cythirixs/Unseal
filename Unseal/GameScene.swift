@@ -33,28 +33,43 @@ class GameScene: SKScene {
         spell1 = childNodeWithName("spell1") as! MSButtonNode
         spell1.selectedHandler = {
             if self.gestureNum == 1 {return}
-            print("1")
+            
+            self.buttonDown()
             self.gestureNum = 1
             self.remainingGestures = 1
             self.gesture.text = "\(self.remainingGestures)"
+            self.buttonUp()
         }
         spell2 = childNodeWithName("spell2") as! MSButtonNode
         spell2.selectedHandler = {
             if self.gestureNum == 2 {return}
-            print("2")
+            
+            self.buttonDown()
             self.gestureNum = 2
             self.remainingGestures = 2
             self.gesture.text = "\(self.remainingGestures)"
+            self.buttonUp()
         }
         spell3 = childNodeWithName("spell3") as! MSButtonNode
         spell3.selectedHandler = {
             if self.gestureNum == 3 {return}
-            print("3")
+            self.buttonDown()
+
             self.gestureNum = 3
             self.remainingGestures = 3
             self.gesture.text = "\(self.remainingGestures)"
+            self.buttonUp()
         }
         
+    }
+    
+    func buttonDown(){
+        let button = self.childNodeWithName("spell\(self.gestureNum)")?.position
+        self.childNodeWithName("spell\(self.gestureNum)")?.position.y = button!.y - 5
+    }
+    func buttonUp(){
+        let button = self.childNodeWithName("spell\(self.gestureNum)")?.position
+        self.childNodeWithName("spell\(self.gestureNum)")?.position.y = button!.y + 5
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
