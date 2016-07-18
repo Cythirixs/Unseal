@@ -15,7 +15,7 @@ import UIKit.UIGestureRecognizerSubclass
 class DrawingHandler: UIGestureRecognizer {
     
     enum shapes{
-        case circle, horizontal, vertical, leaf, vUp, vDown, hourglass
+        case circle, horizontal, vertical, leaf, vUp, vDown, hourglass, lightning
     }
     
     private var touchedPoints = [CGPoint]() // point history
@@ -35,6 +35,7 @@ class DrawingHandler: UIGestureRecognizer {
     var vUpGesture = VUpGestureRecognizer()
     var vDownGesture = VDownGestureRecognizer()
     var HourglassGesture = HourglassGestureRecognizer()
+    var LightningGesture = LightningGestureRecognizer()
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent) {
         super.touchesBegan(touches, withEvent: event)
@@ -56,22 +57,53 @@ class DrawingHandler: UIGestureRecognizer {
         case .circle:
             result = CircleGesture.isCircle(touchedPoints, path: path)
         case .horizontal:
-            result = HoizontalGesture.isHorizontal(touchedPoints, path: path)
+            result = HoizontalGesture.isHorizontal(touchedPoints)
         case.vertical:
-            result = VerticalGesture.isVertical(touchedPoints, path: path)
+            result = VerticalGesture.isVertical(touchedPoints)
         case .leaf:
-            result = LeafGesture.isLeaf(touchedPoints, path: path)
+            result = LeafGesture.isLeaf(touchedPoints)
         case .vUp:
-            result = vUpGesture.isV(touchedPoints, path: path)
+            result = vUpGesture.isV(touchedPoints)
         case .vDown:
-            result = vDownGesture.isV(touchedPoints, path: path)
+            result = vDownGesture.isV(touchedPoints)
         case .hourglass:
-            result = HourglassGesture.isHourglass(touchedPoints, path: path)
+            result = HourglassGesture.isHourglass(touchedPoints)
+        case .lightning:
+            result = LightningGesture.isLightning(touchedPoints)
         }
         isShape = result
 
-        print(isShape)
         state = isShape ? .Ended : .Failed
+        
+    }
+    
+    func randomize(){
+        let n = arc4random_uniform(8)
+        if n == 0{
+            currentShape = .circle
+        }
+        else if n == 1{
+            currentShape = .horizontal
+        }
+        else if n == 2{
+            currentShape = .hourglass
+        }
+        else if n == 3{
+            currentShape = .vertical
+        }
+        else if n == 4{
+            currentShape = .vUp
+        }
+        else if n == 5{
+            currentShape = .vDown
+        }
+        else if n == 6{
+            currentShape = .leaf
+        }
+        else{
+            currentShape = .lightning
+        }
+        
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent) {

@@ -11,14 +11,12 @@ import UIKit
 
 class LeafGestureRecognizer{
     
-    var path = CGPathCreateMutable()
     var tolerance:CGFloat = 8
     
     var widthLimit:CGFloat = 10
     var fitResult = LineResult()
     
-    func isLeaf(points : [CGPoint], path : CGMutablePath) -> Bool{
-        self.path = path
+    func isLeaf(points : [CGPoint]) -> Bool{
         fitResult = lineFit(points)
         let isLeaf = calculateLeaf(points)
         return fitResult.error > tolerance && isLeaf
@@ -47,12 +45,11 @@ class LeafGestureRecognizer{
             if p.y < yS { yS = p.y}
         }
         
-        print("largest X : \(xLPoint)")
-        print("smallest X : \(xSPoint)")
+   //     print("largest X : \(xLPoint)")
+   //     print("smallest X : \(xSPoint)")
         
         //width tolerance
-        let wT:CGFloat
-            = 20
+        let wT:CGFloat = 20
         
         return (xL - xS) > widthLimit && (xL - xS) < (yL - yS) && (xLPoint.y > yL - wT && xLPoint.y < yL + wT)
         && (xSPoint.y > yS - wT && xSPoint.y < yS + wT)

@@ -21,6 +21,9 @@ class DrawView: UIView {
     private var fitResult: LineResult?
     private var isShape = false
     
+    var ended = false
+    private var color = UIColor.greenColor().CGColor
+    
     var drawDebug = true // set to true show additional information about the fit
     
     func updateFit(fit: LineResult?, madeShape: Bool) {
@@ -41,10 +44,17 @@ class DrawView: UIView {
     
     override func drawRect(rect: CGRect) {
         
-        if isShape { // draw a thick yellow line for the user touch path
+        if ended { // draw a thick yellow line for the user touch path
+            if isShape{
+                color = UIColor.greenColor().CGColor
+            }
+            else{
+                color = UIColor.redColor().CGColor
+            }
+            
             let context = UIGraphicsGetCurrentContext()
             CGContextAddPath(context, path)
-            CGContextSetStrokeColorWithColor(context, UIColor.redColor().CGColor)
+            CGContextSetStrokeColorWithColor(context, color)
             CGContextSetLineWidth(context, 10)
             CGContextSetLineCap(context, CGLineCap.Round)
             CGContextSetLineJoin(context, CGLineJoin.Round)
@@ -61,7 +71,7 @@ class DrawView: UIView {
             CGContextSetLineJoin(context, CGLineJoin.Round)
             CGContextStrokePath(context)
         }
-        
+ /*
         if let fit = fitResult where drawDebug { // if there is a fit and drawDebug is turned on
             if !fit.error.isNaN { // if error has been defined, draw the fit
                 let fitRect = CGRect(
@@ -84,7 +94,7 @@ class DrawView: UIView {
             boundingBox.lineWidth = 1
             UIColor.blackColor().setStroke()
             boundingBox.stroke()
-            
+ */
 //            // draw a blue square inside as the touch exclusion area
 //            let fitInnerRadius = fit.radius / sqrt(2)
 //            let innerBoxRect = CGRect(
@@ -100,4 +110,3 @@ class DrawView: UIView {
 //            innerBox.fill()
         }
     }
-}

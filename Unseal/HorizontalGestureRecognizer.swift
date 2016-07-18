@@ -11,12 +11,10 @@ import UIKit
 
 class HorizontalGestureRecognizer{
     
-    var path = CGPathCreateMutable()
-    var tolerance:CGFloat = 15
+    var tolerance:CGFloat = 10
     var fitResult = LineResult()
     
-    func isHorizontal(points : [CGPoint], path : CGMutablePath) -> Bool{
-        self.path = path
+    func isHorizontal(points : [CGPoint]) -> Bool{
         fitResult = lineFit(points)
         let isHorizontal = calculateHorizontal(points)
         return fitResult.error <= tolerance && isHorizontal

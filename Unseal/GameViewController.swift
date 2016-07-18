@@ -1,4 +1,3 @@
-//
 //  GameViewController.swift
 //  Unseal
 //
@@ -16,6 +15,8 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     var handler : DrawingHandler!
     var drawView : DrawView!
     
+    var scene : GameScene!
+    
     var goToNextTimer: NSTimer?
 
     override func viewDidLoad() {
@@ -29,8 +30,9 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         drawView.backgroundColor = UIColor.clearColor()
         view.addSubview(drawView)
         
+        scene = GameScene(fileNamed:"GameScene")
         
-        if let scene = GameScene(fileNamed:"GameScene") {
+        if  (scene != nil){
             // Configure the view.
             let skView = self.view as! SKView
             skView.showsFPS = true
@@ -40,7 +42,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             skView.ignoresSiblingOrder = true
             
             /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .AspectFill
+            scene!.scaleMode = .AspectFill
             
             skView.presentScene(scene)
         }
@@ -75,12 +77,10 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func shape(c: DrawingHandler) {
         
-        if c.state == .Ended {
-            print(c.isShape)
-        }
         if c.state == .Began {
             drawView.clear()
             goToNextTimer?.invalidate()
+            drawView.ended = false
         }
         if c.state == .Changed {
             drawView.updatePath(c.path)
@@ -88,6 +88,13 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         if c.state == .Ended || c.state == .Failed || c.state == .Cancelled {
             drawView.updateFit(c.fitResult, madeShape: c.isShape)
             goToNextTimer = NSTimer.scheduledTimerWithTimeInterval(afterGuessTimeout, target: self, selector: "timerFired:", userInfo: nil, repeats: false)
+            drawView.ended = true
+            if c.isShape{
+                scene?.incramentScore()
+                scene?.hideImage("\(c.currentShape)")
+                handler.randomize()
+                scene?.showImage("\(c.currentShape)")
+            }
         }
     }
     func timerFired(timer: NSTimer) {

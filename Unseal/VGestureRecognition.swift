@@ -11,12 +11,10 @@ import UIKit
 
 class VDownGestureRecognizer{
     
-    var path = CGPathCreateMutable()
     var tolerance:CGFloat = 15
     var fitResult = VResult()
     
-    func isV(points : [CGPoint], path : CGMutablePath) -> Bool{
-        self.path = path
+    func isV(points : [CGPoint]) -> Bool{
         fitResult = vDownFit(points)
         if fitResult.qualify {
             return fitResult.error1 <= tolerance && fitResult.error2 <= tolerance && fitResult.direction == -1
@@ -28,12 +26,10 @@ class VDownGestureRecognizer{
 
 class VUpGestureRecognizer{
     
-    var path = CGPathCreateMutable()
     var tolerance:CGFloat = 10
     var fitResult = VResult()
     
-    func isV(points : [CGPoint], path : CGMutablePath) -> Bool{
-        self.path = path
+    func isV(points : [CGPoint]) -> Bool{
         fitResult = vUpFit(points)
         if fitResult.qualify {
             return fitResult.error1 <= tolerance && fitResult.error2 <= tolerance && fitResult.direction == 1
