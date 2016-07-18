@@ -15,7 +15,7 @@ import UIKit.UIGestureRecognizerSubclass
 class DrawingHandler: UIGestureRecognizer {
     
     enum shapes{
-        case circle, horizontal, vertical, leaf, vUp, vDown, hourglass, lightning
+        case circle, horizontal, vertical, leaf, vUp, vDown, hourglass, lightning, infinity
     }
     
     private var touchedPoints = [CGPoint]() // point history
@@ -36,6 +36,7 @@ class DrawingHandler: UIGestureRecognizer {
     var vDownGesture = VDownGestureRecognizer()
     var HourglassGesture = HourglassGestureRecognizer()
     var LightningGesture = LightningGestureRecognizer()
+    var InfinityGesture = InfinityGestureRecognizer()
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent) {
         super.touchesBegan(touches, withEvent: event)
@@ -70,6 +71,8 @@ class DrawingHandler: UIGestureRecognizer {
             result = HourglassGesture.isHourglass(touchedPoints)
         case .lightning:
             result = LightningGesture.isLightning(touchedPoints)
+        case .infinity:
+            result = InfinityGesture.isInfinity(touchedPoints)
         }
         isShape = result
 
@@ -78,7 +81,7 @@ class DrawingHandler: UIGestureRecognizer {
     }
     
     func randomize(){
-        let n = arc4random_uniform(8)
+        let n = arc4random_uniform(9)
         if n == 0{
             currentShape = .circle
         }
@@ -100,8 +103,11 @@ class DrawingHandler: UIGestureRecognizer {
         else if n == 6{
             currentShape = .leaf
         }
-        else{
+        else if n == 7{
             currentShape = .lightning
+        }
+        else{
+            currentShape = .infinity
         }
         
     }
