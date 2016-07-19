@@ -16,6 +16,8 @@ class GameScene: SKScene {
     
     var currentScore = 0
     
+    var entities  = [Monster]()
+    
     //spell buttons w:60 h:24
     var spell1 : MSButtonNode!
     var spell2 : MSButtonNode!
@@ -63,7 +65,10 @@ class GameScene: SKScene {
             self.gesture.text = "\(self.remainingGestures)"
             self.buttonUp()
         }
-        
+        var monster = SKSpriteNode(color: UIColor.blueColor(), size: CGSize(width: 40, height: 40))
+        monster.position.x = 160
+        monster.position.y = 40
+        entities.append(<#T##newElement: Element##Element#>)
     }
     
     func buttonDown(){

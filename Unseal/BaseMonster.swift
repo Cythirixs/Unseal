@@ -8,31 +8,13 @@
 
 import Foundation
 import UIKit
+import SpriteKit
 
-class BaseMonster{
+class BaseMonster : SKSpriteNode {
     
-    var health : Int
-
-    var speed : CGFloat
     
-    var currentPos : CGPoint
-    
-    init(health : Int, speed : CGFloat, position : CGPoint){
-        self.health = health
-        self.speed = speed
-        currentPos = position
-    }
-    
-    func decrementHealth(damage : Int){
-        health -= health
-    }
-    
-    func updatePos(){
-        currentPos.y += speed
-    }
-    
-    func isAlive() -> Bool {
-        return health > 0
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
 }
