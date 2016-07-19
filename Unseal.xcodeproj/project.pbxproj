@@ -23,6 +23,7 @@
 		F34B37BD1D395DBF00E50116 /* LightningGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B37BC1D395DBF00E50116 /* LightningGestureRecognizer.swift */; };
 		F34B37BF1D39795800E50116 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B37BE1D39795800E50116 /* MSButtonNode.swift */; };
 		F34B37D51D3D9CF000E50116 /* BaseMonster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B37D41D3D9CF000E50116 /* BaseMonster.swift */; };
+		F34B37D71D3E973A00E50116 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B37D61D3E973A00E50116 /* Monster.swift */; };
 		F37A96541D35580F00367524 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A96531D35580F00367524 /* AppDelegate.swift */; };
 		F37A96581D35580F00367524 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A96571D35580F00367524 /* GameScene.swift */; };
 		F37A965A1D35580F00367524 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A96591D35580F00367524 /* GameViewController.swift */; };
@@ -69,6 +70,7 @@
 		F34B37BC1D395DBF00E50116 /* LightningGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightningGestureRecognizer.swift; sourceTree = "<group>"; };
 		F34B37BE1D39795800E50116 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
 		F34B37D41D3D9CF000E50116 /* BaseMonster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMonster.swift; sourceTree = "<group>"; };
+		F34B37D61D3E973A00E50116 /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		F37A96501D35580F00367524 /* Unseal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unseal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F37A96531D35580F00367524 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F37A96571D35580F00367524 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				F34B37D41D3D9CF000E50116 /* BaseMonster.swift */,
+				F34B37D61D3E973A00E50116 /* Monster.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				F34B37B71D3836B800E50116 /* VGestureRecognition.swift in Sources */,
 				F34B37A41D37FA1200E50116 /* VerticalGestureRecognizer.swift in Sources */,
 				F37A96861D35582800367524 /* DrawingHandler.swift in Sources */,
+				F34B37D71D3E973A00E50116 /* Monster.swift in Sources */,
 				F37A965A1D35580F00367524 /* GameViewController.swift in Sources */,
 				F34B37B01D380BD000E50116 /* InfinityGestureRecognizer.swift in Sources */,
 				F37A96541D35580F00367524 /* AppDelegate.swift in Sources */,

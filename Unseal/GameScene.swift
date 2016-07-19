@@ -24,6 +24,7 @@ class GameScene: SKScene {
     var gestureNum = 1
     var remainingGestures = 1
     
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         score = childNodeWithName("score") as! SKLabelNode
@@ -39,6 +40,7 @@ class GameScene: SKScene {
             self.remainingGestures = 1
             self.gesture.text = "\(self.remainingGestures)"
             self.buttonUp()
+            
         }
         spell2 = childNodeWithName("spell2") as! MSButtonNode
         spell2.selectedHandler = {
@@ -49,6 +51,7 @@ class GameScene: SKScene {
             self.remainingGestures = 2
             self.gesture.text = "\(self.remainingGestures)"
             self.buttonUp()
+            
         }
         spell3 = childNodeWithName("spell3") as! MSButtonNode
         spell3.selectedHandler = {
@@ -82,8 +85,16 @@ class GameScene: SKScene {
         if remainingGestures == 0{
             //show spell here
             print("cast spell")
-            remainingGestures = gestureNum
         }
+        gesture.text = "\(remainingGestures)"
+    }
+    
+    func spell(){
+        
+    }
+    
+    func resetGestures(){
+        remainingGestures = gestureNum
         gesture.text = "\(remainingGestures)"
     }
     
