@@ -13,9 +13,9 @@ class Flower : Monster{
  
     //0.5/300
     var yStep : CGFloat
-    
-    var xStep : CGFloat
     //pt that the monster will stop at divided by num of ticks (300)
+    var xStep : CGFloat
+    //scale step ammount
     var stepAmmount : CGFloat
     
     init(health : Int){

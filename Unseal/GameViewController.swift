@@ -91,11 +91,11 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             drawView.updatePath(c.path)
         }
         if c.state == .Ended || c.state == .Failed || c.state == .Cancelled {
-            drawView.updateFit(c.fitResult, madeShape: c.isShape)
+            drawView.updateFit(c.isShape)
             goToNextTimer = NSTimer.scheduledTimerWithTimeInterval(afterGuessTimeout, target: self, selector: "timerFired:", userInfo: nil, repeats: false)
             drawView.ended = true
             if c.isShape{
-                //scene?.incramentScore()
+                
                 scene.decrementGesture()
                 scene.hideImage("\(c.currentShape)")
                 handler.randomize()
@@ -103,6 +103,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                 if scene.remainingGestures == 0{
                     goToNextTimer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: "resetGesture:",       userInfo: nil, repeats:  false)
                 }
+                
             }
         }
     }

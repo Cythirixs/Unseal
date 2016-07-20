@@ -11,11 +11,14 @@ import SceneKit
 
 class GameScene: SKScene {
     
+    //labels
     var score : SKLabelNode!
     var gesture : SKLabelNode!
     
+    //current score
     var currentScore = 0
     
+    //reference and information of monsters in 2 arrays
     var entities = [SKReferenceNode]()
     var monsters = [Monster]()
     
@@ -26,19 +29,23 @@ class GameScene: SKScene {
     var spell4 : MSButtonNode!
     var spell5 : MSButtonNode!
     
+    //total gestures in current spell
     var gestureNum = 1
+    
+    //remaing gesture to draw until cast
     var remainingGestures = 1
     
-    //reference paths
-
+    //damage of spell
     var damage : Int = 1
     
+    
+    //reference path for mobs
     let flowerReference = NSBundle.mainBundle().pathForResource( "Flower", ofType: "sks")
     let sproutReference = NSBundle.mainBundle().pathForResource( "Sprout", ofType: "sks")
     let mushroomReference = NSBundle.mainBundle().pathForResource( "Mushroom", ofType: "sks")
     let froguanaReference = NSBundle.mainBundle().pathForResource( "Froguana", ofType: "sks")
 
-    
+    //more or less init stuff
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         score = childNodeWithName("score") as! SKLabelNode
@@ -114,10 +121,13 @@ class GameScene: SKScene {
         
     }
     
+    //tab up
     func buttonDown(){
         let button = self.childNodeWithName("spell\(self.gestureNum)")?.position
         self.childNodeWithName("spell\(self.gestureNum)")?.position.y = button!.y - 5
     }
+    
+    //tabs down
     func buttonUp(){
         let button = self.childNodeWithName("spell\(self.gestureNum)")?.position
         self.childNodeWithName("spell\(self.gestureNum)")?.position.y = button!.y + 5
@@ -128,6 +138,7 @@ class GameScene: SKScene {
         
     }
     
+    //reduce remaining gestures, if 0 gestures cast a spell and deal damage
     func decrementGesture(){
         remainingGestures -= 1
         if remainingGestures == 0{
@@ -137,6 +148,7 @@ class GameScene: SKScene {
         gesture.text = "\(remainingGestures)"
     }
     
+    //displays a spell
     func spell(){
         let spellReference = NSBundle.mainBundle().pathForResource( "Spell\(gestureNum)", ofType: "sks")
         let spell = SKReferenceNode(URL: NSURL (fileURLWithPath: spellReference!))
@@ -155,15 +167,18 @@ class GameScene: SKScene {
         }
     }
     
+    //deals damage to the monsters
     func dealDamage(){
         monsters[0].decrementHealth(damage)
     }
     
+    //resets the gesture count
     func resetGestures(){
         remainingGestures = gestureNum
         gesture.text = "\(remainingGestures)"
     }
     
+    //increase score by one
     func incramentScore(){
         currentScore += 1
         score.text = "\(currentScore)"
@@ -196,20 +211,21 @@ class GameScene: SKScene {
    
     override func update(currentTime: CFTimeInterval) {
         
-
         var count = 0
         if monsters.count > 0{
             for entity in entities{
             
-                if monsters[count].health <= 0{
-                
+                //if monster health 0 remove from lists and incrament score
+                if !monsters[count].isAlive(){
                     entities.removeAtIndex(count)
                     monsters.removeAtIndex(count)
                     entity.removeFromParent()
                     spawnFlower()
+                    incramentScore()
                     continue
                 }
             
+                // some bs limits
                 if entity.position.y > 40{
                     entity.position.y -= monsters[count].vy
                 }

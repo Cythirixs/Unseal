@@ -14,12 +14,13 @@ import UIKit.UIGestureRecognizerSubclass
 
 class DrawingHandler: UIGestureRecognizer {
     
+    //all possible shapes
     enum shapes{
         case circle, horizontal, vertical, leaf, vUp, vDown, hourglass, lightning, infinity
     }
     
+    
     private var touchedPoints = [CGPoint]() // point history
-    var fitResult = LineResult()
     var isShape = false
     var path = CGPathCreateMutable() // running CGPath - helps with drawing
     
@@ -51,8 +52,10 @@ class DrawingHandler: UIGestureRecognizer {
         }
     }
     
+    //when touch ends calculate if line drawn is the respective shape
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent) {
         super.touchesEnded(touches, withEvent: event)
+        
         var result = false
         switch currentShape{
         case .circle:
@@ -80,6 +83,7 @@ class DrawingHandler: UIGestureRecognizer {
         
     }
     
+    //randomizes next shape
     func randomize(){
         let n = arc4random_uniform(9)
         if n == 0{
@@ -112,6 +116,7 @@ class DrawingHandler: UIGestureRecognizer {
         
     }
     
+    //when finger moves add point to array
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent) {
         super.touchesMoved(touches, withEvent: event)
         
@@ -132,6 +137,7 @@ class DrawingHandler: UIGestureRecognizer {
         }
     }
     
+    //resets everything
     override func reset() {
         super.reset()
     
