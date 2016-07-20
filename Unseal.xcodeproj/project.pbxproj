@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F31920C11D3F27AD006448C2 /* Flower.sks in Resources */ = {isa = PBXBuildFile; fileRef = F31920C01D3F27AD006448C2 /* Flower.sks */; };
+		F31920C31D3F2801006448C2 /* MSReferenceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31920C21D3F2801006448C2 /* MSReferenceNode.swift */; };
 		F34B378A1D355AE400E50116 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F34B37891D355AE400E50116 /* GameScene.sks */; };
 		F34B378C1D358E8C00E50116 /* CircleFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B378B1D358E8C00E50116 /* CircleFit.swift */; };
 		F34B378E1D35901100E50116 /* CircleGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B378D1D35901100E50116 /* CircleGestureRecognizer.swift */; };
@@ -22,7 +24,6 @@
 		F34B37B71D3836B800E50116 /* VGestureRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B37B61D3836B800E50116 /* VGestureRecognition.swift */; };
 		F34B37BD1D395DBF00E50116 /* LightningGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B37BC1D395DBF00E50116 /* LightningGestureRecognizer.swift */; };
 		F34B37BF1D39795800E50116 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B37BE1D39795800E50116 /* MSButtonNode.swift */; };
-		F34B37D51D3D9CF000E50116 /* BaseMonster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B37D41D3D9CF000E50116 /* BaseMonster.swift */; };
 		F37A96541D35580F00367524 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A96531D35580F00367524 /* AppDelegate.swift */; };
 		F37A96581D35580F00367524 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A96571D35580F00367524 /* GameScene.swift */; };
 		F37A965A1D35580F00367524 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A96591D35580F00367524 /* GameViewController.swift */; };
@@ -33,6 +34,16 @@
 		F37A96781D35580F00367524 /* UnsealUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A96771D35580F00367524 /* UnsealUITests.swift */; };
 		F37A96861D35582800367524 /* DrawingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A96851D35582800367524 /* DrawingHandler.swift */; };
 		F37A96881D3558D100367524 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A96871D3558D100367524 /* DrawView.swift */; };
+		F386BEEA1D3FDB0D005006BA /* SpellActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F386BEE91D3FDB0D005006BA /* SpellActions.sks */; };
+		F386BEEC1D3FDB6E005006BA /* Spell1.sks in Resources */ = {isa = PBXBuildFile; fileRef = F386BEEB1D3FDB6E005006BA /* Spell1.sks */; };
+		F386BEEE1D3FDDE0005006BA /* Spell2.sks in Resources */ = {isa = PBXBuildFile; fileRef = F386BEED1D3FDDE0005006BA /* Spell2.sks */; };
+		F386BEF01D3FDE9A005006BA /* Spell3.sks in Resources */ = {isa = PBXBuildFile; fileRef = F386BEEF1D3FDE9A005006BA /* Spell3.sks */; };
+		F386BEF21D3FF99F005006BA /* Sprout.sks in Resources */ = {isa = PBXBuildFile; fileRef = F386BEF11D3FF99F005006BA /* Sprout.sks */; };
+		F386BEF41D3FF9C8005006BA /* Froguana.sks in Resources */ = {isa = PBXBuildFile; fileRef = F386BEF31D3FF9C8005006BA /* Froguana.sks */; };
+		F386BEF81D3FFA11005006BA /* Mushroom.sks in Resources */ = {isa = PBXBuildFile; fileRef = F386BEF71D3FFA11005006BA /* Mushroom.sks */; };
+		F386BEFA1D4017A9005006BA /* Flower.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386BEF91D4017A9005006BA /* Flower.swift */; };
+		F386BEFC1D4017DA005006BA /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386BEFB1D4017DA005006BA /* Monster.swift */; };
+		F386BEFE1D401DF4005006BA /* Spell4.sks in Resources */ = {isa = PBXBuildFile; fileRef = F386BEFD1D401DF4005006BA /* Spell4.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F31920C01D3F27AD006448C2 /* Flower.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Flower.sks; sourceTree = "<group>"; };
+		F31920C21D3F2801006448C2 /* MSReferenceNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSReferenceNode.swift; sourceTree = "<group>"; };
 		F34B37891D355AE400E50116 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameScene.sks; path = ../GameScene.sks; sourceTree = "<group>"; };
 		F34B378B1D358E8C00E50116 /* CircleFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleFit.swift; sourceTree = "<group>"; };
 		F34B378D1D35901100E50116 /* CircleGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleGestureRecognizer.swift; sourceTree = "<group>"; };
@@ -68,7 +81,6 @@
 		F34B37B61D3836B800E50116 /* VGestureRecognition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VGestureRecognition.swift; sourceTree = "<group>"; };
 		F34B37BC1D395DBF00E50116 /* LightningGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightningGestureRecognizer.swift; sourceTree = "<group>"; };
 		F34B37BE1D39795800E50116 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
-		F34B37D41D3D9CF000E50116 /* BaseMonster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMonster.swift; sourceTree = "<group>"; };
 		F37A96501D35580F00367524 /* Unseal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unseal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F37A96531D35580F00367524 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F37A96571D35580F00367524 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -85,6 +97,16 @@
 		F37A96791D35580F00367524 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F37A96851D35582800367524 /* DrawingHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingHandler.swift; sourceTree = "<group>"; };
 		F37A96871D3558D100367524 /* DrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
+		F386BEE91D3FDB0D005006BA /* SpellActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SpellActions.sks; sourceTree = "<group>"; };
+		F386BEEB1D3FDB6E005006BA /* Spell1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spell1.sks; sourceTree = "<group>"; };
+		F386BEED1D3FDDE0005006BA /* Spell2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spell2.sks; sourceTree = "<group>"; };
+		F386BEEF1D3FDE9A005006BA /* Spell3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spell3.sks; sourceTree = "<group>"; };
+		F386BEF11D3FF99F005006BA /* Sprout.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Sprout.sks; sourceTree = "<group>"; };
+		F386BEF31D3FF9C8005006BA /* Froguana.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Froguana.sks; sourceTree = "<group>"; };
+		F386BEF71D3FFA11005006BA /* Mushroom.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Mushroom.sks; path = ../Mushroom.sks; sourceTree = "<group>"; };
+		F386BEF91D4017A9005006BA /* Flower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flower.swift; sourceTree = "<group>"; };
+		F386BEFB1D4017DA005006BA /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
+		F386BEFD1D401DF4005006BA /* Spell4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spell4.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,7 +213,12 @@
 		F34B37D11D3D9C5E00E50116 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				F34B37D41D3D9CF000E50116 /* BaseMonster.swift */,
+				F386BEF71D3FFA11005006BA /* Mushroom.sks */,
+				F31920C01D3F27AD006448C2 /* Flower.sks */,
+				F386BEF11D3FF99F005006BA /* Sprout.sks */,
+				F386BEF31D3FF9C8005006BA /* Froguana.sks */,
+				F386BEF91D4017A9005006BA /* Flower.swift */,
+				F386BEFB1D4017DA005006BA /* Monster.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -200,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				F34B37BE1D39795800E50116 /* MSButtonNode.swift */,
+				F31920C21D3F2801006448C2 /* MSReferenceNode.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -233,6 +261,7 @@
 				F37A96571D35580F00367524 /* GameScene.swift */,
 				F37A96871D3558D100367524 /* DrawView.swift */,
 				F37A96851D35582800367524 /* DrawingHandler.swift */,
+				F386BEE71D3FDACD005006BA /* Spells */,
 				F34B37D21D3D9C7700E50116 /* Resources */,
 				F34B37D11D3D9C5E00E50116 /* Entities */,
 				F34B37971D36A7F500E50116 /* Gesture */,
@@ -260,6 +289,18 @@
 				F37A96791D35580F00367524 /* Info.plist */,
 			);
 			path = UnsealUITests;
+			sourceTree = "<group>";
+		};
+		F386BEE71D3FDACD005006BA /* Spells */ = {
+			isa = PBXGroup;
+			children = (
+				F386BEE91D3FDB0D005006BA /* SpellActions.sks */,
+				F386BEEB1D3FDB6E005006BA /* Spell1.sks */,
+				F386BEED1D3FDDE0005006BA /* Spell2.sks */,
+				F386BEEF1D3FDE9A005006BA /* Spell3.sks */,
+				F386BEFD1D401DF4005006BA /* Spell4.sks */,
+			);
+			name = Spells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,8 +409,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F34B378A1D355AE400E50116 /* GameScene.sks in Resources */,
+				F386BEFE1D401DF4005006BA /* Spell4.sks in Resources */,
+				F31920C11D3F27AD006448C2 /* Flower.sks in Resources */,
+				F386BEF21D3FF99F005006BA /* Sprout.sks in Resources */,
 				F37A96621D35580F00367524 /* LaunchScreen.storyboard in Resources */,
+				F386BEEE1D3FDDE0005006BA /* Spell2.sks in Resources */,
 				F37A965F1D35580F00367524 /* Assets.xcassets in Resources */,
+				F386BEF41D3FF9C8005006BA /* Froguana.sks in Resources */,
+				F386BEEA1D3FDB0D005006BA /* SpellActions.sks in Resources */,
+				F386BEF01D3FDE9A005006BA /* Spell3.sks in Resources */,
+				F386BEF81D3FFA11005006BA /* Mushroom.sks in Resources */,
+				F386BEEC1D3FDB6E005006BA /* Spell1.sks in Resources */,
 				F37A965D1D35580F00367524 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,13 +458,15 @@
 				F34B37B71D3836B800E50116 /* VGestureRecognition.swift in Sources */,
 				F34B37A41D37FA1200E50116 /* VerticalGestureRecognizer.swift in Sources */,
 				F37A96861D35582800367524 /* DrawingHandler.swift in Sources */,
+				F31920C31D3F2801006448C2 /* MSReferenceNode.swift in Sources */,
+				F386BEFA1D4017A9005006BA /* Flower.swift in Sources */,
 				F37A965A1D35580F00367524 /* GameViewController.swift in Sources */,
 				F34B37B01D380BD000E50116 /* InfinityGestureRecognizer.swift in Sources */,
 				F37A96541D35580F00367524 /* AppDelegate.swift in Sources */,
+				F386BEFC1D4017DA005006BA /* Monster.swift in Sources */,
 				F34B37B51D38363B00E50116 /* VFit.swift in Sources */,
 				F34B37951D36A7D400E50116 /* HourglassFit.swift in Sources */,
 				F34B37BF1D39795800E50116 /* MSButtonNode.swift in Sources */,
-				F34B37D51D3D9CF000E50116 /* BaseMonster.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

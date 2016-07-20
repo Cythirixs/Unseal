@@ -2,56 +2,29 @@
 //  Monster.swift
 //  Unseal
 //
-//  Created by synaptics on 7/19/16.
+//  Created by synaptics on 7/20/16.
 //  Copyright © 2016 Amino. All rights reserved.
 //
 
 import Foundation
 import UIKit
-import SpriteKit
 
-class Monster : BaseMonster{
+class Monster{
     
     var health : Int
-    
-    var movement : CGFloat
-    
-    var currentPos : CGPoint
-    
-    var maxWidth : CGFloat = 244
-    var maxHeight : CGFloat = 295
-    
-    var currentWidth : CGFloat = 50
-    var currentHeight : CGFloat = 50
-    
-    
     var vx : CGFloat
     var vy : CGFloat
+    var scale : CGFloat
     
-    override init(health : Int, speed : CGFloat, position : CGPoint){
-        vx = (maxWidth - currentWidth) / speed
-        vy = (maxHeight - currentHeight) / speed
-        
-        super.init(health: health, speed: speed, position: position)
-        
+    init(health : Int , vy : CGFloat, vx: CGFloat, scale : CGFloat){
+        self.health = health
+        self.vx = vx
+        self.vy = vy
+        self.scale = scale
     }
     
-     required init?(coder aDecoder: NSCoder, health : Int, speed : CGFloat, position : CGPoint) {
-        super.init(aDecoder)
+    func decrementHealth(damange : Int){
+        health -= damange
     }
-    
-    func update() {
-        currentWidth += vx
-        currentHeight += vy
-    }
-    
-    func decrementHealth(damage : Int){
-        health -= health
-    }
-    
-    func isAlive() -> Bool {
-        return health > 0
-    }
-    
     
 }
