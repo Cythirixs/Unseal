@@ -21,17 +21,23 @@ class Monster{
     //the scale step
     var scale : CGFloat
     
+    var attackTimer : CFTimeInterval = 0
+    
     //init a monster
     init(health : Int , vy : CGFloat, vx: CGFloat, scale : CGFloat){
         self.health = health
-        self.vx = vx
-        self.vy = vy
-        self.scale = scale
+        self.vx = vx * 0.75
+        self.vy = vy * 0.75
+        self.scale = scale * 0.75
     }
     
     //decrease health by damage
     func decrementHealth(damange : Int){
         health -= damange
+    }
+    
+    func tickAttack(tick : CFTimeInterval){
+        attackTimer += tick
     }
     
     func isAlive() -> Bool{

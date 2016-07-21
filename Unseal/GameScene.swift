@@ -14,6 +14,7 @@ class GameScene: SKScene {
     //labels
     var score : SKLabelNode!
     var gesture : SKLabelNode!
+    var health : SKLabelNode!
     
     //current score
     var currentScore = 0
@@ -21,6 +22,10 @@ class GameScene: SKScene {
     //reference and information of monsters in 2 arrays
     var entities = [SKReferenceNode]()
     var monsters = [Monster]()
+    
+    
+    //restart button
+    var restart : MSButtonNode!
     
     //spell buttons w:60 h:24
     var spell1 : MSButtonNode!
@@ -38,6 +43,10 @@ class GameScene: SKScene {
     //damage of spell
     var damage : Int = 1
     
+    //player hp
+    var playerHealth : Int = 3
+    var gameOver = false
+    
     //delta
     
     let fixedDelta : CFTimeInterval = 1.0/60.0
@@ -52,6 +61,7 @@ class GameScene: SKScene {
     
     //dissappear
     let disappear = SKAction.fadeAlphaTo(1.0, duration: 0.1)
+    
 
 
     //more or less init stuff
@@ -59,6 +69,7 @@ class GameScene: SKScene {
         /* Setup your scene here */
         score = childNodeWithName("score") as! SKLabelNode
         gesture = childNodeWithName("gesture") as! SKLabelNode
+        health = childNodeWithName("health") as! SKLabelNode
         
         //spells
         spell1 = childNodeWithName("spell1") as! MSButtonNode
@@ -97,7 +108,7 @@ class GameScene: SKScene {
             self.gesture.text = "\(self.remainingGestures)"
             self.buttonUp()
             
-            self.damage = 5
+            self.damage = 4
         }
         
         spell4 = childNodeWithName("spell4") as! MSButtonNode
@@ -125,7 +136,21 @@ class GameScene: SKScene {
             
             self.damage = 9
         }
-        
+        restart = childNodeWithName("restart") as! MSButtonNode
+        restart.selectedHandler = {
+            /* Grab reference to our SpriteKit view */
+            let skView = self.view as SKView!
+            
+            /* Load Game scene */
+            let scene = GameScene(fileNamed:"GameScene") as GameScene!
+            
+            /* Ensure correct aspect mode */
+            scene.scaleMode = .AspectFill
+            
+            /* Restart game scene */
+            skView.presentScene(scene)
+        }
+        restart.state = .Hidden
         randomizeSpawn()
         
     }
@@ -178,6 +203,11 @@ class GameScene: SKScene {
         }
     }
     
+    func playerDamage(){
+        playerHealth -= 1
+        health.text = "\(playerHealth)"
+    }
+    
     //deals damage to the monsters
     func dealDamage(){
         monsters[0].decrementHealth(damage)
@@ -206,19 +236,6 @@ class GameScene: SKScene {
     }
     
     //spawning functions
-    func spawnFlower(){
-        let flower = SKReferenceNode(URL: NSURL (fileURLWithPath: flowerReference!))
-        flower.position.x = 100
-        flower.position.y = 290
-        flower.xScale = 0.5
-        flower.yScale = 0.5
-        flower.zPosition = 0
-                
-        entities.append(flower)
-        monsters.append(Flower(health: 1))
-        
-        addChild(flower)
-    }
     
     func spawnSprout(){
         let sprout = SKReferenceNode(URL: NSURL (fileURLWithPath: sproutReference!))
@@ -229,9 +246,23 @@ class GameScene: SKScene {
         sprout.zPosition = 0
         
         entities.append(sprout)
-        monsters.append(Sprout(health: 2))
+        monsters.append(Sprout(health: 1))
         
         addChild(sprout)
+    }
+    
+    func spawnFlower(){
+        let flower = SKReferenceNode(URL: NSURL (fileURLWithPath: flowerReference!))
+        flower.position.x = 100
+        flower.position.y = 290
+        flower.xScale = 0.5
+        flower.yScale = 0.5
+        flower.zPosition = 0
+                
+        entities.append(flower)
+        monsters.append(Flower(health: 2))
+        
+        addChild(flower)
     }
     
     func spawnMushroom(){
@@ -271,6 +302,7 @@ class GameScene: SKScene {
     }
    
     override func update(currentTime: CFTimeInterval) {
+        if gameOver { return }
         
         var count = 0
         if monsters.count > 0{
@@ -290,6 +322,17 @@ class GameScene: SKScene {
                 // some bs limits
                 if entity.position.y > 40{
                     entity.position.y -= monsters[count].vy
+                }
+                else{
+                    monsters[count].tickAttack(fixedDelta)
+                    if monsters[count].attackTimer >= 1.5{
+                        playerDamage()
+                        monsters[count].attackTimer = 0
+                        if playerHealth <= 0{
+                            gameOver = true
+                            restart.state = .Active
+                        }
+                    }
                 }
             
                 if entity.position.x > 40 {

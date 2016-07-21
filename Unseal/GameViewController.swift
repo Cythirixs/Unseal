@@ -53,6 +53,9 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        if scene.gameOver {
+            return false
+        }
         let pos = touch.locationInView(drawView)
         return !(pos.y >= 542)
     }
@@ -100,8 +103,8 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                 scene.hideImage("\(c.currentShape)")
                 handler.randomize()
                 scene.showImage("\(c.currentShape)")
-                if scene.remainingGestures == 0{
-                    goToNextTimer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: "resetGesture:",       userInfo: nil, repeats:  false)
+                if scene.remainingGestures <= 0{
+                    goToNextTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "resetGesture:",       userInfo: nil, repeats:  false)
                 }
                 
             }
