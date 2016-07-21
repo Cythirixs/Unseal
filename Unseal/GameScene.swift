@@ -38,12 +38,21 @@ class GameScene: SKScene {
     //damage of spell
     var damage : Int = 1
     
+    //delta
+    
+    let fixedDelta : CFTimeInterval = 1.0/60.0
+    var spawnTimer : CFTimeInterval = 0
+    
     
     //reference path for mobs
     let flowerReference = NSBundle.mainBundle().pathForResource( "Flower", ofType: "sks")
     let sproutReference = NSBundle.mainBundle().pathForResource( "Sprout", ofType: "sks")
     let mushroomReference = NSBundle.mainBundle().pathForResource( "Mushroom", ofType: "sks")
     let froguanaReference = NSBundle.mainBundle().pathForResource( "Froguana", ofType: "sks")
+    
+    //dissappear
+    let disappear = SKAction.fadeAlphaTo(1.0, duration: 0.1)
+
 
     //more or less init stuff
     override func didMoveToView(view: SKView) {
@@ -117,7 +126,7 @@ class GameScene: SKScene {
             self.damage = 9
         }
         
-        spawnFlower()
+        randomizeSpawn()
         
     }
     
@@ -142,8 +151,10 @@ class GameScene: SKScene {
     func decrementGesture(){
         remainingGestures -= 1
         if remainingGestures == 0{
-            spell()
-            dealDamage()
+            if monsters.count > 0 && entities.count > 0{
+                spell()
+                dealDamage()
+            }
         }
         gesture.text = "\(remainingGestures)"
     }
@@ -155,7 +166,7 @@ class GameScene: SKScene {
         
         let entity = entities[0]
         
-        spell.position = CGPoint(x: entity.position.x, y: entity.position.y)
+        spell.position = CGPoint(x: entity.position.x - 35, y: entity.position.y - 35 )
         spell.zPosition = 4
         
         spell.xScale = entity.xScale
@@ -201,12 +212,62 @@ class GameScene: SKScene {
         flower.position.y = 290
         flower.xScale = 0.5
         flower.yScale = 0.5
-        flower.zPosition = 2
-        
+        flower.zPosition = 0
+                
         entities.append(flower)
-        monsters.append(Flower(health: 4))
+        monsters.append(Flower(health: 1))
         
         addChild(flower)
+    }
+    
+    func spawnSprout(){
+        let sprout = SKReferenceNode(URL: NSURL (fileURLWithPath: sproutReference!))
+        sprout.position.x = 100
+        sprout.position.y = 290
+        sprout.xScale = 0.5
+        sprout.yScale = 0.5
+        sprout.zPosition = 0
+        
+        entities.append(sprout)
+        monsters.append(Sprout(health: 2))
+        
+        addChild(sprout)
+    }
+    
+    func spawnMushroom(){
+        let mushroom = SKReferenceNode(URL: NSURL (fileURLWithPath: mushroomReference!))
+        mushroom.position.x = 100
+        mushroom.position.y = 290
+        mushroom.xScale = 0.5
+        mushroom.yScale = 0.5
+        mushroom.zPosition = 0
+        
+        entities.append(mushroom)
+        monsters.append(Mushroom(health: 4))
+        
+        addChild(mushroom)
+    }
+    
+    func spawnFroguana(){
+        let froguana = SKReferenceNode(URL: NSURL (fileURLWithPath: froguanaReference!))
+        froguana.position.x = 100
+        froguana.position.y = 290
+        froguana.xScale = 0.5
+        froguana.yScale = 0.5
+        froguana.zPosition = 0
+        
+        entities.append(froguana)
+        monsters.append(Froguana(health: 6))
+        
+        addChild(froguana)
+    }
+    
+    func randomizeSpawn(){
+        let random = arc4random_uniform(100)
+        if random < 50 { spawnSprout() }
+        else if random < 80 { spawnFlower() }
+        else if random < 95 { spawnMushroom() }
+        else { spawnFroguana() }
     }
    
     override func update(currentTime: CFTimeInterval) {
@@ -219,8 +280,9 @@ class GameScene: SKScene {
                 if !monsters[count].isAlive(){
                     entities.removeAtIndex(count)
                     monsters.removeAtIndex(count)
-                    entity.removeFromParent()
-                    spawnFlower()
+                    entity.runAction(disappear){
+                        entity.removeFromParent()
+                    }
                     incramentScore()
                     continue
                 }
@@ -230,7 +292,7 @@ class GameScene: SKScene {
                     entity.position.y -= monsters[count].vy
                 }
             
-                if entity.position.x > 70 {
+                if entity.position.x > 40 {
                     entity.position.x -= monsters[count].vx
                 }
                 if entity.xScale < 1{
@@ -241,5 +303,17 @@ class GameScene: SKScene {
             }
         }
         
+        spawnTimer += fixedDelta
+        
+        if spawnTimer >= 3.5{
+            randomizeSpawn()
+            spawnTimer = 0
+        }
     }
 }
+
+
+
+
+
+

@@ -16,7 +16,7 @@ class DrawingHandler: UIGestureRecognizer {
     
     //all possible shapes
     enum shapes{
-        case circle, horizontal, vertical, leaf, vUp, vDown, hourglass, lightning, infinity
+        case circle, horizontal, vertical, leaf, up, down, hourglass, lightning, infinity
     }
     
     
@@ -66,9 +66,9 @@ class DrawingHandler: UIGestureRecognizer {
             result = VerticalGesture.isVertical(touchedPoints)
         case .leaf:
             result = LeafGesture.isLeaf(touchedPoints)
-        case .vUp:
+        case .up:
             result = vUpGesture.isV(touchedPoints)
-        case .vDown:
+        case .down:
             result = vDownGesture.isV(touchedPoints)
         case .hourglass:
             result = HourglassGesture.isHourglass(touchedPoints)
@@ -99,10 +99,10 @@ class DrawingHandler: UIGestureRecognizer {
             currentShape = .vertical
         }
         else if n == 4{
-            currentShape = .vUp
+            currentShape = .up
         }
         else if n == 5{
-            currentShape = .vDown
+            currentShape = .down
         }
         else if n == 6{
             currentShape = .leaf

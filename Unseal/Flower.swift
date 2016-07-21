@@ -20,7 +20,7 @@ class Flower : Monster{
     
     init(health : Int){
         yStep = 260/300
-        xStep = 0.3
+        xStep = 0.21
         
         stepAmmount = 0.00167
         
