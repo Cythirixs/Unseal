@@ -20,7 +20,7 @@ class DrawingHandler: UIGestureRecognizer {
     }
     
     
-    private var touchedPoints = [CGPoint]() // point history
+    var touchedPoints = [CGPoint]() // point history
     var isShape = false
     var path = CGPathCreateMutable() // running CGPath - helps with drawing
     

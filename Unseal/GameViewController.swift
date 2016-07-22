@@ -53,10 +53,25 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-        if scene.gameOver {
+        let pos = touch.locationInView(drawView)
+        if scene.gameOver {            
+            if pos.x >= 78 && pos.x <= 248 && pos.y >= 261 && pos.y <= 308 {
+                let skView = self.scene.view as SKView!
+                
+                scene = GameScene(fileNamed:"GameScene") as GameScene!
+                scene.scaleMode = .AspectFill
+
+                handler.currentShape = .hourglass
+                handler.isShape = false
+                handler.touchedPoints.removeAll()
+                handler.state = .Ended
+                
+                drawView.clear()
+                
+                skView.presentScene(scene)
+            }
             return false
         }
-        let pos = touch.locationInView(drawView)
         return !(pos.y >= 542)
     }
 
@@ -117,4 +132,5 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     func resetGesture(timer: NSTimer){
         scene.resetGestures()
     }
+    
 }

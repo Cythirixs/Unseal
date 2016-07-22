@@ -49,6 +49,9 @@
 		F386BF041D4037B7005006BA /* Froguana.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386BF031D4037B7005006BA /* Froguana.swift */; };
 		F386BF081D4053D8005006BA /* Spell5.sks in Resources */ = {isa = PBXBuildFile; fileRef = F386BF071D4053D8005006BA /* Spell5.sks */; };
 		F386BF0C1D40557D005006BA /* MobActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F386BF0B1D40557D005006BA /* MobActions.sks */; };
+		F39394511D428ECD00072CDC /* red.sks in Resources */ = {isa = PBXBuildFile; fileRef = F39394501D428ECD00072CDC /* red.sks */; };
+		F39394531D428EF100072CDC /* blue.sks in Resources */ = {isa = PBXBuildFile; fileRef = F39394521D428EF100072CDC /* blue.sks */; };
+		F39394551D428F0C00072CDC /* yellow.sks in Resources */ = {isa = PBXBuildFile; fileRef = F39394541D428F0C00072CDC /* yellow.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +120,9 @@
 		F386BF031D4037B7005006BA /* Froguana.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Froguana.swift; sourceTree = "<group>"; };
 		F386BF071D4053D8005006BA /* Spell5.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spell5.sks; sourceTree = "<group>"; };
 		F386BF0B1D40557D005006BA /* MobActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MobActions.sks; sourceTree = "<group>"; };
+		F39394501D428ECD00072CDC /* red.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = red.sks; sourceTree = "<group>"; };
+		F39394521D428EF100072CDC /* blue.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = blue.sks; sourceTree = "<group>"; };
+		F39394541D428F0C00072CDC /* yellow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = yellow.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +324,9 @@
 				F386BEF71D3FFA11005006BA /* Mushroom.sks */,
 				F386BEF31D3FF9C8005006BA /* Froguana.sks */,
 				F386BF0B1D40557D005006BA /* MobActions.sks */,
+				F39394501D428ECD00072CDC /* red.sks */,
+				F39394521D428EF100072CDC /* blue.sks */,
+				F39394541D428F0C00072CDC /* yellow.sks */,
 			);
 			name = sks;
 			sourceTree = "<group>";
@@ -440,6 +449,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F34B378A1D355AE400E50116 /* GameScene.sks in Resources */,
+				F39394551D428F0C00072CDC /* yellow.sks in Resources */,
+				F39394511D428ECD00072CDC /* red.sks in Resources */,
 				F386BEFE1D401DF4005006BA /* Spell4.sks in Resources */,
 				F31920C11D3F27AD006448C2 /* Flower.sks in Resources */,
 				F386BEF21D3FF99F005006BA /* Sprout.sks in Resources */,
@@ -452,6 +463,7 @@
 				F386BEEA1D3FDB0D005006BA /* SpellActions.sks in Resources */,
 				F386BEF01D3FDE9A005006BA /* Spell3.sks in Resources */,
 				F386BEF81D3FFA11005006BA /* Mushroom.sks in Resources */,
+				F39394531D428EF100072CDC /* blue.sks in Resources */,
 				F386BEEC1D3FDB6E005006BA /* Spell1.sks in Resources */,
 				F37A965D1D35580F00367524 /* Main.storyboard in Resources */,
 			);

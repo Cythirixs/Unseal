@@ -23,6 +23,7 @@ class GameScene: SKScene {
     var entities = [SKReferenceNode]()
     var monsters = [Monster]()
     
+    var shapes = [SKShapeNode]()
     
     //restart button
     var restart : MSButtonNode!
@@ -34,8 +35,10 @@ class GameScene: SKScene {
     var spell4 : MSButtonNode!
     var spell5 : MSButtonNode!
     
+    var spellNum = 1
+    
+    
     //total gestures in current spell
-    var gestureNum = 1
     
     //remaing gesture to draw until cast
     var remainingGestures = 1
@@ -46,6 +49,7 @@ class GameScene: SKScene {
     //player hp
     var playerHealth : Int = 3
     var gameOver = false
+    var doRestart = false
     
     //delta
     
@@ -54,15 +58,12 @@ class GameScene: SKScene {
     
     
     //reference path for mobs
-    let flowerReference = NSBundle.mainBundle().pathForResource( "Flower", ofType: "sks")
-    let sproutReference = NSBundle.mainBundle().pathForResource( "Sprout", ofType: "sks")
-    let mushroomReference = NSBundle.mainBundle().pathForResource( "Mushroom", ofType: "sks")
-    let froguanaReference = NSBundle.mainBundle().pathForResource( "Froguana", ofType: "sks")
+    let redReference = NSBundle.mainBundle().pathForResource( "red", ofType: "sks")
+    let blueReference = NSBundle.mainBundle().pathForResource( "blue", ofType: "sks")
+    let yellowReference = NSBundle.mainBundle().pathForResource( "yellow", ofType: "sks")
     
     //dissappear
     let disappear = SKAction.fadeAlphaTo(1.0, duration: 0.1)
-    
-
 
     //more or less init stuff
     override func didMoveToView(view: SKView) {
@@ -74,10 +75,10 @@ class GameScene: SKScene {
         //spells
         spell1 = childNodeWithName("spell1") as! MSButtonNode
         spell1.selectedHandler = {
-            if self.gestureNum == 1 {return}
+            if self.spellNum == 1 {return}
             
             self.buttonDown()
-            self.gestureNum = 1
+            self.spellNum = 1
             self.remainingGestures = 1
             self.gesture.text = "\(self.remainingGestures)"
             self.buttonUp()
@@ -87,36 +88,37 @@ class GameScene: SKScene {
         }
         spell2 = childNodeWithName("spell2") as! MSButtonNode
         spell2.selectedHandler = {
-            if self.gestureNum == 2 {return}
+            if self.spellNum == 2 {return}
             
             self.buttonDown()
-            self.gestureNum = 2
-            self.remainingGestures = 2
+            self.spellNum = 2
+            self.remainingGestures = 1
             self.gesture.text = "\(self.remainingGestures)"
             self.buttonUp()
             
-            self.damage = 3
+            self.damage = 1
             
         }
         spell3 = childNodeWithName("spell3") as! MSButtonNode
         spell3.selectedHandler = {
-            if self.gestureNum == 3 {return}
+            if self.spellNum == 3 {return}
             self.buttonDown()
 
-            self.gestureNum = 3
-            self.remainingGestures = 3
+            self.spellNum = 3
+            self.remainingGestures = 1
             self.gesture.text = "\(self.remainingGestures)"
             self.buttonUp()
             
-            self.damage = 4
+            self.damage = 1
+            
         }
         
         spell4 = childNodeWithName("spell4") as! MSButtonNode
         spell4.selectedHandler = {
-            if self.gestureNum == 4 {return}
+            if self.spellNum == 4 {return}
             self.buttonDown()
             
-            self.gestureNum = 4
+            self.spellNum = 4
             self.remainingGestures = 4
             self.gesture.text = "\(self.remainingGestures)"
             self.buttonUp()
@@ -126,45 +128,34 @@ class GameScene: SKScene {
         
         spell5 = childNodeWithName("spell5") as! MSButtonNode
         spell5.selectedHandler = {
-            if self.gestureNum == 5 {return}
+            if self.spellNum == 5 {return}
             self.buttonDown()
             
-            self.gestureNum = 5
+            self.spellNum = 5
             self.remainingGestures = 5
             self.gesture.text = "\(self.remainingGestures)"
             self.buttonUp()
             
             self.damage = 9
         }
+        
         restart = childNodeWithName("restart") as! MSButtonNode
-        restart.selectedHandler = {
-            /* Grab reference to our SpriteKit view */
-            let skView = self.view as SKView!
-            
-            /* Load Game scene */
-            let scene = GameScene(fileNamed:"GameScene") as GameScene!
-            
-            /* Ensure correct aspect mode */
-            scene.scaleMode = .AspectFill
-            
-            /* Restart game scene */
-            skView.presentScene(scene)
-        }
         restart.state = .Hidden
+        
         randomizeSpawn()
         
     }
     
     //tab up
     func buttonDown(){
-        let button = self.childNodeWithName("spell\(self.gestureNum)")?.position
-        self.childNodeWithName("spell\(self.gestureNum)")?.position.y = button!.y - 5
+        let button = self.childNodeWithName("spell\(self.spellNum)")?.position
+        self.childNodeWithName("spell\(self.spellNum)")?.position.y = button!.y - 8
     }
     
     //tabs down
     func buttonUp(){
-        let button = self.childNodeWithName("spell\(self.gestureNum)")?.position
-        self.childNodeWithName("spell\(self.gestureNum)")?.position.y = button!.y + 5
+        let button = self.childNodeWithName("spell\(self.spellNum)")?.position
+        self.childNodeWithName("spell\(self.spellNum)")?.position.y = button!.y + 8
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -175,18 +166,19 @@ class GameScene: SKScene {
     //reduce remaining gestures, if 0 gestures cast a spell and deal damage
     func decrementGesture(){
         remainingGestures -= 1
-        if remainingGestures == 0{
+        if remainingGestures <= 0{
             if monsters.count > 0 && entities.count > 0{
                 spell()
                 dealDamage()
             }
         }
+        if remainingGestures < 0 { remainingGestures = 0}
         gesture.text = "\(remainingGestures)"
     }
     
     //displays a spell
     func spell(){
-        let spellReference = NSBundle.mainBundle().pathForResource( "Spell\(gestureNum)", ofType: "sks")
+        let spellReference = NSBundle.mainBundle().pathForResource( "Spell\(spellNum)", ofType: "sks")
         let spell = SKReferenceNode(URL: NSURL (fileURLWithPath: spellReference!))
         
         let entity = entities[0]
@@ -197,7 +189,7 @@ class GameScene: SKScene {
         spell.xScale = entity.xScale
         spell.yScale = entity.yScale
         addChild(spell)
-        let action = SKAction(named: "Spell\(gestureNum)")
+        let action = SKAction(named: "Spell\(spellNum)")
         spell.runAction(action!){
             self.childNodeWithName("spell")?.removeFromParent()
         }
@@ -210,12 +202,21 @@ class GameScene: SKScene {
     
     //deals damage to the monsters
     func dealDamage(){
-        monsters[0].decrementHealth(damage)
+        if spellNum == 5{
+            for mob in monsters{
+                mob.decrementHealth(damage)
+            }
+        }
+        let mob = monsters[0]
+        if spellNum == mob.type{
+            
+            mob.decrementHealth(damage)
+        }
     }
     
     //resets the gesture count
     func resetGestures(){
-        remainingGestures = gestureNum
+        remainingGestures = 1
         gesture.text = "\(remainingGestures)"
     }
     
@@ -237,8 +238,8 @@ class GameScene: SKScene {
     
     //spawning functions
     
-    func spawnSprout(){
-        let sprout = SKReferenceNode(URL: NSURL (fileURLWithPath: sproutReference!))
+    func spawnBlue(){
+        let sprout = SKReferenceNode(URL: NSURL (fileURLWithPath: blueReference!))
         sprout.position.x = 100
         sprout.position.y = 290
         sprout.xScale = 0.5
@@ -246,13 +247,13 @@ class GameScene: SKScene {
         sprout.zPosition = 0
         
         entities.append(sprout)
-        monsters.append(Sprout(health: 1))
+        monsters.append(Sprout(health: 1, type: 2))
         
         addChild(sprout)
     }
     
-    func spawnFlower(){
-        let flower = SKReferenceNode(URL: NSURL (fileURLWithPath: flowerReference!))
+    func spawnRed(){
+        let flower = SKReferenceNode(URL: NSURL (fileURLWithPath: redReference!))
         flower.position.x = 100
         flower.position.y = 290
         flower.xScale = 0.5
@@ -260,13 +261,13 @@ class GameScene: SKScene {
         flower.zPosition = 0
                 
         entities.append(flower)
-        monsters.append(Flower(health: 2))
+        monsters.append(Flower(health: 1, type : 1))
         
         addChild(flower)
     }
     
-    func spawnMushroom(){
-        let mushroom = SKReferenceNode(URL: NSURL (fileURLWithPath: mushroomReference!))
+    func spawnYellow(){
+        let mushroom = SKReferenceNode(URL: NSURL (fileURLWithPath: yellowReference!))
         mushroom.position.x = 100
         mushroom.position.y = 290
         mushroom.xScale = 0.5
@@ -274,33 +275,18 @@ class GameScene: SKScene {
         mushroom.zPosition = 0
         
         entities.append(mushroom)
-        monsters.append(Mushroom(health: 4))
+        monsters.append(Mushroom(health: 1, type : 3))
         
         addChild(mushroom)
     }
     
-    func spawnFroguana(){
-        let froguana = SKReferenceNode(URL: NSURL (fileURLWithPath: froguanaReference!))
-        froguana.position.x = 100
-        froguana.position.y = 290
-        froguana.xScale = 0.5
-        froguana.yScale = 0.5
-        froguana.zPosition = 0
-        
-        entities.append(froguana)
-        monsters.append(Froguana(health: 6))
-        
-        addChild(froguana)
-    }
-    
     func randomizeSpawn(){
         let random = arc4random_uniform(100)
-        if random < 50 { spawnSprout() }
-        else if random < 80 { spawnFlower() }
-        else if random < 95 { spawnMushroom() }
-        else { spawnFroguana() }
+        if random < 33 { spawnRed() }
+        else if random < 66 { spawnYellow() }
+        else if random <= 99 { spawnBlue() }
     }
-   
+    
     override func update(currentTime: CFTimeInterval) {
         if gameOver { return }
         
@@ -348,7 +334,15 @@ class GameScene: SKScene {
         
         spawnTimer += fixedDelta
         
-        if spawnTimer >= 3.5{
+        let difficult =  Int( Double(currentScore) / 10 )
+        var timer = CFTimeInterval( 4 - difficult )
+        
+        if difficult > 2 {
+            timer = 2.5
+        }
+       
+        
+        if spawnTimer >= timer{
             randomizeSpawn()
             spawnTimer = 0
         }

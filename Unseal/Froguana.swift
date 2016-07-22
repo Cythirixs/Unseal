@@ -17,13 +17,13 @@ class Froguana : Monster{
     //scale step ammount
     var stepAmmount : CGFloat
     
-    init(health : Int){
+    init(health : Int, type : Int){
         yStep = 260/300
         xStep = 0.21
         
         stepAmmount = 0.00167
         
-        super.init(health: health, vy: yStep, vx: xStep, scale: stepAmmount)
+        super.init(health: health, vy: yStep, vx: xStep, scale: stepAmmount, type : type)
     }
 
 }

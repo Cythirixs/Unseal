@@ -23,12 +23,15 @@ class Monster{
     
     var attackTimer : CFTimeInterval = 0
     
+    var type = -1
+    
     //init a monster
-    init(health : Int , vy : CGFloat, vx: CGFloat, scale : CGFloat){
+    init(health : Int , vy : CGFloat, vx: CGFloat, scale : CGFloat, type : Int){
         self.health = health
         self.vx = vx * 0.75
         self.vy = vy * 0.75
         self.scale = scale * 0.75
+        self.type = type
     }
     
     //decrease health by damage
