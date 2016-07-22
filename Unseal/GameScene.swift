@@ -56,6 +56,11 @@ class GameScene: SKScene {
     let fixedDelta : CFTimeInterval = 1.0/60.0
     var spawnTimer : CFTimeInterval = 0
     
+    var tutorial = true
+    
+    var firstStroke = false
+    var secondStoke = false
+    var stage2 = false
     
     //reference path for mobs
     let redReference = NSBundle.mainBundle().pathForResource( "red", ofType: "sks")
@@ -67,6 +72,7 @@ class GameScene: SKScene {
 
     //more or less init stuff
     override func didMoveToView(view: SKView) {
+        
         /* Setup your scene here */
         score = childNodeWithName("score") as! SKLabelNode
         gesture = childNodeWithName("gesture") as! SKLabelNode
@@ -142,8 +148,41 @@ class GameScene: SKScene {
         restart = childNodeWithName("restart") as! MSButtonNode
         restart.state = .Hidden
         
-        randomizeSpawn()
+        //randomizeSpawn()
+        spawnRed()
+
+        beginning()
         
+    }
+    
+    func beginning(){
+        let hourglass = childNodeWithName("tutorial") as! SKSpriteNode
+        let cursor = childNodeWithName("cursor") as! SKSpriteNode
+        
+        
+        if !firstStroke {
+            if !cursor.hasActions(){
+                cursor.position = CGPoint(x: 162, y: 265)
+                cursor.runAction(SKAction(named: "FingerTrace")!)
+            }
+        }
+        else if !stage2{
+            hourglass.zPosition = -4
+            cursor.zPosition = -4
+            spawnBlue()
+            stage2 = true
+        }
+        if stage2 {
+        
+            cursor.position = CGPoint(x: 215, y: 42)
+            cursor.zRotation = -123.6
+            
+            cursor.zPosition = 4
+            if secondStoke{
+                tutorial = false
+                cursor.zPosition = -4
+            }
+        }
     }
     
     //tab up
@@ -165,6 +204,12 @@ class GameScene: SKScene {
     
     //reduce remaining gestures, if 0 gestures cast a spell and deal damage
     func decrementGesture(){
+        if tutorial && firstStroke{
+            secondStoke = true
+        }
+        else if tutorial {
+            firstStroke = true
+        }
         remainingGestures -= 1
         if remainingGestures <= 0{
             if monsters.count > 0 && entities.count > 0{
@@ -209,7 +254,6 @@ class GameScene: SKScene {
         }
         let mob = monsters[0]
         if spellNum == mob.type{
-            
             mob.decrementHealth(damage)
         }
     }
@@ -289,6 +333,10 @@ class GameScene: SKScene {
     
     override func update(currentTime: CFTimeInterval) {
         if gameOver { return }
+        if tutorial {
+            beginning()
+            return
+        }
         
         var count = 0
         if monsters.count > 0{
@@ -337,8 +385,8 @@ class GameScene: SKScene {
         let difficult =  Int( Double(currentScore) / 10 )
         var timer = CFTimeInterval( 4 - difficult )
         
-        if difficult > 2 {
-            timer = 2.5
+        if difficult > 3 {
+            timer = 1
         }
        
         
