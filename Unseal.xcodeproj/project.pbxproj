@@ -53,6 +53,7 @@
 		F39394531D428EF100072CDC /* blue.sks in Resources */ = {isa = PBXBuildFile; fileRef = F39394521D428EF100072CDC /* blue.sks */; };
 		F39394551D428F0C00072CDC /* yellow.sks in Resources */ = {isa = PBXBuildFile; fileRef = F39394541D428F0C00072CDC /* yellow.sks */; };
 		F39394591D42B81A00072CDC /* cursor.sks in Resources */ = {isa = PBXBuildFile; fileRef = F39394581D42B81A00072CDC /* cursor.sks */; };
+		F3945BB51D468D160063FC47 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3945BB41D468D160063FC47 /* MainMenu.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		F39394521D428EF100072CDC /* blue.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = blue.sks; sourceTree = "<group>"; };
 		F39394541D428F0C00072CDC /* yellow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = yellow.sks; sourceTree = "<group>"; };
 		F39394581D42B81A00072CDC /* cursor.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = cursor.sks; sourceTree = "<group>"; };
+		F3945BB41D468D160063FC47 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +275,7 @@
 				F37A96591D35580F00367524 /* GameViewController.swift */,
 				F34B37891D355AE400E50116 /* GameScene.sks */,
 				F37A96571D35580F00367524 /* GameScene.swift */,
+				F3945BB41D468D160063FC47 /* MainMenu.sks */,
 				F37A96871D3558D100367524 /* DrawView.swift */,
 				F37A96851D35582800367524 /* DrawingHandler.swift */,
 				F386BEE71D3FDACD005006BA /* Spells */,
@@ -464,6 +467,7 @@
 				F386BEF41D3FF9C8005006BA /* Froguana.sks in Resources */,
 				F386BF081D4053D8005006BA /* Spell5.sks in Resources */,
 				F39394591D42B81A00072CDC /* cursor.sks in Resources */,
+				F3945BB51D468D160063FC47 /* MainMenu.sks in Resources */,
 				F386BEEA1D3FDB0D005006BA /* SpellActions.sks in Resources */,
 				F386BEF01D3FDE9A005006BA /* Spell3.sks in Resources */,
 				F386BEF81D3FFA11005006BA /* Mushroom.sks in Resources */,

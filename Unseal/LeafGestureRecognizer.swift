@@ -13,7 +13,6 @@ class LeafGestureRecognizer{
     
     var tolerance:CGFloat = 8
     
-    var widthLimit:CGFloat = 10
     var fitResult = LineResult()
     
     func isLeaf(points : [CGPoint]) -> Bool{
@@ -51,7 +50,7 @@ class LeafGestureRecognizer{
         //width tolerance
         let wT:CGFloat = 20
         
-        return (xL - xS) > widthLimit && (xL - xS) < (yL - yS) && (xLPoint.y > yL - wT && xLPoint.y < yL + wT)
+        return (xL - xS) < (yL - yS) && (xLPoint.y > yL - wT && xLPoint.y < yL + wT)
         && (xSPoint.y > yS - wT && xSPoint.y < yS + wT)
     }
 }

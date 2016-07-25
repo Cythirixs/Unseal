@@ -27,6 +27,7 @@ class GameScene: SKScene {
     
     //restart button
     var restart : MSButtonNode!
+    var pause : MSButtonNode!
     
     //spell buttons w:60 h:24
     var spell1 : MSButtonNode!
@@ -35,7 +36,7 @@ class GameScene: SKScene {
     var spell4 : MSButtonNode!
     var spell5 : MSButtonNode!
     
-    var spellNum = 1
+    var spellNum = 2
     
     
     //total gestures in current spell
@@ -58,6 +59,7 @@ class GameScene: SKScene {
     
     var tutorial = true
     
+    var spawn = false
     var firstStroke = false
     var secondStoke = false
     var stage2 = false
@@ -81,76 +83,49 @@ class GameScene: SKScene {
         //spells
         spell1 = childNodeWithName("spell1") as! MSButtonNode
         spell1.selectedHandler = {
-            if self.spellNum == 1 {return}
-            
-            self.buttonDown()
-            self.spellNum = 1
-            self.remainingGestures = 1
-            self.gesture.text = "\(self.remainingGestures)"
-            self.buttonUp()
-            
-            self.damage = 1
+            if self.buttonPressed(1){
+                self.damage = 1
+            }
             
         }
         spell2 = childNodeWithName("spell2") as! MSButtonNode
         spell2.selectedHandler = {
-            if self.spellNum == 2 {return}
-            
-            self.buttonDown()
-            self.spellNum = 2
-            self.remainingGestures = 1
-            self.gesture.text = "\(self.remainingGestures)"
-            self.buttonUp()
-            
-            self.damage = 1
+            if self.buttonPressed(2){
+                self.damage = 1
+            }
             
         }
         spell3 = childNodeWithName("spell3") as! MSButtonNode
         spell3.selectedHandler = {
-            if self.spellNum == 3 {return}
-            self.buttonDown()
-
-            self.spellNum = 3
-            self.remainingGestures = 1
-            self.gesture.text = "\(self.remainingGestures)"
-            self.buttonUp()
-            
-            self.damage = 1
+            if self.buttonPressed(3){
+                self.damage = 1
+            }
             
         }
         
         spell4 = childNodeWithName("spell4") as! MSButtonNode
         spell4.selectedHandler = {
-            if self.spellNum == 4 {return}
-            self.buttonDown()
-            
-            self.spellNum = 4
-            self.remainingGestures = 4
-            self.gesture.text = "\(self.remainingGestures)"
-            self.buttonUp()
-            
-            self.damage = 7
+            if self.buttonPressed(4){
+                self.damage = 7
+            }
         }
         
         spell5 = childNodeWithName("spell5") as! MSButtonNode
         spell5.selectedHandler = {
-            if self.spellNum == 5 {return}
-            self.buttonDown()
-            
-            self.spellNum = 5
-            self.remainingGestures = 5
-            self.gesture.text = "\(self.remainingGestures)"
-            self.buttonUp()
-            
-            self.damage = 9
+            if self.buttonPressed(5){
+                self.damage = 9
+            }
         }
         
         restart = childNodeWithName("restart") as! MSButtonNode
         restart.state = .Hidden
         
+        pause = childNodeWithName("pause") as! MSButtonNode
+        pause.selectedHandler = {
+            
+        }
+        
         //randomizeSpawn()
-        spawnRed()
-
         beginning()
         
     }
@@ -159,6 +134,10 @@ class GameScene: SKScene {
         let hourglass = childNodeWithName("tutorial") as! SKSpriteNode
         let cursor = childNodeWithName("cursor") as! SKSpriteNode
         
+        if !spawn {
+            spawnBlue()
+            spawn = true
+        }
         
         if !firstStroke {
             if !cursor.hasActions(){
@@ -169,13 +148,13 @@ class GameScene: SKScene {
         else if !stage2{
             hourglass.zPosition = -4
             cursor.zPosition = -4
-            spawnBlue()
+            spawnRed()
             stage2 = true
         }
         if stage2 {
         
-            cursor.position = CGPoint(x: 215, y: 42)
-            cursor.zRotation = -123.6
+            cursor.position = CGPoint(x: 45, y: 95)
+            cursor.yScale = -0.493
             
             cursor.zPosition = 4
             if secondStoke{
@@ -197,6 +176,16 @@ class GameScene: SKScene {
         self.childNodeWithName("spell\(self.spellNum)")?.position.y = button!.y + 8
     }
     
+    func buttonPressed(spell : Int) -> Bool{
+        if spellNum == spell {return false}
+        buttonDown()
+        spellNum = spell
+        remainingGestures = 1
+        gesture.text = "\(self.remainingGestures)"
+        buttonUp()
+        return true
+    }
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
        /* Called when a touch begins */
         
@@ -204,12 +193,6 @@ class GameScene: SKScene {
     
     //reduce remaining gestures, if 0 gestures cast a spell and deal damage
     func decrementGesture(){
-        if tutorial && firstStroke{
-            secondStoke = true
-        }
-        else if tutorial {
-            firstStroke = true
-        }
         remainingGestures -= 1
         if remainingGestures <= 0{
             if monsters.count > 0 && entities.count > 0{
@@ -247,6 +230,12 @@ class GameScene: SKScene {
     
     //deals damage to the monsters
     func dealDamage(){
+        if tutorial && firstStroke && spellNum == 1{
+            secondStoke = true
+        }
+        else if tutorial {
+            firstStroke = true
+        }
         if spellNum == 5{
             for mob in monsters{
                 mob.decrementHealth(damage)
@@ -283,45 +272,47 @@ class GameScene: SKScene {
     //spawning functions
     
     func spawnBlue(){
-        let sprout = SKReferenceNode(URL: NSURL (fileURLWithPath: blueReference!))
-        sprout.position.x = 100
-        sprout.position.y = 290
-        sprout.xScale = 0.5
-        sprout.yScale = 0.5
-        sprout.zPosition = 0
+        let blue = SKReferenceNode(URL: NSURL (fileURLWithPath: blueReference!))
+        blue.position.x = 100
+        blue.position.y = 290
+        blue.xScale = 0.5
+        blue.yScale = 0.5
         
-        entities.append(sprout)
+        entities.append(blue)
         monsters.append(Sprout(health: 1, type: 2))
         
-        addChild(sprout)
+        blue.zPosition = CGFloat(30 - monsters.count)
+        
+        addChild(blue)
     }
     
     func spawnRed(){
-        let flower = SKReferenceNode(URL: NSURL (fileURLWithPath: redReference!))
-        flower.position.x = 100
-        flower.position.y = 290
-        flower.xScale = 0.5
-        flower.yScale = 0.5
-        flower.zPosition = 0
-                
-        entities.append(flower)
-        monsters.append(Flower(health: 1, type : 1))
+        let red = SKReferenceNode(URL: NSURL (fileURLWithPath: redReference!))
+        red.position.x = 100
+        red.position.y = 290
+        red.xScale = 0.5
+        red.yScale = 0.5
         
-        addChild(flower)
+        entities.append(red)
+        monsters.append(Flower(health: 1, type : 1))
+        red.zPosition = CGFloat(30 - monsters.count)
+        
+        addChild(red)
     }
     
     func spawnYellow(){
-        let mushroom = SKReferenceNode(URL: NSURL (fileURLWithPath: yellowReference!))
-        mushroom.position.x = 100
-        mushroom.position.y = 290
-        mushroom.xScale = 0.5
-        mushroom.yScale = 0.5
-        mushroom.zPosition = 0
+        let yellow = SKReferenceNode(URL: NSURL (fileURLWithPath: yellowReference!))
+        yellow.position.x = 100
+        yellow.position.y = 290
+        yellow.xScale = 0.5
+        yellow.yScale = 0.5
         
-        entities.append(mushroom)
+        entities.append(yellow)
         monsters.append(Mushroom(health: 1, type : 3))
         
-        addChild(mushroom)
+        yellow.zPosition = CGFloat(30 - monsters.count)
+        
+        addChild(yellow)
     }
     
     func randomizeSpawn(){

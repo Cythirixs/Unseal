@@ -8,8 +8,6 @@
 import UIKit
 import SpriteKit
 
-let afterGuessTimeout: NSTimeInterval = 2 // seconds
-
 class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var handler : DrawingHandler!
@@ -110,7 +108,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         if c.state == .Ended || c.state == .Failed || c.state == .Cancelled {
             drawView.updateFit(c.isShape)
-            goToNextTimer = NSTimer.scheduledTimerWithTimeInterval(afterGuessTimeout, target: self, selector: "timerFired:", userInfo: nil, repeats: false)
+            goToNextTimer = NSTimer.scheduledTimerWithTimeInterval(0.75, target: self, selector: "timerFired:", userInfo: nil, repeats: false)
             drawView.ended = true
             if c.isShape{
                 
