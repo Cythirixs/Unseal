@@ -53,7 +53,10 @@
 		F39394531D428EF100072CDC /* blue.sks in Resources */ = {isa = PBXBuildFile; fileRef = F39394521D428EF100072CDC /* blue.sks */; };
 		F39394551D428F0C00072CDC /* yellow.sks in Resources */ = {isa = PBXBuildFile; fileRef = F39394541D428F0C00072CDC /* yellow.sks */; };
 		F39394591D42B81A00072CDC /* cursor.sks in Resources */ = {isa = PBXBuildFile; fileRef = F39394581D42B81A00072CDC /* cursor.sks */; };
-		F3945BB51D468D160063FC47 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3945BB41D468D160063FC47 /* MainMenu.sks */; };
+		F3945BB51D468D160063FC47 /* MainScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3945BB41D468D160063FC47 /* MainScene.sks */; };
+		F3945BB91D46AA660063FC47 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3945BB81D46AA660063FC47 /* EntityManager.swift */; };
+		F3945BBB1D46D1B20063FC47 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3945BBA1D46D1B20063FC47 /* MainScene.swift */; };
+		F3945BBD1D46D7CF0063FC47 /* Menu.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3945BBC1D46D7CF0063FC47 /* Menu.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,7 +129,10 @@
 		F39394521D428EF100072CDC /* blue.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = blue.sks; sourceTree = "<group>"; };
 		F39394541D428F0C00072CDC /* yellow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = yellow.sks; sourceTree = "<group>"; };
 		F39394581D42B81A00072CDC /* cursor.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = cursor.sks; sourceTree = "<group>"; };
-		F3945BB41D468D160063FC47 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
+		F3945BB41D468D160063FC47 /* MainScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainScene.sks; sourceTree = "<group>"; };
+		F3945BB81D46AA660063FC47 /* EntityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
+		F3945BBA1D46D1B20063FC47 /* MainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainScene.swift; path = ../MainScene.swift; sourceTree = "<group>"; };
+		F3945BBC1D46D7CF0063FC47 /* Menu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Menu.sks; path = ../Menu.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,9 +279,12 @@
 			children = (
 				F37A96531D35580F00367524 /* AppDelegate.swift */,
 				F37A96591D35580F00367524 /* GameViewController.swift */,
+				F3945BB41D468D160063FC47 /* MainScene.sks */,
+				F3945BBA1D46D1B20063FC47 /* MainScene.swift */,
 				F34B37891D355AE400E50116 /* GameScene.sks */,
 				F37A96571D35580F00367524 /* GameScene.swift */,
-				F3945BB41D468D160063FC47 /* MainMenu.sks */,
+				F3945BBC1D46D7CF0063FC47 /* Menu.sks */,
+				F3945BB81D46AA660063FC47 /* EntityManager.swift */,
 				F37A96871D3558D100367524 /* DrawView.swift */,
 				F37A96851D35582800367524 /* DrawingHandler.swift */,
 				F386BEE71D3FDACD005006BA /* Spells */,
@@ -467,11 +476,12 @@
 				F386BEF41D3FF9C8005006BA /* Froguana.sks in Resources */,
 				F386BF081D4053D8005006BA /* Spell5.sks in Resources */,
 				F39394591D42B81A00072CDC /* cursor.sks in Resources */,
-				F3945BB51D468D160063FC47 /* MainMenu.sks in Resources */,
+				F3945BB51D468D160063FC47 /* MainScene.sks in Resources */,
 				F386BEEA1D3FDB0D005006BA /* SpellActions.sks in Resources */,
 				F386BEF01D3FDE9A005006BA /* Spell3.sks in Resources */,
 				F386BEF81D3FFA11005006BA /* Mushroom.sks in Resources */,
 				F39394531D428EF100072CDC /* blue.sks in Resources */,
+				F3945BBD1D46D7CF0063FC47 /* Menu.sks in Resources */,
 				F386BEEC1D3FDB6E005006BA /* Spell1.sks in Resources */,
 				F37A965D1D35580F00367524 /* Main.storyboard in Resources */,
 			);
@@ -517,7 +527,9 @@
 				F31920C31D3F2801006448C2 /* MSReferenceNode.swift in Sources */,
 				F386BEFA1D4017A9005006BA /* Flower.swift in Sources */,
 				F37A965A1D35580F00367524 /* GameViewController.swift in Sources */,
+				F3945BBB1D46D1B20063FC47 /* MainScene.swift in Sources */,
 				F34B37B01D380BD000E50116 /* InfinityGestureRecognizer.swift in Sources */,
+				F3945BB91D46AA660063FC47 /* EntityManager.swift in Sources */,
 				F37A96541D35580F00367524 /* AppDelegate.swift in Sources */,
 				F386BEFC1D4017DA005006BA /* Monster.swift in Sources */,
 				F34B37B51D38363B00E50116 /* VFit.swift in Sources */,

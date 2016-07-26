@@ -48,6 +48,8 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         goToNextTimer?.invalidate()
         
         drawView.clear()
+        
+        
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {

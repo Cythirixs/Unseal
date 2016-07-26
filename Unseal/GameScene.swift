@@ -9,6 +9,8 @@
 import SpriteKit
 import SceneKit
 
+//SAVED 
+
 class GameScene: SKScene {
     
     //labels
@@ -18,13 +20,7 @@ class GameScene: SKScene {
     
     //current score
     var currentScore = 0
-    
-    //reference and information of monsters in 2 arrays
-    var entities = [SKReferenceNode]()
-    var monsters = [Monster]()
-    
-    var shapes = [SKShapeNode]()
-    
+        
     //restart button
     var restart : MSButtonNode!
     var pause : MSButtonNode!
@@ -38,14 +34,17 @@ class GameScene: SKScene {
     
     var spellNum = 2
     
-    
-    //total gestures in current spell
-    
     //remaing gesture to draw until cast
     var remainingGestures = 1
     
     //damage of spell
     var damage : Int = 1
+    
+    //mobs
+    let entity = EntityManager()
+    
+    var monsters = [Monster]()
+    var entities = [SKReferenceNode]()
     
     //player hp
     var playerHealth : Int = 3
@@ -57,6 +56,7 @@ class GameScene: SKScene {
     let fixedDelta : CFTimeInterval = 1.0/60.0
     var spawnTimer : CFTimeInterval = 0
     
+    //tutorial vars
     var tutorial = true
     
     var spawn = false
@@ -64,10 +64,7 @@ class GameScene: SKScene {
     var secondStoke = false
     var stage2 = false
     
-    //reference path for mobs
-    let redReference = NSBundle.mainBundle().pathForResource( "red", ofType: "sks")
-    let blueReference = NSBundle.mainBundle().pathForResource( "blue", ofType: "sks")
-    let yellowReference = NSBundle.mainBundle().pathForResource( "yellow", ofType: "sks")
+
     
     //dissappear
     let disappear = SKAction.fadeAlphaTo(1.0, duration: 0.1)
@@ -186,10 +183,6 @@ class GameScene: SKScene {
         return true
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       /* Called when a touch begins */
-        
-    }
     
     //reduce remaining gestures, if 0 gestures cast a spell and deal damage
     func decrementGesture(){
@@ -266,53 +259,33 @@ class GameScene: SKScene {
     
     //shows the gesture image
     func showImage(shape: String){
-        childNodeWithName(shape)?.zPosition = 2
+        childNodeWithName(shape)?.zPosition = 32
     }
     
     //spawning functions
     
     func spawnBlue(){
-        let blue = SKReferenceNode(URL: NSURL (fileURLWithPath: blueReference!))
-        blue.position.x = 100
-        blue.position.y = 290
-        blue.xScale = 0.5
-        blue.yScale = 0.5
-        
-        entities.append(blue)
-        monsters.append(Sprout(health: 1, type: 2))
-        
-        blue.zPosition = CGFloat(30 - monsters.count)
-        
-        addChild(blue)
+        let blue = entity.spawnBlue()
+        entities.append(blue.0)
+        monsters.append(blue.1)
+        blue.0.zPosition = CGFloat(30 - entities.count)
+        addChild(blue.0)
     }
     
     func spawnRed(){
-        let red = SKReferenceNode(URL: NSURL (fileURLWithPath: redReference!))
-        red.position.x = 100
-        red.position.y = 290
-        red.xScale = 0.5
-        red.yScale = 0.5
-        
-        entities.append(red)
-        monsters.append(Flower(health: 1, type : 1))
-        red.zPosition = CGFloat(30 - monsters.count)
-        
-        addChild(red)
+        let red = entity.spawnRed()
+        entities.append(red.0)
+        monsters.append(red.1)
+        red.0.zPosition = CGFloat(30 - entities.count)
+        addChild(red.0)
     }
     
     func spawnYellow(){
-        let yellow = SKReferenceNode(URL: NSURL (fileURLWithPath: yellowReference!))
-        yellow.position.x = 100
-        yellow.position.y = 290
-        yellow.xScale = 0.5
-        yellow.yScale = 0.5
-        
-        entities.append(yellow)
-        monsters.append(Mushroom(health: 1, type : 3))
-        
-        yellow.zPosition = CGFloat(30 - monsters.count)
-        
-        addChild(yellow)
+        let yellow = entity.spawnYellow()
+        entities.append(yellow.0)
+        monsters.append(yellow.1)
+        yellow.0.zPosition = CGFloat(30 - entities.count)
+        addChild(yellow.0)
     }
     
     func randomizeSpawn(){
