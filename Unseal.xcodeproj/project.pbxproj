@@ -57,6 +57,7 @@
 		F3945BB91D46AA660063FC47 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3945BB81D46AA660063FC47 /* EntityManager.swift */; };
 		F3945BBB1D46D1B20063FC47 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3945BBA1D46D1B20063FC47 /* MainScene.swift */; };
 		F3945BBD1D46D7CF0063FC47 /* Menu.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3945BBC1D46D7CF0063FC47 /* Menu.sks */; };
+		F3945BBF1D47DDBE0063FC47 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3945BBE1D47DDBE0063FC47 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,7 @@
 		F3945BB81D46AA660063FC47 /* EntityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
 		F3945BBA1D46D1B20063FC47 /* MainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainScene.swift; path = ../MainScene.swift; sourceTree = "<group>"; };
 		F3945BBC1D46D7CF0063FC47 /* Menu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Menu.sks; path = ../Menu.sks; sourceTree = "<group>"; };
+		F3945BBE1D47DDBE0063FC47 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,8 @@
 		F34B37971D36A7F500E50116 /* Gesture */ = {
 			isa = PBXGroup;
 			children = (
+				F37A96871D3558D100367524 /* DrawView.swift */,
+				F37A96851D35582800367524 /* DrawingHandler.swift */,
 				F34B37B91D395DA200E50116 /* Lightning */,
 				F34B37B31D38362E00E50116 /* V */,
 				F34B379E1D36BC9F00E50116 /* Infinity */,
@@ -278,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				F37A96531D35580F00367524 /* AppDelegate.swift */,
+				F3945BBE1D47DDBE0063FC47 /* MainViewController.swift */,
 				F37A96591D35580F00367524 /* GameViewController.swift */,
 				F3945BB41D468D160063FC47 /* MainScene.sks */,
 				F3945BBA1D46D1B20063FC47 /* MainScene.swift */,
@@ -285,8 +290,6 @@
 				F37A96571D35580F00367524 /* GameScene.swift */,
 				F3945BBC1D46D7CF0063FC47 /* Menu.sks */,
 				F3945BB81D46AA660063FC47 /* EntityManager.swift */,
-				F37A96871D3558D100367524 /* DrawView.swift */,
-				F37A96851D35582800367524 /* DrawingHandler.swift */,
 				F386BEE71D3FDACD005006BA /* Spells */,
 				F34B37D21D3D9C7700E50116 /* Resources */,
 				F34B37D11D3D9C5E00E50116 /* Entities */,
@@ -515,6 +518,7 @@
 				F37A96881D3558D100367524 /* DrawView.swift in Sources */,
 				F34B37BD1D395DBF00E50116 /* LightningGestureRecognizer.swift in Sources */,
 				F34B379A1D36B0CE00E50116 /* HorizontalGestureRecognizer.swift in Sources */,
+				F3945BBF1D47DDBE0063FC47 /* MainViewController.swift in Sources */,
 				F386BF041D4037B7005006BA /* Froguana.swift in Sources */,
 				F34B378C1D358E8C00E50116 /* CircleFit.swift in Sources */,
 				F34B379C1D36B17D00E50116 /* LineFit.swift in Sources */,

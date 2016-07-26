@@ -23,7 +23,14 @@ class GameScene: SKScene {
         
     //restart button
     var restart : MSButtonNode!
+    
     var pause : MSButtonNode!
+    var menu : SKSpriteNode!
+    
+    var isStopped = false
+    
+    var reset : MSButtonNode!
+    var play : MSButtonNode!
     
     //spell buttons w:60 h:24
     var spell1 : MSButtonNode!
@@ -49,6 +56,7 @@ class GameScene: SKScene {
     //player hp
     var playerHealth : Int = 3
     var gameOver = false
+    
     var doRestart = false
     
     //delta
@@ -117,9 +125,26 @@ class GameScene: SKScene {
         restart = childNodeWithName("restart") as! MSButtonNode
         restart.state = .Hidden
         
+        restart.selectedHandler = {
+            self.doRestart = true
+        }
+        
+        menu = childNodeWithName("menu") as! SKSpriteNode
+        
         pause = childNodeWithName("pause") as! MSButtonNode
         pause.selectedHandler = {
-            
+            self.isStopped = true
+            self.menu.position.y -= 350
+        }
+        
+        reset = childNodeWithName("//reset") as! MSButtonNode
+        reset.selectedHandler = {
+            self.doRestart = true
+        }
+        play = childNodeWithName("//play") as! MSButtonNode
+        play.selectedHandler = {
+            self.isStopped = false
+            self.menu.position.y += 350
         }
         
         //randomizeSpawn()
@@ -205,7 +230,7 @@ class GameScene: SKScene {
         let entity = entities[0]
         
         spell.position = CGPoint(x: entity.position.x - 35, y: entity.position.y - 35 )
-        spell.zPosition = 4
+        spell.zPosition = 32
         
         spell.xScale = entity.xScale
         spell.yScale = entity.yScale
@@ -220,14 +245,24 @@ class GameScene: SKScene {
         playerHealth -= 1
         health.text = "\(playerHealth)"
     }
+    func removeAtIndexZero(){
+        entities[0].runAction(disappear){
+            self.entities[0].removeFromParent()
+        }
+  //      entities.removeAtIndex(0)
+   //     monsters.removeAtIndex(0)
+    }
     
     //deals damage to the monsters
     func dealDamage(){
         if tutorial && firstStroke && spellNum == 1{
+            removeAtIndexZero()
             secondStoke = true
         }
         else if tutorial {
+            removeAtIndexZero()
             firstStroke = true
+            
         }
         if spellNum == 5{
             for mob in monsters{
@@ -296,12 +331,11 @@ class GameScene: SKScene {
     }
     
     override func update(currentTime: CFTimeInterval) {
-        if gameOver { return }
+        if gameOver || isStopped { return }
         if tutorial {
             beginning()
             return
         }
-        
         var count = 0
         if monsters.count > 0{
             for entity in entities{

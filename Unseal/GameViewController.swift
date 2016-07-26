@@ -55,24 +55,37 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         let pos = touch.locationInView(drawView)
         if scene.gameOver {            
-            if pos.x >= 78 && pos.x <= 248 && pos.y >= 261 && pos.y <= 308 {
-                let skView = self.scene.view as SKView!
-                
-                scene = GameScene(fileNamed:"GameScene") as GameScene!
-                scene.scaleMode = .AspectFill
-
-                handler.currentShape = .hourglass
-                handler.isShape = false
-                handler.touchedPoints.removeAll()
-                handler.state = .Ended
-                
-                drawView.clear()
-                
-                skView.presentScene(scene)
-            }
+//            if pos.x >= 78 && pos.x <= 248 && pos.y >= 261 && pos.y <= 308 {
+//                reset()
+//            }
+             goToNextTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "reset:", userInfo: nil, repeats: false)
             return false
         }
+        else if pos.x >= 280 && pos.y <= 60 && !scene.tutorial{return false}
+        else if scene.isStopped{
+             goToNextTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "reset:", userInfo: nil, repeats:  false)
+            scene.tutorial = false
+            return false
+        }
+        
         return !(pos.y >= 542)
+    }
+    
+    func reset(timer : NSTimer){
+        if !scene.doRestart { return }
+        let skView = self.scene.view as SKView!
+        
+        scene = GameScene(fileNamed:"GameScene") as GameScene!
+        scene.scaleMode = .AspectFill
+        
+        handler.currentShape = .hourglass
+        handler.isShape = false
+        handler.touchedPoints.removeAll()
+        handler.state = .Ended
+        
+        drawView.clear()
+        
+        skView.presentScene(scene)
     }
 
     override func shouldAutorotate() -> Bool {
@@ -132,5 +145,6 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     func resetGesture(timer: NSTimer){
         scene.resetGestures()
     }
+
     
 }

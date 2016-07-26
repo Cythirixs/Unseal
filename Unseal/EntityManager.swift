@@ -19,20 +19,20 @@ class EntityManager {
     
     func spawnBlue() -> (SKReferenceNode, Monster){
         let blue = SKReferenceNode(URL: NSURL (fileURLWithPath: blueReference!))
-        blue.position.x = 100
-        blue.position.y = 290
-        blue.xScale = 0.5
-        blue.yScale = 0.5
+        blue.position.x = 150
+        blue.position.y = 510
+        blue.xScale = 0.2
+        blue.yScale = 0.2
     
         return (blue, Sprout(health:1, type: 2))
     }
     
     func spawnRed() -> (SKReferenceNode, Monster){
         let red = SKReferenceNode(URL: NSURL (fileURLWithPath: redReference!))
-        red.position.x = 100
-        red.position.y = 290
-        red.xScale = 0.5
-        red.yScale = 0.5
+        red.position.x = 150
+        red.position.y = 510
+        red.xScale = 0.2
+        red.yScale = 0.2
         
         return (red, Sprout(health:1, type: 1))
 
@@ -40,10 +40,10 @@ class EntityManager {
     
     func spawnYellow() -> (SKReferenceNode, Monster) {
         let yellow = SKReferenceNode(URL: NSURL (fileURLWithPath: yellowReference!))
-        yellow.position.x = 100
-        yellow.position.y = 290
-        yellow.xScale = 0.5
-        yellow.yScale = 0.5
+        yellow.position.x = 150
+        yellow.position.y = 510
+        yellow.xScale = 0.2
+        yellow.yScale = 0.2
         
         return (yellow, Sprout(health:1, type: 3))
 
