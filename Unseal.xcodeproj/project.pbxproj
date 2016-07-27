@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F31920C11D3F27AD006448C2 /* Flower.sks in Resources */ = {isa = PBXBuildFile; fileRef = F31920C01D3F27AD006448C2 /* Flower.sks */; };
 		F31920C31D3F2801006448C2 /* MSReferenceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31920C21D3F2801006448C2 /* MSReferenceNode.swift */; };
+		F32E66821D4923F800FD1BBE /* Eye.sks in Resources */ = {isa = PBXBuildFile; fileRef = F32E66811D4923F800FD1BBE /* Eye.sks */; };
+		F32E66841D49467800FD1BBE /* Eye.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E66831D49467800FD1BBE /* Eye.swift */; };
 		F34B378A1D355AE400E50116 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F34B37891D355AE400E50116 /* GameScene.sks */; };
 		F34B378C1D358E8C00E50116 /* CircleFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B378B1D358E8C00E50116 /* CircleFit.swift */; };
 		F34B378E1D35901100E50116 /* CircleGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B378D1D35901100E50116 /* CircleGestureRecognizer.swift */; };
@@ -80,6 +82,8 @@
 /* Begin PBXFileReference section */
 		F31920C01D3F27AD006448C2 /* Flower.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Flower.sks; sourceTree = "<group>"; };
 		F31920C21D3F2801006448C2 /* MSReferenceNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSReferenceNode.swift; sourceTree = "<group>"; };
+		F32E66811D4923F800FD1BBE /* Eye.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Eye.sks; sourceTree = "<group>"; };
+		F32E66831D49467800FD1BBE /* Eye.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Eye.swift; sourceTree = "<group>"; };
 		F34B37891D355AE400E50116 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameScene.sks; path = ../GameScene.sks; sourceTree = "<group>"; };
 		F34B378B1D358E8C00E50116 /* CircleFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleFit.swift; sourceTree = "<group>"; };
 		F34B378D1D35901100E50116 /* CircleGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleGestureRecognizer.swift; sourceTree = "<group>"; };
@@ -345,6 +349,7 @@
 				F39394521D428EF100072CDC /* blue.sks */,
 				F39394541D428F0C00072CDC /* yellow.sks */,
 				F39394581D42B81A00072CDC /* cursor.sks */,
+				F32E66811D4923F800FD1BBE /* Eye.sks */,
 			);
 			name = sks;
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 				F386BEF91D4017A9005006BA /* Flower.swift */,
 				F386BF011D403789005006BA /* Mushroom.swift */,
 				F386BF031D4037B7005006BA /* Froguana.swift */,
+				F32E66831D49467800FD1BBE /* Eye.swift */,
 			);
 			name = swift;
 			sourceTree = "<group>";
@@ -471,6 +477,7 @@
 				F39394511D428ECD00072CDC /* red.sks in Resources */,
 				F386BEFE1D401DF4005006BA /* Spell4.sks in Resources */,
 				F31920C11D3F27AD006448C2 /* Flower.sks in Resources */,
+				F32E66821D4923F800FD1BBE /* Eye.sks in Resources */,
 				F386BEF21D3FF99F005006BA /* Sprout.sks in Resources */,
 				F37A96621D35580F00367524 /* LaunchScreen.storyboard in Resources */,
 				F386BEEE1D3FDDE0005006BA /* Spell2.sks in Resources */,
@@ -530,6 +537,7 @@
 				F37A96861D35582800367524 /* DrawingHandler.swift in Sources */,
 				F31920C31D3F2801006448C2 /* MSReferenceNode.swift in Sources */,
 				F386BEFA1D4017A9005006BA /* Flower.swift in Sources */,
+				F32E66841D49467800FD1BBE /* Eye.swift in Sources */,
 				F37A965A1D35580F00367524 /* GameViewController.swift in Sources */,
 				F3945BBB1D46D1B20063FC47 /* MainScene.swift in Sources */,
 				F34B37B01D380BD000E50116 /* InfinityGestureRecognizer.swift in Sources */,

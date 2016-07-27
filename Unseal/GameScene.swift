@@ -157,7 +157,14 @@ class GameScene: SKScene {
         let cursor = childNodeWithName("cursor") as! SKSpriteNode
         
         if !spawn {
-            spawnBlue()
+            spawnEye()
+            for _ in 1...200{
+                entities[0].position.y -= monsters[0].vy
+                entities[0].position.x -= monsters[0].vx
+                entities[0].xScale += monsters[0].scale
+                entities[0].yScale += monsters[0].scale
+
+            }
             spawn = true
         }
         
@@ -170,7 +177,8 @@ class GameScene: SKScene {
         else if !stage2{
             hourglass.zPosition = -4
             cursor.zPosition = -4
-            spawnRed()
+            spawnFlower()
+
             stage2 = true
         }
         if stage2 {
@@ -278,6 +286,15 @@ class GameScene: SKScene {
         let mob = monsters[0]
         if spellNum == mob.type{
             mob.decrementHealth(damage)
+            if !monsters[0].isAlive(){
+                let entity = entities[0]
+                entities.removeAtIndex(0)
+                monsters.removeAtIndex(0)
+                entity.runAction(disappear){
+                    entity.removeFromParent()
+                }
+                incramentScore()
+            }
         }
     }
     
@@ -329,11 +346,41 @@ class GameScene: SKScene {
         addChild(yellow.0)
     }
     
+    func spawnSprout(){
+        let sprout = entity.spawnSprout()
+        entities.append(sprout.0)
+        monsters.append(sprout.1)
+        sprout.0.zPosition = CGFloat(30 - entities.count)
+        addChild(sprout.0)
+    }
+    func spawnFlower(){
+        let flower = entity.spawnFlower()
+        entities.append(flower.0)
+        monsters.append(flower.1)
+        flower.0.zPosition = CGFloat(30 - entities.count)
+        addChild(flower.0)
+    }
+    func spawnMushroom(){
+        let mushroom = entity.spawnMushroom()
+        entities.append(mushroom.0)
+        monsters.append(mushroom.1)
+        mushroom.0.zPosition = CGFloat(30 - entities.count)
+        addChild(mushroom.0)
+    }
+    func spawnEye(){
+        let eye = entity.spawnEye()
+        entities.append(eye.0)
+        monsters.append(eye.1)
+        eye.0.zPosition = CGFloat(30 - entities.count)
+        addChild(eye.0)
+    }
+    
     func randomizeSpawn(){
         let random = arc4random_uniform(100)
-        if random < 33 { spawnRed() }
-        else if random < 66 { spawnYellow() }
-        else if random <= 99 { spawnBlue() }
+        if random < 25 { spawnSprout() }
+        else if random < 50 { spawnFlower() }
+        else if random < 75 { spawnMushroom() }
+        else { spawnEye() } 
     }
     
     override func update(currentTime: CFTimeInterval) {
@@ -347,15 +394,15 @@ class GameScene: SKScene {
             for entity in entities{
             
                 //if monster health 0 remove from lists and incrament score
-                if !monsters[count].isAlive(){
-                    entities.removeAtIndex(count)
-                    monsters.removeAtIndex(count)
-                    entity.runAction(disappear){
-                        entity.removeFromParent()
-                    }
-                    incramentScore()
-                    continue
-                }
+//                if !monsters[count].isAlive(){
+//                    entities.removeAtIndex(count)
+//                    monsters.removeAtIndex(count)
+//                    entity.runAction(disappear){
+//                        entity.removeFromParent()
+//                    }
+//                    incramentScore()
+//                    continue
+//                }
             
                 // some bs limits
                 if entity.position.y > 40{
