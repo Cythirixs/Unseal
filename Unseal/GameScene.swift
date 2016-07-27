@@ -86,21 +86,21 @@ class GameScene: SKScene {
         health = childNodeWithName("health") as! SKLabelNode
         
         //spells
-        spell1 = childNodeWithName("spell1") as! MSButtonNode
+        spell1 = childNodeWithName("spell1_off") as! MSButtonNode
         spell1.selectedHandler = {
             if self.buttonPressed(1){
                 self.damage = 1
             }
             
         }
-        spell2 = childNodeWithName("spell2") as! MSButtonNode
+        spell2 = childNodeWithName("spell2_off") as! MSButtonNode
         spell2.selectedHandler = {
             if self.buttonPressed(2){
                 self.damage = 1
             }
             
         }
-        spell3 = childNodeWithName("spell3") as! MSButtonNode
+        spell3 = childNodeWithName("spell3_off") as! MSButtonNode
         spell3.selectedHandler = {
             if self.buttonPressed(3){
                 self.damage = 1
@@ -163,7 +163,7 @@ class GameScene: SKScene {
         
         if !firstStroke {
             if !cursor.hasActions(){
-                cursor.position = CGPoint(x: 162, y: 265)
+                cursor.position = CGPoint(x: 162, y: 320)
                 cursor.runAction(SKAction(named: "FingerTrace")!)
             }
         }
@@ -175,7 +175,7 @@ class GameScene: SKScene {
         }
         if stage2 {
         
-            cursor.position = CGPoint(x: 45, y: 95)
+            cursor.position = CGPoint(x: 58, y: 140)
             cursor.yScale = -0.493
             
             cursor.zPosition = 4
@@ -188,14 +188,20 @@ class GameScene: SKScene {
     
     //tab up
     func buttonDown(){
-        let button = self.childNodeWithName("spell\(self.spellNum)")?.position
-        self.childNodeWithName("spell\(self.spellNum)")?.position.y = button!.y - 8
+//        let button = self.childNodeWithName("spell\(self.spellNum)")?.position
+//        self.childNodeWithName("spell\(self.spellNum)")?.position.y = button!.y - 8
+        self.childNodeWithName("spell\(self.spellNum)_on")?.zPosition = -2
+        self.childNodeWithName("spell\(self.spellNum)_off")?.zPosition = 2
+
     }
     
     //tabs down
     func buttonUp(){
-        let button = self.childNodeWithName("spell\(self.spellNum)")?.position
-        self.childNodeWithName("spell\(self.spellNum)")?.position.y = button!.y + 8
+//        let button = self.childNodeWithName("spell\(self.spellNum)")?.position
+//        self.childNodeWithName("spell\(self.spellNum)")?.position.y = button!.y + 8
+        self.childNodeWithName("spell\(self.spellNum)_on")?.zPosition = 2
+        self.childNodeWithName("spell\(self.spellNum)_off")?.zPosition = -2
+
     }
     
     func buttonPressed(spell : Int) -> Bool{

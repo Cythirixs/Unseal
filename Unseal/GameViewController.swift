@@ -68,7 +68,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
             return false
         }
         
-        return !(pos.y >= 542)
+        return !(pos.y >= 488)
     }
     
     func reset(timer : NSTimer){

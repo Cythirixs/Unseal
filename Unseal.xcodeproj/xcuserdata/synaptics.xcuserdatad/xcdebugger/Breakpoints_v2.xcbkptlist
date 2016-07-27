@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Unseal/GameScene.swift"
-            timestampString = "491258035.461012"
+            timestampString = "491329453.511474"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "325"
-            endingLineNumber = "325"
+            startingLineNumber = "331"
+            endingLineNumber = "331"
             landmarkName = "GameScene"
             landmarkType = "3">
          </BreakpointContent>
