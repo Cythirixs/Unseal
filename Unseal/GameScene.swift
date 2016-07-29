@@ -16,15 +16,19 @@ class GameScene: SKScene {
     //labels
     var score : SKLabelNode!
     var health : SKLabelNode!
+    var endScore : SKLabelNode!
     
     //current score
     var currentScore = 0
         
     //restart button
     var restart : MSButtonNode!
+    var over : SKSpriteNode!
     
     var pause : MSButtonNode!
     var menu : SKSpriteNode!
+    
+    var block : SKSpriteNode!
     
     var isStopped = false
     
@@ -58,6 +62,8 @@ class GameScene: SKScene {
     var playerHealth : Int = 3
     var gameOver = false
     
+    var fade : SKSpriteNode!
+    
     var doRestart = false
     
     //delta
@@ -84,6 +90,9 @@ class GameScene: SKScene {
         /* Setup your scene here */
         score = childNodeWithName("score") as! SKLabelNode
         health = childNodeWithName("health") as! SKLabelNode
+        fade = childNodeWithName("fade") as! SKSpriteNode
+        
+        block = childNodeWithName("block") as! SKSpriteNode
         
         //spells
         spell1 = childNodeWithName("spell1_off") as! MSButtonNode
@@ -108,13 +117,6 @@ class GameScene: SKScene {
             
         }
         
-        restart = childNodeWithName("restart") as! MSButtonNode
-        restart.state = .Hidden
-        
-        restart.selectedHandler = {
-            self.doRestart = true
-        }
-        
         menu = childNodeWithName("menu") as! SKSpriteNode
         
         pause = childNodeWithName("pause") as! MSButtonNode
@@ -133,6 +135,16 @@ class GameScene: SKScene {
             self.menu.position.y += 350
         }
         
+        over = childNodeWithName("GameOver") as! SKSpriteNode
+        
+        endScore = childNodeWithName("//EndScore") as! SKLabelNode
+        
+        restart = childNodeWithName("//restart") as! MSButtonNode
+        
+        restart.selectedHandler = {
+            self.doRestart = true
+        }
+        
         beginning()
         
     }
@@ -146,9 +158,12 @@ class GameScene: SKScene {
             for _ in 1...200{
                 entities[0].position.y -= monsters[0].vy
                 entities[0].position.x -= monsters[0].vx
-                entities[0].xScale += monsters[0].scale
-                entities[0].yScale += monsters[0].scale
+                entities[0].xScale += monsters[0].vScale
+                entities[0].yScale += monsters[0].vScale
 
+                monsters[0].incramentScale()
+                monsters[0].incramentX()
+                monsters[0].imcramentY()
             }
             spawn = true
         }
@@ -163,7 +178,17 @@ class GameScene: SKScene {
             hourglass.zPosition = -4
             cursor.zPosition = -4
             spawnFlower()
-
+            block.zPosition = -3
+            for _ in 1...200{
+                entities[0].position.y -= monsters[0].vy
+                entities[0].position.x -= monsters[0].vx
+                entities[0].xScale += monsters[0].vScale
+                entities[0].yScale += monsters[0].vScale
+                
+                monsters[0].incramentScale()
+                monsters[0].incramentX()
+                monsters[0].imcramentY()
+            }
             stage2 = true
         }
         if stage2 {
@@ -241,20 +266,18 @@ class GameScene: SKScene {
             secondStoke = true
             return
         }
-        else if tutorial {
+        else if tutorial && spellNum == 2 && !firstStroke{
             spell(monsters[0])
-            removeAtZero()
             firstStroke = true
+            removeAtZero()
             blueMonsters.removeAtIndex(0)
             return
         }
+        else if tutorial{
+            return
+        }
 
-//        let mob = monsters[0]   
-//        if spellNum == mob.type{
-//            
-//            mob.decrementHealth(damage)
-//        
-//        }
+
         var initialized = true
         var array = [Monster]()
         if redMonsters.count > 0 && spellNum == 1{
@@ -407,6 +430,26 @@ class GameScene: SKScene {
         addChild(eye.0)
     }
     
+    func spawnSpider(){
+        let spider : (SKReferenceNode, Monster)
+        
+        let random = arc4random_uniform(2)
+        if random == 0{
+            spider = entity.spawnBlueSpider()
+        }
+        else {
+            spider = entity.spawnYellowSpider()
+        }
+        
+        entities.append(spider.0)
+        monsters.append(spider.1)
+        addToArray(spider.1)
+        
+        spider.0.zPosition = CGFloat(30 - entities.count)
+        addChild(spider.0)
+    }
+
+    
     func addToArray(entity : Monster){
         if entity.type == 1{
             redMonsters.append(entity)
@@ -421,10 +464,11 @@ class GameScene: SKScene {
     
     func randomizeSpawn(){
         let random = arc4random_uniform(100)
-        if random < 25 { spawnSprout() }
-        else if random < 50 { spawnFlower() }
-        else if random < 75 { spawnMushroom() }
-        else { spawnEye() } 
+        if random < 20 { spawnSprout() }
+        else if random < 40 { spawnFlower() }
+        else if random < 60 { spawnMushroom() }
+        else if random < 80 { spawnEye() }
+        else { spawnSpider() }
     }
     
     override func update(currentTime: CFTimeInterval) {
@@ -460,7 +504,9 @@ class GameScene: SKScene {
                         monsters[count].attackTimer = 0
                         if playerHealth <= 0{
                             gameOver = true
-                            restart.state = .Active
+                            fade.zPosition = 34
+                            over.position.x += 274
+                            endScore.text = "\(currentScore)"
                         }
                     }
                 }

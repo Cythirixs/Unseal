@@ -32,6 +32,9 @@
 		F35815FF1D4A7EAF007888C3 /* BlueMushroom.sks in Resources */ = {isa = PBXBuildFile; fileRef = F35815FE1D4A7EAF007888C3 /* BlueMushroom.sks */; };
 		F35816051D4A7FC9007888C3 /* BlueSprout.sks in Resources */ = {isa = PBXBuildFile; fileRef = F35816041D4A7FC9007888C3 /* BlueSprout.sks */; };
 		F35816081D4A8051007888C3 /* Tree.sks in Resources */ = {isa = PBXBuildFile; fileRef = F35816071D4A8051007888C3 /* Tree.sks */; };
+		F358160B1D4BEF89007888C3 /* YellowSpider.sks in Resources */ = {isa = PBXBuildFile; fileRef = F358160A1D4BEF89007888C3 /* YellowSpider.sks */; };
+		F358160D1D4BF05F007888C3 /* BlueSpider.sks in Resources */ = {isa = PBXBuildFile; fileRef = F358160C1D4BF05F007888C3 /* BlueSpider.sks */; };
+		F35816111D4BF503007888C3 /* Spider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35816101D4BF503007888C3 /* Spider.swift */; };
 		F37A96541D35580F00367524 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A96531D35580F00367524 /* AppDelegate.swift */; };
 		F37A96581D35580F00367524 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A96571D35580F00367524 /* GameScene.swift */; };
 		F37A965A1D35580F00367524 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A96591D35580F00367524 /* GameViewController.swift */; };
@@ -57,9 +60,6 @@
 		F386BF041D4037B7005006BA /* Froguana.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386BF031D4037B7005006BA /* Froguana.swift */; };
 		F386BF081D4053D8005006BA /* Spell5.sks in Resources */ = {isa = PBXBuildFile; fileRef = F386BF071D4053D8005006BA /* Spell5.sks */; };
 		F386BF0C1D40557D005006BA /* MobActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F386BF0B1D40557D005006BA /* MobActions.sks */; };
-		F39394511D428ECD00072CDC /* red.sks in Resources */ = {isa = PBXBuildFile; fileRef = F39394501D428ECD00072CDC /* red.sks */; };
-		F39394531D428EF100072CDC /* blue.sks in Resources */ = {isa = PBXBuildFile; fileRef = F39394521D428EF100072CDC /* blue.sks */; };
-		F39394551D428F0C00072CDC /* yellow.sks in Resources */ = {isa = PBXBuildFile; fileRef = F39394541D428F0C00072CDC /* yellow.sks */; };
 		F39394591D42B81A00072CDC /* cursor.sks in Resources */ = {isa = PBXBuildFile; fileRef = F39394581D42B81A00072CDC /* cursor.sks */; };
 		F3945BB51D468D160063FC47 /* MainScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3945BB41D468D160063FC47 /* MainScene.sks */; };
 		F3945BB91D46AA660063FC47 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3945BB81D46AA660063FC47 /* EntityManager.swift */; };
@@ -110,6 +110,9 @@
 		F35815FE1D4A7EAF007888C3 /* BlueMushroom.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BlueMushroom.sks; sourceTree = "<group>"; };
 		F35816041D4A7FC9007888C3 /* BlueSprout.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BlueSprout.sks; sourceTree = "<group>"; };
 		F35816071D4A8051007888C3 /* Tree.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Tree.sks; sourceTree = "<group>"; };
+		F358160A1D4BEF89007888C3 /* YellowSpider.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = YellowSpider.sks; sourceTree = "<group>"; };
+		F358160C1D4BF05F007888C3 /* BlueSpider.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BlueSpider.sks; sourceTree = "<group>"; };
+		F35816101D4BF503007888C3 /* Spider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spider.swift; sourceTree = "<group>"; };
 		F37A96501D35580F00367524 /* Unseal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unseal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F37A96531D35580F00367524 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F37A96571D35580F00367524 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -141,9 +144,6 @@
 		F386BF031D4037B7005006BA /* Froguana.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Froguana.swift; sourceTree = "<group>"; };
 		F386BF071D4053D8005006BA /* Spell5.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spell5.sks; sourceTree = "<group>"; };
 		F386BF0B1D40557D005006BA /* MobActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MobActions.sks; sourceTree = "<group>"; };
-		F39394501D428ECD00072CDC /* red.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = red.sks; sourceTree = "<group>"; };
-		F39394521D428EF100072CDC /* blue.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = blue.sks; sourceTree = "<group>"; };
-		F39394541D428F0C00072CDC /* yellow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = yellow.sks; sourceTree = "<group>"; };
 		F39394581D42B81A00072CDC /* cursor.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = cursor.sks; sourceTree = "<group>"; };
 		F3945BB41D468D160063FC47 /* MainScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainScene.sks; sourceTree = "<group>"; };
 		F3945BB81D46AA660063FC47 /* EntityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
@@ -300,16 +300,6 @@
 			name = Eye;
 			sourceTree = "<group>";
 		};
-		F35816021D4A7F96007888C3 /* Temp */ = {
-			isa = PBXGroup;
-			children = (
-				F39394501D428ECD00072CDC /* red.sks */,
-				F39394521D428EF100072CDC /* blue.sks */,
-				F39394541D428F0C00072CDC /* yellow.sks */,
-			);
-			name = Temp;
-			sourceTree = "<group>";
-		};
 		F35816031D4A7FBF007888C3 /* Sprout */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +315,15 @@
 				F386BEF31D3FF9C8005006BA /* BlueFroguana.sks */,
 			);
 			name = Frog;
+			sourceTree = "<group>";
+		};
+		F35816091D4BEF70007888C3 /* Spider */ = {
+			isa = PBXGroup;
+			children = (
+				F358160A1D4BEF89007888C3 /* YellowSpider.sks */,
+				F358160C1D4BF05F007888C3 /* BlueSpider.sks */,
+			);
+			name = Spider;
 			sourceTree = "<group>";
 		};
 		F37A96471D35580F00367524 = {
@@ -409,8 +408,8 @@
 				F35815FB1D4A7DC6007888C3 /* Flower */,
 				F35816001D4A7F76007888C3 /* Mushroom */,
 				F35816011D4A7F8E007888C3 /* Eye */,
-				F35816021D4A7F96007888C3 /* Temp */,
 				F35816061D4A8031007888C3 /* Frog */,
+				F35816091D4BEF70007888C3 /* Spider */,
 				F39394581D42B81A00072CDC /* cursor.sks */,
 				F35816071D4A8051007888C3 /* Tree.sks */,
 			);
@@ -426,6 +425,7 @@
 				F386BF011D403789005006BA /* Mushroom.swift */,
 				F386BF031D4037B7005006BA /* Froguana.swift */,
 				F32E66831D49467800FD1BBE /* Eye.swift */,
+				F35816101D4BF503007888C3 /* Spider.swift */,
 			);
 			name = swift;
 			sourceTree = "<group>";
@@ -536,8 +536,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F34B378A1D355AE400E50116 /* GameScene.sks in Resources */,
-				F39394551D428F0C00072CDC /* yellow.sks in Resources */,
-				F39394511D428ECD00072CDC /* red.sks in Resources */,
 				F386BEFE1D401DF4005006BA /* Spell4.sks in Resources */,
 				F35815FA1D4A7D7D007888C3 /* YellowFlower.sks in Resources */,
 				F31920C11D3F27AD006448C2 /* RedFlower.sks in Resources */,
@@ -549,8 +547,10 @@
 				F386BEEE1D3FDDE0005006BA /* Spell2.sks in Resources */,
 				F386BF0C1D40557D005006BA /* MobActions.sks in Resources */,
 				F37A965F1D35580F00367524 /* Assets.xcassets in Resources */,
+				F358160D1D4BF05F007888C3 /* BlueSpider.sks in Resources */,
 				F386BEF41D3FF9C8005006BA /* BlueFroguana.sks in Resources */,
 				F386BF081D4053D8005006BA /* Spell5.sks in Resources */,
+				F358160B1D4BEF89007888C3 /* YellowSpider.sks in Resources */,
 				F39394591D42B81A00072CDC /* cursor.sks in Resources */,
 				F3945BB51D468D160063FC47 /* MainScene.sks in Resources */,
 				F386BEEA1D3FDB0D005006BA /* SpellActions.sks in Resources */,
@@ -558,7 +558,6 @@
 				F35815FF1D4A7EAF007888C3 /* BlueMushroom.sks in Resources */,
 				F35815FD1D4A7DF6007888C3 /* YellowEye.sks in Resources */,
 				F386BEF81D3FFA11005006BA /* RedMushroom.sks in Resources */,
-				F39394531D428EF100072CDC /* blue.sks in Resources */,
 				F386BEEC1D3FDB6E005006BA /* Spell1.sks in Resources */,
 				F35816051D4A7FC9007888C3 /* BlueSprout.sks in Resources */,
 				F37A965D1D35580F00367524 /* Main.storyboard in Resources */,
@@ -606,6 +605,7 @@
 				F31920C31D3F2801006448C2 /* MSReferenceNode.swift in Sources */,
 				F386BEFA1D4017A9005006BA /* Flower.swift in Sources */,
 				F32E66841D49467800FD1BBE /* Eye.swift in Sources */,
+				F35816111D4BF503007888C3 /* Spider.swift in Sources */,
 				F37A965A1D35580F00367524 /* GameViewController.swift in Sources */,
 				F3945BBB1D46D1B20063FC47 /* MainScene.swift in Sources */,
 				F34B37B01D380BD000E50116 /* InfinityGestureRecognizer.swift in Sources */,

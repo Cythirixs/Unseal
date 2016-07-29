@@ -33,6 +33,9 @@ class EntityManager {
     let blueEyeReference = NSBundle.mainBundle().pathForResource( "BlueEye", ofType: "sks")
     let yellowEyeReference = NSBundle.mainBundle().pathForResource( "YellowEye" , ofType: "sks")
     
+    let blueSpiderReference = NSBundle.mainBundle().pathForResource("BlueSpider", ofType: "sks")
+    let yellowSpiderReference = NSBundle.mainBundle().pathForResource("YellowSpider", ofType: "sks")
+    
     let treeReference = NSBundle.mainBundle().pathForResource("Tree", ofType: "sks")
     
     //Sprout
@@ -114,6 +117,25 @@ class EntityManager {
         eye.xScale = 0.2
         eye.yScale = 0.2
         return(eye, Eye(health: 1, type: 3 ))
+    }
+    
+    //Spider
+    func spawnBlueSpider() -> (SKReferenceNode, Monster){
+        let Spider = SKReferenceNode(URL: NSURL (fileURLWithPath: blueSpiderReference!))
+        Spider.position.x = 150
+        Spider.position.y = 510
+        Spider.xScale = 0.3
+        Spider.yScale = 0.3
+        return(Spider, Eye(health: 1, type: 2 ))
+    }
+    
+    func spawnYellowSpider() -> (SKReferenceNode, Monster){
+        let Spider = SKReferenceNode(URL: NSURL (fileURLWithPath: yellowEyeReference!))
+        Spider.position.x = 150
+        Spider.position.y = 510
+        Spider.xScale = 0.3
+        Spider.yScale = 0.3
+        return(Spider, Eye(health: 1, type: 3 ))
     }
     
     //tree
