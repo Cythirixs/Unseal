@@ -131,19 +131,12 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
                 scene.hideImage("\(c.currentShape)")
                 handler.randomize()
                 scene.showImage("\(c.currentShape)")
-                if scene.remainingGestures <= 0{
-                    goToNextTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "resetGesture:",       userInfo: nil, repeats:  false)
-                }
                 
             }
         }
     }
     func timerFired(timer: NSTimer) {
         drawView.clear()
-    }
-
-    func resetGesture(timer: NSTimer){
-        scene.resetGestures()
     }
 
     

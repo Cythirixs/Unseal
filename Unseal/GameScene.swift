@@ -15,7 +15,6 @@ class GameScene: SKScene {
     
     //labels
     var score : SKLabelNode!
-    var gesture : SKLabelNode!
     var health : SKLabelNode!
     
     //current score
@@ -41,17 +40,19 @@ class GameScene: SKScene {
     
     var spellNum = 2
     
-    //remaing gesture to draw until cast
-    var remainingGestures = 1
-    
     //damage of spell
     var damage : Int = 1
     
     //mobs
     let entity = EntityManager()
-    
     var monsters = [Monster]()
+    
+    var redMonsters = [Monster]()
+    var blueMonsters = [Monster]()
+    var yellowMonsters = [Monster]()
+    
     var entities = [SKReferenceNode]()
+    
     
     //player hp
     var playerHealth : Int = 3
@@ -82,7 +83,6 @@ class GameScene: SKScene {
         
         /* Setup your scene here */
         score = childNodeWithName("score") as! SKLabelNode
-        gesture = childNodeWithName("gesture") as! SKLabelNode
         health = childNodeWithName("health") as! SKLabelNode
         
         //spells
@@ -106,20 +106,6 @@ class GameScene: SKScene {
                 self.damage = 1
             }
             
-        }
-        
-        spell4 = childNodeWithName("spell4") as! MSButtonNode
-        spell4.selectedHandler = {
-            if self.buttonPressed(4){
-                self.damage = 7
-            }
-        }
-        
-        spell5 = childNodeWithName("spell5") as! MSButtonNode
-        spell5.selectedHandler = {
-            if self.buttonPressed(5){
-                self.damage = 9
-            }
         }
         
         restart = childNodeWithName("restart") as! MSButtonNode
@@ -147,7 +133,6 @@ class GameScene: SKScene {
             self.menu.position.y += 350
         }
         
-        //randomizeSpawn()
         beginning()
         
     }
@@ -196,8 +181,6 @@ class GameScene: SKScene {
     
     //tab up
     func buttonDown(){
-//        let button = self.childNodeWithName("spell\(self.spellNum)")?.position
-//        self.childNodeWithName("spell\(self.spellNum)")?.position.y = button!.y - 8
         self.childNodeWithName("spell\(self.spellNum)_on")?.zPosition = -2
         self.childNodeWithName("spell\(self.spellNum)_off")?.zPosition = 2
 
@@ -205,8 +188,6 @@ class GameScene: SKScene {
     
     //tabs down
     func buttonUp(){
-//        let button = self.childNodeWithName("spell\(self.spellNum)")?.position
-//        self.childNodeWithName("spell\(self.spellNum)")?.position.y = button!.y + 8
         self.childNodeWithName("spell\(self.spellNum)_on")?.zPosition = 2
         self.childNodeWithName("spell\(self.spellNum)_off")?.zPosition = -2
 
@@ -216,8 +197,6 @@ class GameScene: SKScene {
         if spellNum == spell {return false}
         buttonDown()
         spellNum = spell
-        remainingGestures = 1
-        gesture.text = "\(self.remainingGestures)"
         buttonUp()
         return true
     }
@@ -225,29 +204,21 @@ class GameScene: SKScene {
     
     //reduce remaining gestures, if 0 gestures cast a spell and deal damage
     func decrementGesture(){
-        remainingGestures -= 1
-        if remainingGestures <= 0{
-            if monsters.count > 0 && entities.count > 0{
-                spell()
-                dealDamage()
-            }
+        if monsters.count > 0 && entities.count > 0{
+            dealDamage()
         }
-        if remainingGestures < 0 { remainingGestures = 0}
-        gesture.text = "\(remainingGestures)"
     }
     
     //displays a spell
-    func spell(){
+    func spell(entity : Monster){
         let spellReference = NSBundle.mainBundle().pathForResource( "Spell\(spellNum)", ofType: "sks")
         let spell = SKReferenceNode(URL: NSURL (fileURLWithPath: spellReference!))
         
-        let entity = entities[0]
-        
-        spell.position = CGPoint(x: entity.position.x - 35, y: entity.position.y - 35 )
+        spell.position = CGPoint(x: entity.x - 35, y: entity.y - 35 )
         spell.zPosition = 32
         
-        spell.xScale = entity.xScale
-        spell.yScale = entity.yScale
+        spell.xScale = entity.scale
+        spell.yScale = entity.scale
         addChild(spell)
         let action = SKAction(named: "Spell\(spellNum)")
         spell.runAction(action!){
@@ -259,50 +230,82 @@ class GameScene: SKScene {
         playerHealth -= 1
         health.text = "\(playerHealth)"
     }
-    func removeAtIndexZero(){
-        entities[0].runAction(disappear){
-            self.entities[0].removeFromParent()
-        }
-  //      entities.removeAtIndex(0)
-   //     monsters.removeAtIndex(0)
-    }
+
     
     //deals damage to the monsters
     func dealDamage(){
         if tutorial && firstStroke && spellNum == 1{
-            removeAtIndexZero()
+            spell(monsters[0])
+            removeAtZero()
+            redMonsters.removeAtIndex(0)
             secondStoke = true
+            return
         }
         else if tutorial {
-            removeAtIndexZero()
+            spell(monsters[0])
+            removeAtZero()
             firstStroke = true
-            
+            blueMonsters.removeAtIndex(0)
+            return
         }
-        if spellNum == 5{
-            for mob in monsters{
-                mob.decrementHealth(damage)
-            }
+
+//        let mob = monsters[0]   
+//        if spellNum == mob.type{
+//            
+//            mob.decrementHealth(damage)
+//        
+//        }
+        var initialized = true
+        var array = [Monster]()
+        if redMonsters.count > 0 && spellNum == 1{
+            array = redMonsters
         }
-        let mob = monsters[0]
-        if spellNum == mob.type{
-            mob.decrementHealth(damage)
-            if !monsters[0].isAlive(){
-                let entity = entities[0]
-                entities.removeAtIndex(0)
-                monsters.removeAtIndex(0)
-                entity.runAction(disappear){
-                    entity.removeFromParent()
+        else if blueMonsters.count > 0 && spellNum == 2{
+            array = blueMonsters
+        }
+        else if yellowMonsters.count > 0 && spellNum == 3{
+            array = yellowMonsters
+        }
+        else{
+            initialized = false
+        }
+        if initialized{
+            var count = 0
+            var index = 0
+            var smallest : CGFloat = 769
+            var monster = Monster()
+            for mob in array{
+                if mob.y < smallest {
+                    smallest = mob.y
+                    monster = mob
+                    index = count
                 }
-                incramentScore()
+                count += 1
+            }
+            monster.decrementHealth(1)
+            spell(monster)
+            if !monster.isAlive(){
+                
+                if spellNum == 1{
+                    redMonsters.removeAtIndex(index)
+                }
+                else if spellNum == 2{
+                    blueMonsters.removeAtIndex(index)
+                }
+                else {
+                    yellowMonsters.removeAtIndex(index)
+                }
+                
             }
         }
     }
     
-    //resets the gesture count
-    func resetGestures(){
-        remainingGestures = 1
-        gesture.text = "\(remainingGestures)"
+    func removeAtZero(){
+        entities[0].removeFromParent()
+        monsters.removeAtIndex(0)
+        entities.removeAtIndex(0)
     }
+
     
     //increase score by one
     func incramentScore(){
@@ -322,57 +325,98 @@ class GameScene: SKScene {
     
     //spawning functions
     
-    func spawnBlue(){
-        let blue = entity.spawnBlue()
-        entities.append(blue.0)
-        monsters.append(blue.1)
-        blue.0.zPosition = CGFloat(30 - entities.count)
-        addChild(blue.0)
-    }
-    
-    func spawnRed(){
-        let red = entity.spawnRed()
-        entities.append(red.0)
-        monsters.append(red.1)
-        red.0.zPosition = CGFloat(30 - entities.count)
-        addChild(red.0)
-    }
-    
-    func spawnYellow(){
-        let yellow = entity.spawnYellow()
-        entities.append(yellow.0)
-        monsters.append(yellow.1)
-        yellow.0.zPosition = CGFloat(30 - entities.count)
-        addChild(yellow.0)
-    }
-    
     func spawnSprout(){
-        let sprout = entity.spawnSprout()
+        let sprout : (SKReferenceNode, Monster)
+        
+        let random = arc4random_uniform(2)
+        if random == 0{
+            sprout = entity.spawnRedSprout()
+        }
+        else{
+            sprout = entity.spawnBlueSprout()
+        }
         entities.append(sprout.0)
         monsters.append(sprout.1)
+        addToArray(sprout.1)
+        
         sprout.0.zPosition = CGFloat(30 - entities.count)
         addChild(sprout.0)
     }
     func spawnFlower(){
-        let flower = entity.spawnFlower()
+        let flower : (SKReferenceNode, Monster)
+        
+        if tutorial {
+            flower = entity.spawnRedFlower()
+        }
+        else{
+            let random = arc4random_uniform(3)
+            if random == 0{
+                flower = entity.spawnRedFlower()
+            }
+            else if random == 1 {
+                flower = entity.spawnBlueFlower()
+            }
+            else{
+                flower = entity.spawnYellowFlower()
+            }
+        }
+        
         entities.append(flower.0)
         monsters.append(flower.1)
+        addToArray(flower.1)
+        
         flower.0.zPosition = CGFloat(30 - entities.count)
         addChild(flower.0)
     }
     func spawnMushroom(){
-        let mushroom = entity.spawnMushroom()
+        let mushroom : (SKReferenceNode, Monster)
+        let random = arc4random_uniform(2)
+        if random == 0 {
+            mushroom = entity.spawnRedMushroom()
+        }
+        else {
+            mushroom = entity.spawnBlueMushroom()
+        }
+        
         entities.append(mushroom.0)
         monsters.append(mushroom.1)
+        addToArray(mushroom.1)
+        
         mushroom.0.zPosition = CGFloat(30 - entities.count)
         addChild(mushroom.0)
     }
     func spawnEye(){
-        let eye = entity.spawnEye()
+        let eye : (SKReferenceNode, Monster)
+        if tutorial {
+            eye = entity.spawnBlueEye()
+        }
+        else{
+            let random = arc4random_uniform(2)
+            if random == 0{
+                eye = entity.spawnBlueEye()
+            }
+            else {
+                eye = entity.spawnYellowEye()
+            }
+        }
         entities.append(eye.0)
         monsters.append(eye.1)
+        addToArray(eye.1)
+
         eye.0.zPosition = CGFloat(30 - entities.count)
         addChild(eye.0)
+    }
+    
+    func addToArray(entity : Monster){
+        if entity.type == 1{
+            redMonsters.append(entity)
+        }
+        else if entity.type == 2 {
+            blueMonsters.append(entity)
+        }
+        else{
+            yellowMonsters.append(entity)
+        }
     }
     
     func randomizeSpawn(){
@@ -392,21 +436,22 @@ class GameScene: SKScene {
         var count = 0
         if monsters.count > 0{
             for entity in entities{
+                
+                if !monsters[count].isAlive() {
+                    
+                    entities.removeAtIndex(count)
+                    monsters.removeAtIndex(count)
+                        
+                    entity.runAction(disappear){
+                        entity.removeFromParent()
+                    }
+                    incramentScore()
+                    continue
+                }
             
-                //if monster health 0 remove from lists and incrament score
-//                if !monsters[count].isAlive(){
-//                    entities.removeAtIndex(count)
-//                    monsters.removeAtIndex(count)
-//                    entity.runAction(disappear){
-//                        entity.removeFromParent()
-//                    }
-//                    incramentScore()
-//                    continue
-//                }
-            
-                // some bs limits
-                if entity.position.y > 40{
+                if entity.position.y > 100{
                     entity.position.y -= monsters[count].vy
+                    monsters[count].imcramentY()
                 }
                 else{
                     monsters[count].tickAttack(fixedDelta)
@@ -422,10 +467,12 @@ class GameScene: SKScene {
             
                 if entity.position.x > 40 {
                     entity.position.x -= monsters[count].vx
+                    monsters[count].incramentX()
                 }
                 if entity.xScale < 1{
-                    entity.xScale += monsters[count].scale
-                    entity.yScale += monsters[count].scale
+                    entity.xScale += monsters[count].vScale
+                    entity.yScale += monsters[count].vScale
+                    monsters[count].incramentScale()
                 }
                 count += 1
             }
