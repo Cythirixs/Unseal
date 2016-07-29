@@ -144,7 +144,6 @@ class GameScene: SKScene {
         restart.selectedHandler = {
             self.doRestart = true
         }
-        
         beginning()
         
     }
@@ -448,6 +447,17 @@ class GameScene: SKScene {
         spider.0.zPosition = CGFloat(30 - entities.count)
         addChild(spider.0)
     }
+    
+    func spawnFrog(){
+        let frog = entity.spawnBlueFrog()
+        
+        entities.append(frog.0)
+        monsters.append(frog.1)
+        addToArray(frog.1)
+        
+        frog.0.zPosition = CGFloat(30 - entities.count)
+        addChild(frog.0)
+    }
 
     
     func addToArray(entity : Monster){
@@ -466,9 +476,9 @@ class GameScene: SKScene {
         let random = arc4random_uniform(100)
         if random < 20 { spawnSprout() }
         else if random < 40 { spawnFlower() }
-        else if random < 60 { spawnMushroom() }
-        else if random < 80 { spawnEye() }
-        else { spawnSpider() }
+        else if random < 60 { spawnEye() }
+        else if random < 80{ spawnSpider() }
+        else if random < 100 { spawnMushroom() }
     }
     
     override func update(currentTime: CFTimeInterval) {
@@ -530,7 +540,7 @@ class GameScene: SKScene {
         var timer = CFTimeInterval( 4 - difficult )
         
         if difficult > 3 {
-            timer = 1
+            timer = 1.5
         }
        
         

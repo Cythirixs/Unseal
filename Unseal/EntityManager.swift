@@ -36,6 +36,8 @@ class EntityManager {
     let blueSpiderReference = NSBundle.mainBundle().pathForResource("BlueSpider", ofType: "sks")
     let yellowSpiderReference = NSBundle.mainBundle().pathForResource("YellowSpider", ofType: "sks")
     
+    let blueFrogReference = NSBundle.mainBundle().pathForResource("BlueFroguana", ofType: "sks")
+    
     let treeReference = NSBundle.mainBundle().pathForResource("Tree", ofType: "sks")
     
     //Sprout
@@ -121,21 +123,32 @@ class EntityManager {
     
     //Spider
     func spawnBlueSpider() -> (SKReferenceNode, Monster){
-        let Spider = SKReferenceNode(URL: NSURL (fileURLWithPath: blueSpiderReference!))
-        Spider.position.x = 150
-        Spider.position.y = 510
-        Spider.xScale = 0.3
-        Spider.yScale = 0.3
-        return(Spider, Eye(health: 1, type: 2 ))
+        let spider = SKReferenceNode(URL: NSURL (fileURLWithPath: blueSpiderReference!))
+        spider.position.x = 150
+        spider.position.y = 510
+        spider.xScale = 0.3
+        spider.yScale = 0.3
+        return(spider, Eye(health: 1, type: 2 ))
     }
     
     func spawnYellowSpider() -> (SKReferenceNode, Monster){
-        let Spider = SKReferenceNode(URL: NSURL (fileURLWithPath: yellowEyeReference!))
-        Spider.position.x = 150
-        Spider.position.y = 510
-        Spider.xScale = 0.3
-        Spider.yScale = 0.3
-        return(Spider, Eye(health: 1, type: 3 ))
+        let spider = SKReferenceNode(URL: NSURL (fileURLWithPath: yellowEyeReference!))
+        spider.position.x = 150
+        spider.position.y = 510
+        spider.xScale = 0.3
+        spider.yScale = 0.3
+        return(spider, Eye(health: 1, type: 3 ))
+    }
+    
+    //Frog
+    
+    func spawnBlueFrog() -> (SKReferenceNode, Monster){
+        let froguana = SKReferenceNode(URL: NSURL (fileURLWithPath: blueFrogReference!))
+        froguana.position.x = 120
+        froguana.position.y = 510
+        froguana.xScale = 0.2
+        froguana.yScale = 0.2
+        return(froguana, Froguana(health: 3, type: 2 ))
     }
     
     //tree
