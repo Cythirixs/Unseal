@@ -9,7 +9,8 @@ import UIKit
 import SpriteKit
 
 class GameViewController: UIViewController, UIGestureRecognizerDelegate {
-    
+
+
     var handler : DrawingHandler!
     var drawView : DrawView!
     

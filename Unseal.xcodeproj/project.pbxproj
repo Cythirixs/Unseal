@@ -351,9 +351,9 @@
 			children = (
 				F37A96531D35580F00367524 /* AppDelegate.swift */,
 				F3945BBE1D47DDBE0063FC47 /* MainViewController.swift */,
-				F37A96591D35580F00367524 /* GameViewController.swift */,
 				F3945BB41D468D160063FC47 /* MainScene.sks */,
 				F3945BBA1D46D1B20063FC47 /* MainScene.swift */,
+				F37A96591D35580F00367524 /* GameViewController.swift */,
 				F34B37891D355AE400E50116 /* GameScene.sks */,
 				F37A96571D35580F00367524 /* GameScene.swift */,
 				F3945BB81D46AA660063FC47 /* EntityManager.swift */,

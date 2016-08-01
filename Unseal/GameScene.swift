@@ -555,7 +555,7 @@ class GameScene: SKScene {
        
         
         if spawnTimer >= timer{
-            spawnMushroom()
+            randomizeSpawn()
             spawnTimer = 0
         }
     }
