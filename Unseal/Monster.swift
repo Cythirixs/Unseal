@@ -29,6 +29,12 @@ class Monster{
     
     var type = -1
     
+    var pauseAt : Double = -1
+    var pauseAmmount : Double = -1
+    var pauseTimer : CFTimeInterval = 0
+    
+    var pause  = false
+    
     //init a monster
     init(health : Int , vy : CGFloat, vx: CGFloat, scale : CGFloat, type : Int){
         self.health = health
@@ -46,12 +52,17 @@ class Monster{
         
     }
     
+    func pause(p1 : Double, p2 : Double){
+        pauseAt = p1
+        pauseAmmount = p2
+    }
+    
     //decrease health by damage
     func decrementHealth(damange : Int){
         health -= damange
     }
     
-    func incramentX(){
+    func incramentX(){        
         x -= vx
     }
     
@@ -61,6 +72,20 @@ class Monster{
     
     func incramentScale(){
         scale += vScale
+    }
+    
+    func tickPause(tick : CFTimeInterval){
+        pauseTimer += tick
+        
+        if tick >= pauseAt{
+            pause = true
+            pauseTimer = 0
+        }
+        else if tick >= pauseAmmount && pause{
+            pause = false
+            pauseTimer = 0
+        }
+        
     }
     
     func tickAttack(tick : CFTimeInterval){

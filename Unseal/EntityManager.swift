@@ -94,12 +94,13 @@ class EntityManager {
         mushroom.yScale = 0.2
         return(mushroom, Mushroom(health: 2, type: 1 ))
     }
-    func spawnBlueMushroom() -> (SKReferenceNode, Monster){
+    func spawnBlueMushroom() -> ( SKReferenceNode, Monster){
         let mushroom = SKReferenceNode(URL: NSURL (fileURLWithPath: blueMushroomReference!))
         mushroom.position.x = 150
         mushroom.position.y = 510
         mushroom.xScale = 0.2
         mushroom.yScale = 0.2
+        
         return(mushroom, Mushroom(health: 2, type: 2 ))
     }
     

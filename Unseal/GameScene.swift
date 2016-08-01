@@ -72,7 +72,7 @@ class GameScene: SKScene {
     var spawnTimer : CFTimeInterval = 0
     
     //tutorial vars
-    var tutorial = true
+    var tutorial = false
     
     var spawn = false
     var firstStroke = false
@@ -122,6 +122,7 @@ class GameScene: SKScene {
         pause = childNodeWithName("pause") as! MSButtonNode
         pause.selectedHandler = {
             self.isStopped = true
+            self.fade.zPosition = 34
             self.menu.position.y -= 350
         }
         
@@ -132,6 +133,7 @@ class GameScene: SKScene {
         play = childNodeWithName("//play") as! MSButtonNode
         play.selectedHandler = {
             self.isStopped = false
+            self.fade.zPosition = -2
             self.menu.position.y += 350
         }
         
@@ -151,6 +153,14 @@ class GameScene: SKScene {
     func beginning(){
         let hourglass = childNodeWithName("tutorial") as! SKSpriteNode
         let cursor = childNodeWithName("cursor") as! SKSpriteNode
+        
+        if !tutorial {
+            hourglass.zPosition = -2
+            cursor.zPosition = -2
+            block.zPosition = -2
+            return
+        }
+
         
         if !spawn {
             spawnEye()
@@ -495,41 +505,41 @@ class GameScene: SKScene {
                     
                     entities.removeAtIndex(count)
                     monsters.removeAtIndex(count)
-                        
+                    
                     entity.runAction(disappear){
                         entity.removeFromParent()
                     }
                     incramentScore()
                     continue
                 }
-            
                 if entity.position.y > 100{
-                    entity.position.y -= monsters[count].vy
-                    monsters[count].imcramentY()
-                }
-                else{
-                    monsters[count].tickAttack(fixedDelta)
-                    if monsters[count].attackTimer >= 1.5{
-                        playerDamage()
-                        monsters[count].attackTimer = 0
-                        if playerHealth <= 0{
+                        entity.position.y -= monsters[count].vy
+                        monsters[count].imcramentY()
+                    }
+                    else{
+                        monsters[count].tickAttack(fixedDelta)
+                        if monsters[count].attackTimer >= 1.5{
+                            playerDamage()
+                            monsters[count].attackTimer = 0
+                            if playerHealth <= 0{
                             gameOver = true
                             fade.zPosition = 34
                             over.position.x += 274
-                            endScore.text = "\(currentScore)"
+                                endScore.text = "\(currentScore)"
+                            }
                         }
                     }
-                }
             
-                if entity.position.x > 40 {
-                    entity.position.x -= monsters[count].vx
-                    monsters[count].incramentX()
-                }
-                if entity.xScale < 1{
-                    entity.xScale += monsters[count].vScale
-                    entity.yScale += monsters[count].vScale
-                    monsters[count].incramentScale()
-                }
+                    if entity.position.x > 40 {
+                        entity.position.x -= monsters[count].vx
+                        monsters[count].incramentX()
+                    }
+                        if entity.xScale < 1{
+                            entity.xScale += monsters[count].vScale
+                            entity.yScale += monsters[count].vScale
+                        monsters[count].incramentScale()
+                    }
+                
                 count += 1
             }
         }
@@ -545,7 +555,7 @@ class GameScene: SKScene {
        
         
         if spawnTimer >= timer{
-            randomizeSpawn()
+            spawnMushroom()
             spawnTimer = 0
         }
     }
