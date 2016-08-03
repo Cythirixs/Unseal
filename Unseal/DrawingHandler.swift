@@ -85,7 +85,7 @@ class DrawingHandler: UIGestureRecognizer {
     
     //randomizes next shape
     func randomize(){
-        let n = arc4random_uniform(9)
+        let n = arc4random_uniform(7)
         if n == 0{
             currentShape = .circle
         }
@@ -104,14 +104,8 @@ class DrawingHandler: UIGestureRecognizer {
         else if n == 5{
             currentShape = .down
         }
-        else if n == 6{
-            currentShape = .leaf
-        }
-        else if n == 7{
-            currentShape = .lightning
-        }
         else{
-            currentShape = .infinity
+            currentShape = .lightning
         }
         
     }

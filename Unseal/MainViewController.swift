@@ -42,12 +42,13 @@ class MainViewController: UIViewController {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "changeView:", userInfo: nil, repeats: false)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: "changeView:", userInfo: nil, repeats: false)
     }
     
     func changeView(timer : NSTimer){
         if main.gameStart{
             let view = self.storyboard!.instantiateViewControllerWithIdentifier("GameViewController")
+            view.modalTransitionStyle = .CrossDissolve
             self.showViewController(view as UIViewController, sender: view)
         }
     }

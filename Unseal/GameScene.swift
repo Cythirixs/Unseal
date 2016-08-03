@@ -72,7 +72,7 @@ class GameScene: SKScene {
     var spawnTimer : CFTimeInterval = 0
     
     //tutorial vars
-    var tutorial = false
+    var tutorial = true
     
     var spawn = false
     var firstStroke = false
@@ -123,6 +123,7 @@ class GameScene: SKScene {
         pause.selectedHandler = {
             self.isStopped = true
             self.fade.zPosition = 34
+            self.fade.runAction(SKAction.fadeAlphaTo(0.58, duration: 0.4))
             self.menu.position.y -= 350
         }
         
@@ -158,6 +159,7 @@ class GameScene: SKScene {
             hourglass.zPosition = -2
             cursor.zPosition = -2
             block.zPosition = -2
+            randomizeSpawn()
             return
         }
 
@@ -179,7 +181,7 @@ class GameScene: SKScene {
         
         if !firstStroke {
             if !cursor.hasActions(){
-                cursor.position = CGPoint(x: 162, y: 320)
+                cursor.position = CGPoint(x: 176, y: 320)
                 cursor.runAction(SKAction(named: "FingerTrace")!)
             }
         }
@@ -206,9 +208,14 @@ class GameScene: SKScene {
             cursor.yScale = -0.493
             
             cursor.zPosition = 4
+            
+            if !cursor.hasActions(){
+                cursor.runAction(SKAction(named: "pointAt")!)
+            }
             if secondStoke{
                 tutorial = false
                 cursor.zPosition = -4
+                cursor.removeFromParent()
             }
         }
     }
@@ -524,6 +531,7 @@ class GameScene: SKScene {
                             if playerHealth <= 0{
                             gameOver = true
                             fade.zPosition = 34
+                            fade.runAction(SKAction.fadeAlphaTo(0.58, duration: 0.7))
                             over.position.x += 274
                                 endScore.text = "\(currentScore)"
                             }
@@ -546,7 +554,7 @@ class GameScene: SKScene {
         
         spawnTimer += fixedDelta
         
-        let difficult =  Int( Double(currentScore) / 10 )
+        let difficult = Double(currentScore) / 15
         var timer = CFTimeInterval( 4 - difficult )
         
         if difficult > 3 {

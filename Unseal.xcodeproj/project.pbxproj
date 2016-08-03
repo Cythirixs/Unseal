@@ -26,6 +26,7 @@
 		F34B37B71D3836B800E50116 /* VGestureRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B37B61D3836B800E50116 /* VGestureRecognition.swift */; };
 		F34B37BD1D395DBF00E50116 /* LightningGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B37BC1D395DBF00E50116 /* LightningGestureRecognizer.swift */; };
 		F34B37BF1D39795800E50116 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B37BE1D39795800E50116 /* MSButtonNode.swift */; };
+		F3580B071D510435001CC07D /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3580B061D510435001CC07D /* Tree.swift */; };
 		F35815F81D4A7CD9007888C3 /* BlueFlower.sks in Resources */ = {isa = PBXBuildFile; fileRef = F35815F71D4A7CD9007888C3 /* BlueFlower.sks */; };
 		F35815FA1D4A7D7D007888C3 /* YellowFlower.sks in Resources */ = {isa = PBXBuildFile; fileRef = F35815F91D4A7D7D007888C3 /* YellowFlower.sks */; };
 		F35815FD1D4A7DF6007888C3 /* YellowEye.sks in Resources */ = {isa = PBXBuildFile; fileRef = F35815FC1D4A7DF6007888C3 /* YellowEye.sks */; };
@@ -59,7 +60,7 @@
 		F386BF021D403789005006BA /* Mushroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386BF011D403789005006BA /* Mushroom.swift */; };
 		F386BF041D4037B7005006BA /* Froguana.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386BF031D4037B7005006BA /* Froguana.swift */; };
 		F386BF081D4053D8005006BA /* Spell5.sks in Resources */ = {isa = PBXBuildFile; fileRef = F386BF071D4053D8005006BA /* Spell5.sks */; };
-		F386BF0C1D40557D005006BA /* MobActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F386BF0B1D40557D005006BA /* MobActions.sks */; };
+		F386BF0C1D40557D005006BA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F386BF0B1D40557D005006BA /* Actions.sks */; };
 		F39394591D42B81A00072CDC /* cursor.sks in Resources */ = {isa = PBXBuildFile; fileRef = F39394581D42B81A00072CDC /* cursor.sks */; };
 		F3945BB51D468D160063FC47 /* MainScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3945BB41D468D160063FC47 /* MainScene.sks */; };
 		F3945BB91D46AA660063FC47 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3945BB81D46AA660063FC47 /* EntityManager.swift */; };
@@ -104,6 +105,7 @@
 		F34B37B61D3836B800E50116 /* VGestureRecognition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VGestureRecognition.swift; sourceTree = "<group>"; };
 		F34B37BC1D395DBF00E50116 /* LightningGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightningGestureRecognizer.swift; sourceTree = "<group>"; };
 		F34B37BE1D39795800E50116 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
+		F3580B061D510435001CC07D /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		F35815F71D4A7CD9007888C3 /* BlueFlower.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BlueFlower.sks; sourceTree = "<group>"; };
 		F35815F91D4A7D7D007888C3 /* YellowFlower.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = YellowFlower.sks; sourceTree = "<group>"; };
 		F35815FC1D4A7DF6007888C3 /* YellowEye.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = YellowEye.sks; sourceTree = "<group>"; };
@@ -143,7 +145,7 @@
 		F386BF011D403789005006BA /* Mushroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mushroom.swift; sourceTree = "<group>"; };
 		F386BF031D4037B7005006BA /* Froguana.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Froguana.swift; sourceTree = "<group>"; };
 		F386BF071D4053D8005006BA /* Spell5.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spell5.sks; sourceTree = "<group>"; };
-		F386BF0B1D40557D005006BA /* MobActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MobActions.sks; sourceTree = "<group>"; };
+		F386BF0B1D40557D005006BA /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		F39394581D42B81A00072CDC /* cursor.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = cursor.sks; sourceTree = "<group>"; };
 		F3945BB41D468D160063FC47 /* MainScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainScene.sks; sourceTree = "<group>"; };
 		F3945BB81D46AA660063FC47 /* EntityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
@@ -357,7 +359,7 @@
 				F34B37891D355AE400E50116 /* GameScene.sks */,
 				F37A96571D35580F00367524 /* GameScene.swift */,
 				F3945BB81D46AA660063FC47 /* EntityManager.swift */,
-				F386BEE71D3FDACD005006BA /* Spells */,
+				F386BF0B1D40557D005006BA /* Actions.sks */,
 				F34B37D21D3D9C7700E50116 /* Resources */,
 				F34B37D11D3D9C5E00E50116 /* Entities */,
 				F34B37971D36A7F500E50116 /* Gesture */,
@@ -403,7 +405,7 @@
 		F386BF051D4037CE005006BA /* sks */ = {
 			isa = PBXGroup;
 			children = (
-				F386BF0B1D40557D005006BA /* MobActions.sks */,
+				F386BEE71D3FDACD005006BA /* Spells */,
 				F35816031D4A7FBF007888C3 /* Sprout */,
 				F35815FB1D4A7DC6007888C3 /* Flower */,
 				F35816001D4A7F76007888C3 /* Mushroom */,
@@ -426,6 +428,7 @@
 				F386BF031D4037B7005006BA /* Froguana.swift */,
 				F32E66831D49467800FD1BBE /* Eye.swift */,
 				F35816101D4BF503007888C3 /* Spider.swift */,
+				F3580B061D510435001CC07D /* Tree.swift */,
 			);
 			name = swift;
 			sourceTree = "<group>";
@@ -545,7 +548,7 @@
 				F35816081D4A8051007888C3 /* Tree.sks in Resources */,
 				F37A96621D35580F00367524 /* LaunchScreen.storyboard in Resources */,
 				F386BEEE1D3FDDE0005006BA /* Spell2.sks in Resources */,
-				F386BF0C1D40557D005006BA /* MobActions.sks in Resources */,
+				F386BF0C1D40557D005006BA /* Actions.sks in Resources */,
 				F37A965F1D35580F00367524 /* Assets.xcassets in Resources */,
 				F358160D1D4BF05F007888C3 /* BlueSpider.sks in Resources */,
 				F386BEF41D3FF9C8005006BA /* BlueFroguana.sks in Resources */,
@@ -610,6 +613,7 @@
 				F3945BBB1D46D1B20063FC47 /* MainScene.swift in Sources */,
 				F34B37B01D380BD000E50116 /* InfinityGestureRecognizer.swift in Sources */,
 				F3945BB91D46AA660063FC47 /* EntityManager.swift in Sources */,
+				F3580B071D510435001CC07D /* Tree.swift in Sources */,
 				F37A96541D35580F00367524 /* AppDelegate.swift in Sources */,
 				F386BEFC1D4017DA005006BA /* Monster.swift in Sources */,
 				F34B37B51D38363B00E50116 /* VFit.swift in Sources */,
