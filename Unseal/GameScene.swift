@@ -34,6 +34,7 @@ class GameScene: SKScene {
     
     var reset : MSButtonNode!
     var play : MSButtonNode!
+    var back : MSButtonNode!
     
     //spell buttons w:60 h:24
     var spell1 : MSButtonNode!
@@ -64,12 +65,24 @@ class GameScene: SKScene {
     
     var fade : SKSpriteNode!
     
+    var restarting = false
+    var returnMain = false
+    
     var doRestart = false
+    var mainmenu = false
+    
+    
+    var confirm : SKSpriteNode!
+    var confirmText : SKLabelNode!
+    var yesButton : MSButtonNode!
+    var noButton : MSButtonNode!
     
     //delta
     
     let fixedDelta : CFTimeInterval = 1.0/60.0
     var spawnTimer : CFTimeInterval = 0
+    
+    var attackAni : SKSpriteNode!
     
     //tutorial vars
     var tutorial = true
@@ -129,7 +142,9 @@ class GameScene: SKScene {
         
         reset = childNodeWithName("//reset") as! MSButtonNode
         reset.selectedHandler = {
-            self.doRestart = true
+            self.restarting = true
+            self.confirm.position.x -= 256
+            self.confirmText.text = "Restart?"
         }
         play = childNodeWithName("//play") as! MSButtonNode
         play.selectedHandler = {
@@ -137,12 +152,35 @@ class GameScene: SKScene {
             self.fade.zPosition = -2
             self.menu.position.y += 350
         }
+        back = childNodeWithName("//back") as! MSButtonNode
+        back.selectedHandler = {
+            self.returnMain = true
+            self.confirm.position.x -= 256
+            self.confirmText.text = "Main Menu?"
+        }
+        
+        confirmText = childNodeWithName("//confirmText") as! SKLabelNode
+        confirm = childNodeWithName("confirm") as! SKSpriteNode
+        
+        yesButton = childNodeWithName("//yes") as! MSButtonNode
+        yesButton.selectedHandler = {
+            if self.restarting { self.doRestart = true}
+            else if self.returnMain { self.mainmenu = true }
+        }
+        noButton = childNodeWithName("//no") as! MSButtonNode
+        noButton.selectedHandler = {
+            if self.restarting { self.restarting = false}
+            else if self.returnMain { self.returnMain = false }
+            self.confirm.position.x += 256
+        }
         
         over = childNodeWithName("GameOver") as! SKSpriteNode
         
         endScore = childNodeWithName("//EndScore") as! SKLabelNode
         
         restart = childNodeWithName("//restart") as! MSButtonNode
+        
+        attackAni = childNodeWithName("attackAni") as! SKSpriteNode
         
         restart.selectedHandler = {
             self.doRestart = true
@@ -528,6 +566,7 @@ class GameScene: SKScene {
                         if monsters[count].attackTimer >= 1.5{
                             playerDamage()
                             monsters[count].attackTimer = 0
+                            attackAni.runAction(SKAction(named: "AttackAni")!)
                             if playerHealth <= 0{
                             gameOver = true
                             fade.zPosition = 34

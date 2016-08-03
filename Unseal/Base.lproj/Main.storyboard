@@ -26,7 +26,7 @@
         <!--Main View Controller-->
         <scene sceneID="JN6-Gp-0PM">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" id="3ED-y4-7xp" customClass="MainViewController" customModule="Unseal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" modalTransitionStyle="crossDissolve" id="3ED-y4-7xp" customClass="MainViewController" customModule="Unseal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5jl-jR-V1C"/>
                         <viewControllerLayoutGuide type="bottom" id="laM-ur-6EN"/>

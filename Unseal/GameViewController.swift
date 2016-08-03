@@ -64,7 +64,8 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         else if pos.x >= 280 && pos.y <= 60 && !scene.tutorial{return false}
         else if scene.isStopped{
-             goToNextTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "reset:", userInfo: nil, repeats:  false)
+            goToNextTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "reset:", userInfo: nil, repeats:  false)
+            goToNextTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "main:", userInfo: nil, repeats:  false)
             scene.tutorial = false
             return false
         }
@@ -87,6 +88,13 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         drawView.clear()
         
         skView.presentScene(scene)
+    }
+    func main(timer : NSTimer){
+        if scene.mainmenu{
+            let view = self.storyboard!.instantiateViewControllerWithIdentifier("MainViewController")
+            view.modalTransitionStyle = .CrossDissolve
+            self.showViewController(view as UIViewController, sender: view)
+        }
     }
 
     override func shouldAutorotate() -> Bool {

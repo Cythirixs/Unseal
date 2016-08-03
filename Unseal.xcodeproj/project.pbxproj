@@ -27,6 +27,7 @@
 		F34B37BD1D395DBF00E50116 /* LightningGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B37BC1D395DBF00E50116 /* LightningGestureRecognizer.swift */; };
 		F34B37BF1D39795800E50116 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B37BE1D39795800E50116 /* MSButtonNode.swift */; };
 		F3580B071D510435001CC07D /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3580B061D510435001CC07D /* Tree.swift */; };
+		F3580B091D52B695001CC07D /* AttackAni.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3580B081D52B695001CC07D /* AttackAni.sks */; };
 		F35815F81D4A7CD9007888C3 /* BlueFlower.sks in Resources */ = {isa = PBXBuildFile; fileRef = F35815F71D4A7CD9007888C3 /* BlueFlower.sks */; };
 		F35815FA1D4A7D7D007888C3 /* YellowFlower.sks in Resources */ = {isa = PBXBuildFile; fileRef = F35815F91D4A7D7D007888C3 /* YellowFlower.sks */; };
 		F35815FD1D4A7DF6007888C3 /* YellowEye.sks in Resources */ = {isa = PBXBuildFile; fileRef = F35815FC1D4A7DF6007888C3 /* YellowEye.sks */; };
@@ -106,6 +107,7 @@
 		F34B37BC1D395DBF00E50116 /* LightningGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightningGestureRecognizer.swift; sourceTree = "<group>"; };
 		F34B37BE1D39795800E50116 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
 		F3580B061D510435001CC07D /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
+		F3580B081D52B695001CC07D /* AttackAni.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AttackAni.sks; sourceTree = "<group>"; };
 		F35815F71D4A7CD9007888C3 /* BlueFlower.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BlueFlower.sks; sourceTree = "<group>"; };
 		F35815F91D4A7D7D007888C3 /* YellowFlower.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = YellowFlower.sks; sourceTree = "<group>"; };
 		F35815FC1D4A7DF6007888C3 /* YellowEye.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = YellowEye.sks; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 				F35816091D4BEF70007888C3 /* Spider */,
 				F39394581D42B81A00072CDC /* cursor.sks */,
 				F35816071D4A8051007888C3 /* Tree.sks */,
+				F3580B081D52B695001CC07D /* AttackAni.sks */,
 			);
 			name = sks;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				F32E66821D4923F800FD1BBE /* BlueEye.sks in Resources */,
 				F35815F81D4A7CD9007888C3 /* BlueFlower.sks in Resources */,
 				F386BEF21D3FF99F005006BA /* RedSprout.sks in Resources */,
+				F3580B091D52B695001CC07D /* AttackAni.sks in Resources */,
 				F35816081D4A8051007888C3 /* Tree.sks in Resources */,
 				F37A96621D35580F00367524 /* LaunchScreen.storyboard in Resources */,
 				F386BEEE1D3FDDE0005006BA /* Spell2.sks in Resources */,
