@@ -136,7 +136,6 @@ class GameScene: SKScene {
         pause.selectedHandler = {
             self.isStopped = true
             self.fade.zPosition = 34
-            self.fade.runAction(SKAction.fadeAlphaTo(0.58, duration: 0.4))
             self.menu.position.y -= 350
         }
         
@@ -180,7 +179,7 @@ class GameScene: SKScene {
         
         restart = childNodeWithName("//restart") as! MSButtonNode
         
-        attackAni = childNodeWithName("attackAni") as! SKSpriteNode
+        attackAni = childNodeWithName("AttackAni") as! SKSpriteNode
         
         restart.selectedHandler = {
             self.doRestart = true

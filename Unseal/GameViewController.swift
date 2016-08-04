@@ -55,6 +55,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         let pos = touch.locationInView(drawView)
+        
         if scene.gameOver {            
 //            if pos.x >= 78 && pos.x <= 248 && pos.y >= 261 && pos.y <= 308 {
 //                reset()
@@ -62,7 +63,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
              goToNextTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "reset:", userInfo: nil, repeats: false)
             return false
         }
-        else if pos.x >= 280 && pos.y <= 60 && !scene.tutorial{return false}
+        else if pos.x >= 272 && pos.y <= 53 && !scene.tutorial{return false}
         else if scene.isStopped{
             goToNextTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "reset:", userInfo: nil, repeats:  false)
             goToNextTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "main:", userInfo: nil, repeats:  false)
