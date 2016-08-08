@@ -17,6 +17,7 @@ class GameScene: SKScene {
     var score : SKLabelNode!
     var health : SKLabelNode!
     var endScore : SKLabelNode!
+    var high : SKLabelNode!
     
     //current score
     var currentScore = 0
@@ -61,6 +62,12 @@ class GameScene: SKScene {
     
     //player hp
     var playerHealth : Int = 3
+    
+    var healthBar0 : SKSpriteNode!
+    var healthBar1 : SKSpriteNode!
+    var healthBar2 : SKSpriteNode!
+    var healthBar3 : SKSpriteNode!
+    
     var gameOver = false
     
     var fade : SKSpriteNode!
@@ -84,8 +91,12 @@ class GameScene: SKScene {
     
     var attackAni : SKSpriteNode!
     
+    var highScore = NSUserDefaults.standardUserDefaults().integerForKey("HighScore")
+    var best : SKLabelNode!
+    
     //tutorial vars
     var tutorial = true
+
     
     var spawn = false
     var firstStroke = false
@@ -174,9 +185,18 @@ class GameScene: SKScene {
             self.confirm.position.x += 256
         }
         
+        healthBar0 = childNodeWithName("healthBar0") as! SKSpriteNode
+        healthBar1 = childNodeWithName("healthBar1") as! SKSpriteNode
+        healthBar2 = childNodeWithName("healthBar2") as! SKSpriteNode
+        healthBar3 = childNodeWithName("healthBar3") as! SKSpriteNode
+
+        
         over = childNodeWithName("GameOver") as! SKSpriteNode
         
         endScore = childNodeWithName("//EndScore") as! SKLabelNode
+        best = childNodeWithName("//text") as! SKLabelNode
+        high = childNodeWithName("//HighScore") as! SKLabelNode
+
         
         restart = childNodeWithName("//restart") as! MSButtonNode
         
@@ -568,11 +588,19 @@ class GameScene: SKScene {
                             monsters[count].attackTimer = 0
                             attackAni.runAction(SKAction(named: "AttackAni")!)
                             if playerHealth <= 0{
-                            gameOver = true
-                            fade.zPosition = 34
-                            fade.runAction(SKAction.fadeAlphaTo(0.58, duration: 0.7))
-                            over.position.x += 274
+                                gameOver = true
+                                fade.zPosition = 34
+                                fade.runAction(SKAction.fadeAlphaTo(0.58, duration: 0.7))
+                                over.position.x += 274
                                 endScore.text = "\(currentScore)"
+                                if currentScore > highScore{
+                                    NSUserDefaults.standardUserDefaults().setInteger(currentScore, forKey: "HighScore")
+                                    high.text = "\(currentScore)"
+                                    best.text = "New Best"
+                                }
+                                else{
+                                    high.text = "\(highScore)"
+                                }
                             }
                         }
                     }
@@ -593,11 +621,11 @@ class GameScene: SKScene {
         
         spawnTimer += fixedDelta
         
-        let difficult = Double(currentScore) / 15
+        let difficult = Double(currentScore) / Double(12 + (Int(currentScore/20) * 5 ) )
         var timer = CFTimeInterval( 3 - difficult )
         
         if difficult > 3.5 {
-            timer = 0.5
+            timer = 0.75
         }
        
         

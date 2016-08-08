@@ -25,8 +25,8 @@ class MainViewController: UIViewController {
         if (main != nil) {
             // Configure the view.
             let skView = self.view as! SKView
-            skView.showsFPS = true
-            skView.showsNodeCount = true
+       //     skView.showsFPS = true
+       //     skView.showsNodeCount = true
             
             /* Sprite Kit applies additional optimizations to improve rendering performance */
             skView.ignoresSiblingOrder = true
@@ -42,7 +42,7 @@ class MainViewController: UIViewController {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.6, target: self, selector: "changeView:", userInfo: nil, repeats: false)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.6, target: self, selector: #selector(MainViewController.changeView(_:)), userInfo: nil, repeats: false)
     }
     
     func changeView(timer : NSTimer){
