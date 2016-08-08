@@ -1,6 +1,6 @@
 //
 //  MSButtonNode.swift
-//  HoppyBunny
+//  Make School
 //
 //  Created by Martin Walsh on 20/02/2016.
 //  Copyright (c) 2016 Make School. All rights reserved.
@@ -9,7 +9,7 @@
 import SpriteKit
 
 enum MSButtonNodeState {
-    case Active, Selected, Hidden
+    case MSButtonNodeStateActive, MSButtonNodeStateSelected, MSButtonNodeStateHidden
 }
 
 class MSButtonNode: SKSpriteNode {
@@ -18,21 +18,21 @@ class MSButtonNode: SKSpriteNode {
     var selectedHandler: () -> Void = { print("No button action set") }
     
     /* Button state management */
-    var state: MSButtonNodeState = .Active {
+    var state: MSButtonNodeState = .MSButtonNodeStateActive {
         didSet {
             switch state {
-            case .Active:
+            case .MSButtonNodeStateActive:
                 /* Enable touch */
                 self.userInteractionEnabled = true
                 
                 /* Visible */
                 self.alpha = 1
                 break
-            case .Selected:
+            case .MSButtonNodeStateSelected:
                 /* Semi transparent */
                 self.alpha = 0.7
                 break
-            case .Hidden:
+            case .MSButtonNodeStateHidden:
                 /* Disable touch */
                 self.userInteractionEnabled = false
                 
@@ -55,12 +55,12 @@ class MSButtonNode: SKSpriteNode {
     
     // MARK: - Touch handling
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        state = .Selected
+        state = .MSButtonNodeStateSelected
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         selectedHandler()
-        state = .Active
+        state = .MSButtonNodeStateActive
     }
     
 }

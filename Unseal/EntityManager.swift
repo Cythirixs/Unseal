@@ -154,12 +154,12 @@ class EntityManager {
     
     //tree
     func treeSpan() -> (SKReferenceNode, Monster){
-        let eye = SKReferenceNode(URL: NSURL (fileURLWithPath: treeReference!))
-        eye.position.x = 150
-        eye.position.y = 510
-        eye.xScale = 0.2
-        eye.yScale = 0.2
-        return(eye, Eye(health: 1, type: 3 ))
+        let tree = SKReferenceNode(URL: NSURL (fileURLWithPath: treeReference!))
+        tree.position.x = 159
+        tree.position.y = 454
+        tree.xScale = 0.7
+        tree.yScale = 0.7
+        return(tree, Tree(health: 3, type: 3 ))
     }
 }
 

@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		F31920C11D3F27AD006448C2 /* RedFlower.sks in Resources */ = {isa = PBXBuildFile; fileRef = F31920C01D3F27AD006448C2 /* RedFlower.sks */; };
-		F31920C31D3F2801006448C2 /* MSReferenceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31920C21D3F2801006448C2 /* MSReferenceNode.swift */; };
 		F32E66821D4923F800FD1BBE /* BlueEye.sks in Resources */ = {isa = PBXBuildFile; fileRef = F32E66811D4923F800FD1BBE /* BlueEye.sks */; };
 		F32E66841D49467800FD1BBE /* Eye.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E66831D49467800FD1BBE /* Eye.swift */; };
+		F331931E1D555D2B00B02CAC /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F331931D1D555D2B00B02CAC /* MSButtonNode.swift */; };
+		F33193201D555D3700B02CAC /* MSReferenceNoce.swift in Sources */ = {isa = PBXBuildFile; fileRef = F331931F1D555D3700B02CAC /* MSReferenceNoce.swift */; };
 		F34B378A1D355AE400E50116 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F34B37891D355AE400E50116 /* GameScene.sks */; };
 		F34B378C1D358E8C00E50116 /* CircleFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B378B1D358E8C00E50116 /* CircleFit.swift */; };
 		F34B378E1D35901100E50116 /* CircleGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B378D1D35901100E50116 /* CircleGestureRecognizer.swift */; };
@@ -25,7 +26,6 @@
 		F34B37B51D38363B00E50116 /* VFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B37B41D38363B00E50116 /* VFit.swift */; };
 		F34B37B71D3836B800E50116 /* VGestureRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B37B61D3836B800E50116 /* VGestureRecognition.swift */; };
 		F34B37BD1D395DBF00E50116 /* LightningGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B37BC1D395DBF00E50116 /* LightningGestureRecognizer.swift */; };
-		F34B37BF1D39795800E50116 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34B37BE1D39795800E50116 /* MSButtonNode.swift */; };
 		F3580B071D510435001CC07D /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3580B061D510435001CC07D /* Tree.swift */; };
 		F3580B091D52B695001CC07D /* AttackAni.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3580B081D52B695001CC07D /* AttackAni.sks */; };
 		F35815F81D4A7CD9007888C3 /* BlueFlower.sks in Resources */ = {isa = PBXBuildFile; fileRef = F35815F71D4A7CD9007888C3 /* BlueFlower.sks */; };
@@ -88,9 +88,10 @@
 
 /* Begin PBXFileReference section */
 		F31920C01D3F27AD006448C2 /* RedFlower.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RedFlower.sks; sourceTree = "<group>"; };
-		F31920C21D3F2801006448C2 /* MSReferenceNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSReferenceNode.swift; sourceTree = "<group>"; };
 		F32E66811D4923F800FD1BBE /* BlueEye.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BlueEye.sks; sourceTree = "<group>"; };
 		F32E66831D49467800FD1BBE /* Eye.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Eye.swift; sourceTree = "<group>"; };
+		F331931D1D555D2B00B02CAC /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
+		F331931F1D555D3700B02CAC /* MSReferenceNoce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSReferenceNoce.swift; sourceTree = "<group>"; };
 		F34B37891D355AE400E50116 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameScene.sks; path = ../GameScene.sks; sourceTree = "<group>"; };
 		F34B378B1D358E8C00E50116 /* CircleFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleFit.swift; sourceTree = "<group>"; };
 		F34B378D1D35901100E50116 /* CircleGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleGestureRecognizer.swift; sourceTree = "<group>"; };
@@ -105,7 +106,6 @@
 		F34B37B41D38363B00E50116 /* VFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFit.swift; sourceTree = "<group>"; };
 		F34B37B61D3836B800E50116 /* VGestureRecognition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VGestureRecognition.swift; sourceTree = "<group>"; };
 		F34B37BC1D395DBF00E50116 /* LightningGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightningGestureRecognizer.swift; sourceTree = "<group>"; };
-		F34B37BE1D39795800E50116 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
 		F3580B061D510435001CC07D /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		F3580B081D52B695001CC07D /* AttackAni.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AttackAni.sks; sourceTree = "<group>"; };
 		F35815F71D4A7CD9007888C3 /* BlueFlower.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BlueFlower.sks; sourceTree = "<group>"; };
@@ -270,8 +270,8 @@
 		F34B37D21D3D9C7700E50116 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F34B37BE1D39795800E50116 /* MSButtonNode.swift */,
-				F31920C21D3F2801006448C2 /* MSReferenceNode.swift */,
+				F331931D1D555D2B00B02CAC /* MSButtonNode.swift */,
+				F331931F1D555D3700B02CAC /* MSReferenceNoce.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -504,7 +504,7 @@
 				TargetAttributes = {
 					F37A964F1D35580F00367524 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 92U55748MF;
+						DevelopmentTeam = 6TFC65AKLN;
 					};
 					F37A96671D35580F00367524 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -601,15 +601,16 @@
 				F34B379A1D36B0CE00E50116 /* HorizontalGestureRecognizer.swift in Sources */,
 				F3945BBF1D47DDBE0063FC47 /* MainViewController.swift in Sources */,
 				F386BF041D4037B7005006BA /* Froguana.swift in Sources */,
+				F331931E1D555D2B00B02CAC /* MSButtonNode.swift in Sources */,
 				F34B378C1D358E8C00E50116 /* CircleFit.swift in Sources */,
 				F34B379C1D36B17D00E50116 /* LineFit.swift in Sources */,
 				F34B37931D36A7CB00E50116 /* HourglassGestureRecognizer.swift in Sources */,
+				F33193201D555D3700B02CAC /* MSReferenceNoce.swift in Sources */,
 				F34B37AE1D380BC300E50116 /* InfinityFit.swift in Sources */,
 				F386BF021D403789005006BA /* Mushroom.swift in Sources */,
 				F34B37B71D3836B800E50116 /* VGestureRecognition.swift in Sources */,
 				F34B37A41D37FA1200E50116 /* VerticalGestureRecognizer.swift in Sources */,
 				F37A96861D35582800367524 /* DrawingHandler.swift in Sources */,
-				F31920C31D3F2801006448C2 /* MSReferenceNode.swift in Sources */,
 				F386BEFA1D4017A9005006BA /* Flower.swift in Sources */,
 				F32E66841D49467800FD1BBE /* Eye.swift in Sources */,
 				F35816111D4BF503007888C3 /* Spider.swift in Sources */,
@@ -622,7 +623,6 @@
 				F386BEFC1D4017DA005006BA /* Monster.swift in Sources */,
 				F34B37B51D38363B00E50116 /* VFit.swift in Sources */,
 				F34B37951D36A7D400E50116 /* HourglassFit.swift in Sources */,
-				F34B37BF1D39795800E50116 /* MSButtonNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,7 +770,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Unseal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.Unseal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexminooka.unseal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -784,7 +784,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Unseal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.Unseal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexminooka.unseal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

@@ -17,6 +17,10 @@ class MainScene: SKScene {
     
     var credits : SKSpriteNode!
     var back : MSButtonNode!
+    var next : MSButtonNode!
+    
+    var thanks : SKSpriteNode!
+    var backthanks : MSButtonNode!
     
     var gameStart = false
     
@@ -24,24 +28,32 @@ class MainScene: SKScene {
     var top : SKSpriteNode!
     var logo : SKSpriteNode!
     var eye : SKSpriteNode!
+    var eyeEnd : SKSpriteNode!
+    
+    var timer : NSTimer!
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         
         credits = childNodeWithName("credits") as! SKSpriteNode
+        thanks = childNodeWithName("thanks") as! SKSpriteNode
         
         /* Set UI connections */
-        playButton = childNodeWithName("//play") as! MSButtonNode
         
         bottom = childNodeWithName("menu bottom") as! SKSpriteNode
         top = childNodeWithName("menu top") as! SKSpriteNode
         logo = childNodeWithName("logo") as! SKSpriteNode
         eye = childNodeWithName("eye") as! SKSpriteNode
+        eyeEnd = childNodeWithName("eyeEnd") as! SKSpriteNode
         
-        bottom.runAction(SKAction(named: "RightMoveOut")!)
-        top.runAction(SKAction(named: "LeftMoveOut")!)
+        bottom.runAction(SKAction(named: "RightMoveIn")!)
+        top.runAction(SKAction(named: "LeftMoveIn")!)
+        eyeEnd.runAction(SKAction(named : "MenuStart")!)
         
+        timer = NSTimer.scheduledTimerWithTimeInterval(2.9, target: self, selector: "logo:", userInfo: nil, repeats: false)
         
+        playButton = childNodeWithName("//play") as! MSButtonNode
+
         /* Setup restart button selection handler */
         playButton.selectedHandler = {
             self.gameStart = true
@@ -62,7 +74,20 @@ class MainScene: SKScene {
             self.credits.position.x += 315
         }
         
+        next = childNodeWithName("//next") as! MSButtonNode
+        next.selectedHandler = {
+            self.thanks.position.x -= 295
+        }
+        backthanks = childNodeWithName("//backthanks") as! MSButtonNode
+        backthanks.selectedHandler = {
+            self.thanks.position.x += 295
+        }
         
+        
+    }
+    
+    func logo(timer : NSTimer){
+        logo.zPosition = -1
     }
     
 }

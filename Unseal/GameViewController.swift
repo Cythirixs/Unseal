@@ -88,6 +88,7 @@ class GameViewController: UIViewController, UIGestureRecognizerDelegate {
         
         drawView.clear()
         
+        scene.tutorial = false
         skView.presentScene(scene)
     }
     func main(timer : NSTimer){

@@ -52,6 +52,10 @@ class Monster{
         
     }
     
+    func setType(type : Int){
+        self.type = type
+    }
+    
     func pause(p1 : Double, p2 : Double){
         pauseAt = p1
         pauseAmmount = p2

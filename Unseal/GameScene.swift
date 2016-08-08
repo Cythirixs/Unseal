@@ -134,6 +134,7 @@ class GameScene: SKScene {
         
         pause = childNodeWithName("pause") as! MSButtonNode
         pause.selectedHandler = {
+            if self.isStopped { return }
             self.isStopped = true
             self.fade.zPosition = 34
             self.menu.position.y -= 350
@@ -576,7 +577,7 @@ class GameScene: SKScene {
                         }
                     }
             
-                    if entity.position.x > 40 {
+                    if entity.position.x > 70 {
                         entity.position.x -= monsters[count].vx
                         monsters[count].incramentX()
                     }
@@ -593,10 +594,10 @@ class GameScene: SKScene {
         spawnTimer += fixedDelta
         
         let difficult = Double(currentScore) / 15
-        var timer = CFTimeInterval( 4 - difficult )
+        var timer = CFTimeInterval( 3 - difficult )
         
-        if difficult > 3 {
-            timer = 1.5
+        if difficult > 3.5 {
+            timer = 0.5
         }
        
         

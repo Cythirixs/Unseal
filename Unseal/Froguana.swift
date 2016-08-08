@@ -19,7 +19,7 @@ class Froguana : Monster{
     
     init(health : Int, type : Int){
         yStep = 260/300
-        xStep = 0.21
+        xStep = 0.166
         
         stepAmmount = 0.00167
         

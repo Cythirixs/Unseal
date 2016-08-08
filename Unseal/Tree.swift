@@ -11,19 +11,40 @@ import UIKit
 
 class Tree : Monster{
     
-    //0.5/300
-    var yStep : CGFloat
-    //pt that the monster will stop at divided by num of ticks (300)
-    var xStep : CGFloat
-    //scale step ammount
-    var stepAmmount : CGFloat
-    
     init(health : Int, type : Int){
-        yStep = 0
-        xStep = 0
-        stepAmmount = 0
         
-        super.init(health: health, vy: yStep, vx: xStep, scale: stepAmmount, type: type)
+        super.init(health: health, vy: 0, vx: 0, scale: 0, type: type)
+    }
+    
+    
+    
+    func changeStage() -> String{
+        var random = arc4random_uniform(3) + 1
+        
+        if health == 2{
+            super.setType( Int(random) )
+            if random == 3{
+                return "TreeForm2"
+            }
+            else if random == 2{
+                return "BlueTreeForm2"
+            }
+            else{
+                return "RedTreeForm2"
+            }
+        }
+        else{
+            super.setType( Int(random) )
+            if random == 3{
+                return "TreeForm3"
+            }
+            else if random == 2 {
+                return "BlueTreeForm3"
+            }
+            else{
+                return "RedTreeForm3"
+            }
+        }
     }
     
 }
